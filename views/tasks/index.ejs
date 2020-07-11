@@ -10,16 +10,27 @@
   <h1>Tasks</h1>
   <div class="toolbar">Toolbar</div>
   <div class="task-group">
+
+    <!-- To Do -->
     <div class="task-col">
       <div class="col-header">
         <span class="col-name">To Do</span>
+        <% tasks.forEach(task => { %>
+          <div class="task-card">
+            <span><%= task.name %></span>
+          </div>
+        <% }); %>
       </div>
     </div>
+
+    <!-- In Progress -->
     <div class="task-col">
       <div class="col-header">
         <span class="col-name">In Progress</span>
       </div>
     </div>
+
+    <!-- Completed -->
     <div class="task-col">
       <div class="col-header">
         <span class="col-name">Completed</span>
