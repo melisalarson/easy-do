@@ -12,6 +12,6 @@ const collabSchema = new mongoose.Schema({
   }],
 });
 
-const collabModel = mongoose.model('Task', CollabSchema);
+const collabModel = mongoose.model('Collaborator', collabSchema);
 
 module.exports(collabModel);
