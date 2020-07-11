@@ -13,52 +13,39 @@
   <div class="task-group">
 
     <!-- To Do -->
-    <div class="task-col">
+    <div class="task-col to-do">
       <div class="col-header">
         <span class="col-name">To Do</span>
-        <% for(let i = 0; i < tasks.length; i++) { %>
-          <% if(tasks[i].stage === 'to-do') { %>
-            <div class="task-card">
-              <span><%= tasks[i].name %></span>
-              <div class="task-stats">
-                <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
-                <img src="/images/default-profile.png" alt="profile">
-                <span><%= tasks[i].collaborators.name %></span>
-                <span><%= tasks[i].completionTime %></span>
-              </div>
-            </div>
-          <% } %>
-        <% }; %>
       </div>
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'to-do') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
     </div>
 
     <!-- In Progress -->
-    <div class="task-col">
+    <div class="task-col in-progress">
       <div class="col-header">
         <span class="col-name">In Progress</span>
-        <% for(let i = 0; i < tasks.length; i++) { %>
-          <% if(tasks[i].stage === 'in-progress') { %>
-            <div class="task-card">
-              <span><%= tasks[i].name %></span>
-            </div>
-          <% } %>
-        <% }; %>
       </div>
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'in-progress') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
     </div>
 
     <!-- Completed -->
-    <div class="task-col">
+    <div class="task-col completed">
       <div class="col-header">
         <span class="col-name">Completed</span>
-        <% for(let i = 0; i < tasks.length; i++) { %>
-          <% if(tasks[i].stage === 'completed') { %>
-            <div class="task-card">
-              <span><%= tasks[i].name %></span>
-            </div>
-          <% } %>
-        <% }; %>
       </div>
-    </div>
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'completed') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
   </div>
 
 </body>
