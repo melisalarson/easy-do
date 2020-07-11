@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
   <link rel="stylesheet" href="/styles.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +11,41 @@
   <h1>Tasks</h1>
   <div class="toolbar">Toolbar</div>
   <div class="task-group">
-    <div class="task-col">
+
+    <!-- To Do -->
+    <div class="task-col to-do">
       <div class="col-header">
         <span class="col-name">To Do</span>
       </div>
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'to-do') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
     </div>
-    <div class="task-col">
+
+    <!-- In Progress -->
+    <div class="task-col in-progress">
       <div class="col-header">
         <span class="col-name">In Progress</span>
       </div>
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'in-progress') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
     </div>
-    <div class="task-col">
+
+    <!-- Completed -->
+    <div class="task-col completed">
       <div class="col-header">
         <span class="col-name">Completed</span>
       </div>
-    </div>
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'completed') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
   </div>
 
 </body>
