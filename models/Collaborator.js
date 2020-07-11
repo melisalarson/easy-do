@@ -7,11 +7,11 @@ const collabSchema = new mongoose.Schema({
   },
   picture: String,
   tasks: [{
-    type: mongoose.Schema.Types(ObjectId),
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Task',
   }],
 });
 
 const collabModel = mongoose.model('Collaborator', collabSchema);
 
-module.exports(collabModel);
+module.exports = collabModel;
