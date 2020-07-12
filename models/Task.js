@@ -5,10 +5,10 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  collaborators: String, //[{
+  collaborators: String,//[{
     //type: mongoose.Schema.Types.ObjectId,
     //ref: 'Collaborator',
-  //}],
+  // }],
   completionTime: String,
   stage: String,
 });
