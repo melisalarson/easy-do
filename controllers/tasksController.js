@@ -18,22 +18,24 @@ router.get('/new', (req, res) => {
   res.render('tasks/new');
 });
 
-// 4)task show route
-// router.get('/:id', (req, res) => {
-//   db.Task.findById(req.params.id, (err, foundTast) => {
-//     if (err) return console.log
-//   }
+// // 4)task show route
+router.get('/:id', (req, res) => {
+  db.Task.findById(
+    req.params.id,
+    (err, foundTask) => {
+    if (err) return console.log(err);
+    console.log(foundTask);
     
-    
-//     )
+    res.send(foundTask);
+  });
 //     // .populate({ path: 'collaborators' })
 //     // .exec((err, foundTask) => {
 //     //   if (err) return console.log(err);
 //     //   console.log(foundTask);
       
-//       // res.render('tasks/show');
+//     //   res.render('tasks/show', {task: foundTask});
 //     // });
-// });
+});
 
 // 3)task create route
 router.post('/', (req, res) => {
@@ -54,8 +56,8 @@ router.get('/:id/edit', (req, res) => {
     (err, taskToEdit) => {
       if (err) return console.log(err);
       console.log(taskToEdit);
-      
-      res.render('/tasks/edit', {foundTask})
+
+      res.render('tasks/edit', { task: taskToEdit });
   });
 });
 
@@ -84,21 +86,96 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// move right route
+router.get('/:id/move-right/:stage', (req, res) => {  
+  let change = {};
+  if (req.params.stage === 'to-do') {
+    change = { stage: 'in-progress' }
+  } if (req.params.stage === 'in-progress') {
+    change = { stage: 'completed' }
+  }
+
+  db.Task.findByIdAndUpdate(
+    req.params.id,
+    change,
+    {new: true},
+    (err, taskToMoveRight) => {
+      if (err) return console.log(err);
+      console.log(taskToMoveRight)
+
+      res.redirect('/tasks')
+    });
+});
+
+// OG move left route
+// router.get('/:id/move-left', (req, res) => {
+
+//   db.Task.findByIdAndUpdate(
+//     req.params.id,
+//     // {stage: 'to-do'},
+//     () => {
+//       if (req.params.id.stage === 'completed') {
+//         return {stage: 'in-progress'}
+//       } else if (req.params.id.stage === 'in-progress') {
+//         return {stage: 'to-do'}
+//       }
+//     },
+//     { new: true },
+//     (err, taskToMoveLeft) => {
+//       if (err) return console.log(err);
+//       console.log(taskToMoveLeft)
+
+//       res.redirect('/tasks')
+//     });
+// });
+
+// 2nd move left route
+router.get('/:id/move-left/:stage', (req, res) => {
+  let change = {};
+  if (req.params.stage === 'completed') {
+    change = { stage: 'in-progress' }
+  } else if (req.params.stage === 'in-progress') {
+    change = { stage: 'to-do' }
+  }
+
+  db.Task.findByIdAndUpdate(
+    req.params.id,
+    change,
+    { new: true },
+    (err, taskToMoveLeft) => {
+      if (err) return console.log(err);
+      console.log(taskToMoveLeft)
+
+      res.redirect('/tasks')
+    });
+});
+
 // debug/reset route
 router.get('/debug/reset', (req, res) => {
+    db.Task.deleteMany({}, (err, deletedTasks) => {
+      if (err) return console.log(err);
+      console.log(`deleted tasks... ${deletedTasks}`);
+
+      const sampleData = require('../models/sampleData');
+
+      db.Task.insertMany(sampleData, (err, sampleData) => {
+        if (err) return console.log(err);
+        console.log(`sample data... ${sampleData}`);
+        
+        res.redirect('/tasks');
+      });
+  });
+});
+
+// debug/clear route
+router.get('/debug/clear', (req, res) => {
   db.Task.deleteMany({}, (err, deletedTasks) => {
     if (err) return console.log(err);
     console.log(`deleted tasks... ${deletedTasks}`);
-  
-    const sampleData = require('../models/sampleData');
-  
-    db.Task.insertMany(sampleData, (err, sampleData) => {
-      if (err) return console.log(err);
-      console.log(`sampla data: ${sampleData}`);
 
       res.redirect('/tasks');
     });
   });
-});
+
 
 module.exports = router;
