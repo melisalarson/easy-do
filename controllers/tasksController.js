@@ -2,18 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
-const sampleData = [
-  { name: 'MODEL FOLDER -> Collaborator file', collaborators: 'Melisa', completionTime: '1 hour', stage: 'to-do' },
-  { name: 'MODEL FOLDER -> Task file', collaborators: 'Melisa', completionTime: '2 hour', stage: 'to-do' },
-  { name: 'CONTROLLER FOLDER -> task file', collaborators: 'Melisa', completionTime: '3 hour', stage: 'to-do' },
-  { name: 'CONTROLLER FOLDER -> collaborator file', collaborators: 'Melisa', completionTime: '4 hour', stage: 'in-progress' },
-  { name: 'VIEWS FOLDER -> index file', collaborators: 'Jimmy', completionTime: '5 hour', stage: 'in-progress' },
-  { name: 'VIEWS FOLDER -> tasks folder -> index file', collaborators: 'Jimmy', completionTime: '6 hour', stage: 'in-progress' },
-  { name: 'VIEWS FOLDER -> tasks folder -> new file', collaborators: 'Jimmy', completionTime: '7 hour', stage: 'completed' },
-  { name: 'VIEWS FOLDER -> tasks folder -> edit file', collaborators: 'Jimmy', completionTime: '8 hour', stage: 'completed' },
-  { name: 'VIEWS FOLDER -> tasks folder -> edit file', collaborators: 'Jimmy', completionTime: '9 hour', stage: 'completed' },
-];
-
 
 // 1)task index route
 router.get('/', (req, res) => {
@@ -101,7 +89,9 @@ router.get('/debug/reset', (req, res) => {
   db.Task.deleteMany({}, (err, deletedTasks) => {
     if (err) return console.log(err);
     console.log(`deleted tasks... ${deletedTasks}`);
-
+  
+    const sampleData = require('../models/sampleData');
+  
     db.Task.insertMany(sampleData, (err, sampleData) => {
       if (err) return console.log(err);
       console.log(`sampla data: ${sampleData}`);
