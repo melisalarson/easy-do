@@ -1,3 +1,11 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: inherit;
+	box-sizing: inherit;
+}
+
+
 body {
     background-color: green;
 }
@@ -132,6 +140,15 @@ a.button {
     cursor: pointer;
     border: 1px solid blue;
 }
+		
+.completed .task-name {
+    text-decoration: line-through
+}
+.completed .task-card {
+    opacity: .7;
+}
+
+
 
 
 

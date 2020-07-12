@@ -1,39 +1,59 @@
-<h1>Edit Task</h1>
-<form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
-  <div>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="<%= task.name %>"/>
-  </div>
-  <div>
-    <label for="collaborator">Collaborator</label>
-    <select name="collaborators" id="collaborator">
-      <option value="Melisa" <% if(task.collaborators === "Melisa"){ %> selected <% } %>>
-        Melisa
-      </option>
-      <option value="Jimmy" <% if(task.collaborators === "Jimmy"){ %> selected <% } %> >
-        Jimmy
-      </option>
-    </select>
-  </div>
-  <div>
-    <label for="completionTime">Completion Time</label>
-    <input type="text" id="completionTime" 
-           name="completionTime" value="<%= task.completionTime %>"
-    />
-  </div>
-  <div>
-    <label for="stage">Stage</label>
-    <select name="stage" id="stage">
-        <option value="to-do" <% if(task.stage === "to-do"){ %> selected <% } %> >
-            To Do
-        </option>
-        <option value="in-progress" <% if(task.stage === "in-progress"){ %> selected <% } %> >
-            In Progress
-        </option>
-        <option value="completed" <% if(task.stage === "completed"){ %> selected <% } %> >
-            Completed
-        </option>
-    </select>
-  </div>
-  <button type="submit">Update Task</button>
-</form>
+<head>
+    <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/forms.css">
+</head>
+
+<div class="mask">
+    <div class="popup-container">
+
+        <h1 class="form-title">Edit Task</h1>
+        <hr>
+        <!-- Cancel Button -->
+        <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+
+        <form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" id="name" 
+                   name="name" value="<%= task.name %>" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="collaborator">Collaborator</label>
+            <select class="form-control" name="collaborators" id="collaborator">
+              <option value="Melisa" <% if(task.collaborators === "Melisa"){ %> selected <% } %>>
+                Melisa
+              </option>
+              <option value="Jimmy" <% if(task.collaborators === "Jimmy"){ %> selected <% } %> >
+                Jimmy
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="completionTime">Completion Time</label>
+            <input type="text" id="completionTime" class="form-control"
+                   name="completionTime" value="<%= task.completionTime %>"/>
+          </div>
+
+          <div class="form-group">
+            <label for="stage">Stage</label>
+            <select class="form-control" name="stage" id="stage">
+                <option value="to-do" <% if(task.stage === "to-do"){ %> selected <% } %> >
+                    To Do
+                </option>
+                <option value="in-progress" <% if(task.stage === "in-progress"){ %> selected <% } %> >
+                    In Progress
+                </option>
+                <option value="completed" <% if(task.stage === "completed"){ %> selected <% } %> >
+                    Completed
+                </option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Update Task</button>
+        </form>
+    </div>
+</div>    

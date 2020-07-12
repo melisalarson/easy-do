@@ -1,0 +1,76 @@
+.mask {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-container {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.form-title {
+  margin: 10px;
+}
+
+form {
+  margin-left: 20px;
+  margin-top: -5px;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+    
+label {
+line-height: 100%;
+margin-bottom: 5px;
+font-size: 14px;
+font-weight: bold;
+}
+
+input {
+background-color: transparent;
+width: 80%;
+height: 30px;
+/* margin-bottom: 20px; */
+padding: 0 8px;
+border: 1px solid rgba(99, 99, 99, 0.3);
+border-radius: 5px;
+}
+input:hover,
+input:focus {
+  border-color: rgb(0, 0, 0);
+}
+
+.form-control {
+  padding: 0px;
+  width: 200px;
+  height: 25px;
+}
+
+.submit-btn {
+  width: 150px;
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 165px;
+}
+
+
+
+
+.close-btn {
+  text-decoration: none;
+  color: initial;
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 30px;
+}
