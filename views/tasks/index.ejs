@@ -9,7 +9,11 @@
 </head>
 <body>
   <h1>Tasks</h1>
-  <div class="toolbar">Toolbar</div>
+  <div class="toolbar">
+    <h2>Toolbar</h2>
+    <a class="button" href="/tasks/new">Add Task</a>
+    <a class="button" href="/tasks/new">Add Collaborator</a>
+  </div>
   <div class="task-group">
 
     <!-- To Do -->
@@ -17,11 +21,22 @@
       <div class="col-header">
         <span class="col-name">To Do</span>
       </div>
+
+      <div class="col-body">
         <% tasks.forEach(task => { %>
           <% if(task.stage === 'to-do') { %>
             <%- include('task-card', {task: task}); %>
           <% } %>
         <% }); %>
+      </div>
+
+      <div class="col-footer">
+        <a class="add-task" href="/tasks/new">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <span>Add Task</span>
+        </a>
+      </div>
+
     </div>
 
     <!-- In Progress -->
