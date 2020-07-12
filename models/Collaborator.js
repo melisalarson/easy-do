@@ -6,10 +6,10 @@ const collabSchema = new mongoose.Schema({
     required: true,
   },
   picture: String,
-  tasks: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Task',
-  }],
+  tasks: String, //[{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Task',
+  // }],
 });
 
 const collabModel = mongoose.model('Collaborator', collabSchema);

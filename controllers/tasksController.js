@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   db.Task.find({}, (err, allTasks) => {
     if (err) return console.log(err);
     console.log(allTasks);
+    
     res.render('tasks', {tasks: allTasks});
   });
 });
@@ -28,13 +29,6 @@ router.get('/:id', (req, res) => {
     
     res.send(foundTask);
   });
-//     // .populate({ path: 'collaborators' })
-//     // .exec((err, foundTask) => {
-//     //   if (err) return console.log(err);
-//     //   console.log(foundTask);
-      
-//     //   res.render('tasks/show', {task: foundTask});
-//     // });
 });
 
 // 3)task create route
@@ -82,6 +76,7 @@ router.delete('/:id', (req, res) => {
     (err, deletedTask) => {
       if (err) return console.log(err);
       console.log(deletedTask);
+      
       res.redirect('/tasks');
     });
 });
