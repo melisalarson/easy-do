@@ -1,0 +1,27 @@
+<h1>New Task</h1>
+<form action="/tasks" method="POST">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+  </div>
+  <div>
+    <label for="collaborator">Collaborator</label>
+    <select name="collaborators" id="collaborator">
+      <option value="Melisa">Melisa</option>
+      <option value="Jimmy">Jimmy</option>
+    </select>
+  </div>
+  <div>
+    <label for="completionTime">Completion Time</label>
+    <input type="text" id="completionTime" name="completionTime" />
+  </div>
+  <div>
+    <label for="stage">Stage</label>
+    <select name="stage" id="stage">
+      <option value="to-do">To Do</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+  </div>
+  <button type="submit">Add Task</button>
+</form>

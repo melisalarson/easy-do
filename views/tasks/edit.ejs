@@ -1,0 +1,29 @@
+<h1>Edit Task</h1>
+<form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="<%= task.name %>"/>
+  </div>
+  <div>
+    <label for="collaborator">Collaborator</label>
+    <select name="collaborators" id="collaborator">
+      <option value="Melisa">Melisa</option>
+      <option value="Jimmy">Jimmy</option>
+    </select>
+  </div>
+  <div>
+    <label for="completionTime">Completion Time</label>
+    <input type="text" id="completionTime" 
+           name="completionTime" value="<%= task.completionTime %>"
+    />
+  </div>
+  <div>
+    <label for="stage">Stage</label>
+    <select name="stage" id="stage">
+      <option value="to-do">To Do</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+  </div>
+  <button type="submit">Update Task</button>
+</form>
