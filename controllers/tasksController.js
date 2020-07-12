@@ -71,7 +71,7 @@ router.put('/:id', (req, res) => {
 
 // 7)task destroy route
 router.delete('/:id', (req, res) => {
-  db.Task.findByIdDelete(
+  db.Task.findByIdAndDelete(
     req.params.id,
     (err, deletedTask) => {
       if (err) return console.log(err);
@@ -152,7 +152,6 @@ router.get('/debug/show-tasks', (req, res) => {
     console.log(allTasks);
 
     res.send({task: allTasks});
-    res.redirect({ task: allTasks });
     // res.send(JSON.stringify(allTasks));
     // res.send(JSON.stringify(allTasks, undefined, 4))
   });
