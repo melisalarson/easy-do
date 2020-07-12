@@ -55,7 +55,7 @@ router.get('/:id/edit', (req, res) => {
       if (err) return console.log(err);
       console.log(taskToEdit);
       
-      res.render('/tasks/edit', {foundTask})
+      res.render('tasks/edit', {task: taskToEdit})
   });
 });
 
