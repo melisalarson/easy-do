@@ -76,7 +76,7 @@ router.delete('/:id', (req, res) => {
     (err, deletedTask) => {
       if (err) return console.log(err);
       console.log(deletedTask);
-      
+
       res.redirect('/tasks');
     });
 });
@@ -143,6 +143,19 @@ router.get('/:id/move-left/:stage', (req, res) => {
 
       res.redirect('/tasks')
     });
+});
+
+// debug/show-tasks route
+router.get('/debug/show-tasks', (req, res) => {
+  db.Task.find({}, (err, allTasks) => {
+    if (err) return console.log(err);
+    console.log(allTasks);
+
+    res.send({task: allTasks});
+    res.redirect({ task: allTasks });
+    // res.send(JSON.stringify(allTasks));
+    // res.send(JSON.stringify(allTasks, undefined, 4))
+  });
 });
 
 // debug/reset route

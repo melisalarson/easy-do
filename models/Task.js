@@ -8,7 +8,7 @@ const taskSchema = new mongoose.Schema({
   collaborators: String,
   completionTime: String,
   stage: String,
-});
+}, {timestamps: true});
 
 const taskModel = mongoose.model('Task', taskSchema);
 
