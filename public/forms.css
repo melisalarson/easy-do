@@ -88,3 +88,13 @@ input:focus {
 .delete-btn:hover {
   color: red;
 }
+
+.collab-card .delete-btn {
+  display: none;
+  position: initial;
+  font-size: 15px;
+}
+
+.collab-card:hover .delete-btn {
+  display: inline;
+}

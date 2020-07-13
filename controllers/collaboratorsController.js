@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const db = require('../models');
 
 // 1)collab index route
@@ -9,13 +8,12 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
     console.log(allCollabs);
     
-    res.render('collaborators', {collab: allCollabs})
+    res.render('collaborators', {collabs: allCollabs})
   });
 });
 
 // 2)collab new route
 router.get('/new', (req, res) => {
-
   res.render('collaborators/new');
 });
 
@@ -73,7 +71,7 @@ router.put('/:id', (req, res) => {
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);
-      console.log(collabToUpdate, req.body, req);
+      console.log(collabToUpdate, req.body);
       
       res.send(collabToUpdate);
       // res.redirect('/tasks');
@@ -83,7 +81,7 @@ router.put('/:id', (req, res) => {
 // 7)collab destroy route
 router.delete('/:id', (req, res) => {
   db.Collaborator.findByIdAndDelete(
-    red.params.id,
+    req.params.id,
     (err, deletedCollab) => {
       if (err) return console.log(err);
       console.log(deletedCollab);

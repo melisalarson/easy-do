@@ -12,7 +12,7 @@
   <div class="toolbar">
     <h2>Toolbar</h2>
     <a class="button" href="/tasks/new">Add Task</a>
-    <a class="button" href="/tasks/new">Add Collaborator</a>
+    <a class="button" href="/collaborators/">Add Collaborator</a>
   </div>
   <div class="task-group">
 
@@ -44,11 +44,14 @@
       <div class="col-header">
         <span class="col-name">In Progress</span>
       </div>
+
+      <div class="col-body">
         <% tasks.forEach(task => { %>
           <% if(task.stage === 'in-progress') { %>
             <%- include('task-card', {task: task}); %>
           <% } %>
         <% }); %>
+      </div>
     </div>
 
     <!-- Completed -->
@@ -56,11 +59,13 @@
       <div class="col-header">
         <span class="col-name">Completed</span>
       </div>
+      <div class="col-body">
         <% tasks.forEach(task => { %>
           <% if(task.stage === 'completed') { %>
             <%- include('task-card', {task: task}); %>
           <% } %>
         <% }); %>
+      </div>
   </div>
 
 </body>
