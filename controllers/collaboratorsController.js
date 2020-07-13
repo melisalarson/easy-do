@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
+let promptString = null;
+
 // 1)collab index route
 router.get('/', (req, res) => {
   db.Collaborator.find({}, (err, allCollabs) => {
@@ -62,7 +64,8 @@ router.get('/:id/edit', (req, res) => {
       console.log(collabToEdit);
 
       // res.send(collabToEdit);
-      res.render('collaborators/edit', {collab: collabToEdit });
+      res.render('collaborators/edit', { collab: collabToEdit, promptString });
+      promptString = null;
     });
 });
 
@@ -84,15 +87,21 @@ router.put('/:id', (req, res) => {
 
 // 7)collab destroy route
 router.delete('/:id', (req, res) => {
-  db.Collaborator.findByIdAndDelete(
-    req.params.id,
-    (err, deletedCollab) => {
-      if (err) return console.log(err);
-      console.log(deletedCollab);
+  if (req.params.id !== '5f0cc9de42f167445b2d2962') { // hard coded id for collab 'Not Assigned'
+    db.Collaborator.findByIdAndDelete(
+      req.params.id,
+      (err, deletedCollab) => {
+        if (err) return console.log(err);
+        console.log(deletedCollab);
 
-      // res.send(deletedCollab);
-      res.redirect('/collaborators');
-  });
+        // res.send(deletedCollab);
+        // res.redirect('/collaborators');
+      });
+  } else {
+    promptString = `${req.params.name} cannot be deleted`;
+  };
+  
+  res.redirect('/collaborators');
 });
 
 // *DEBUG*/show-collabs route

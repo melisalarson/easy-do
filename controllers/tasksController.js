@@ -58,35 +58,36 @@ router.post('/', (req, res) => {
       if (err) return console.log(err);
       console.log(newTask);
       
-      // db.Collaborator.findById(
-      //   { 'name': req.body.collaborators.toLowerCase() },
-      //   (err, foundCollab) => {
-      //     // console.log(foundCollab);
-      //     if (err) return console.log(err);
-      //     foundCollab.tasks.push(newTask);
-      //     foundCollab.save(
-      //       (err, savedCollab) => {
-      //         if (err) return console.log(err);
-      //         console.log(savedCollab);
-
-      //         res.redirect('/tasks');
-      //       });
-      //   });
-
-      db.Collaborator.findOne(
-        {'name': req.body.collaborators.toLowerCase()}, //or CollaboratorId,
+      console.log(req.body);
+      db.Collaborator.findById(
+        req.body.collaborators._id,
         (err, foundCollab) => {
           // console.log(foundCollab);
           if (err) return console.log(err);
           foundCollab.tasks.push(newTask);
           foundCollab.save(
-            (err,savedCollab) => {
+            (err, savedCollab) => {
               if (err) return console.log(err);
               console.log(savedCollab);
-              
+
               res.redirect('/tasks');
-          });          
+            });
         });
+
+      // db.Collaborator.findOne(
+      //   {'name': req.body.collaborators.toLowerCase()},
+      //   (err, foundCollab) => {
+      //     // console.log(foundCollab);
+      //     if (err) return console.log(err);
+      //     foundCollab.tasks.push(newTask);
+      //     foundCollab.save(
+      //       (err,savedCollab) => {
+      //         if (err) return console.log(err);
+      //         console.log(savedCollab);
+              
+      //         res.redirect('/tasks');
+      //     });          
+      //   });
   });
 });
 
