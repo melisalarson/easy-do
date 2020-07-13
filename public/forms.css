@@ -76,10 +76,15 @@ input:focus {
 }
 
 .delete-btn {
+  border: none;
+  background: none;
   text-decoration: none;
   color: initial;
   position: absolute;
   right: 25px;
   top: 100px;
   font-size: 30px;
+}
+.delete-btn:hover {
+  color: red;
 }
