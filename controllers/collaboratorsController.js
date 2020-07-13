@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
     console.log(allCollabs);
     
-    res.render('collaborators', { collabs: allCollabs })
+    res.render('collaborators', { collabs: allCollabs, promptString });
+    promptString = null;
   });
 });
 
@@ -64,7 +65,9 @@ router.get('/:id/edit', (req, res) => {
       console.log(collabToEdit);
 
       // res.send(collabToEdit);
-      res.render('collaborators/edit', { collab: collabToEdit, promptString });
+      res.render('collaborators/edit',
+      { collab: collabToEdit, selectedCollab, promptString }
+      );
       promptString = null;
     });
 });
@@ -87,7 +90,7 @@ router.put('/:id', (req, res) => {
 
 // 7)collab destroy route
 router.delete('/:id', (req, res) => {
-  if (req.params.id !== '5f0cc9de42f167445b2d2962') { // hard coded id for collab 'Not Assigned'
+  if (req.params.id !== '5f0cd8b9fed32e492a3170c1') { // hard coded id for collab 'Not Assigned'
     db.Collaborator.findByIdAndDelete(
       req.params.id,
       (err, deletedCollab) => {
@@ -100,7 +103,7 @@ router.delete('/:id', (req, res) => {
   } else {
     promptString = `${req.params.name} cannot be deleted`;
   };
-  
+
   res.redirect('/collaborators');
 });
 
