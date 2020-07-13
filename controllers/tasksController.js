@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
     console.log(allTasks);
     
-    res.render('tasks', {tasks: allTasks});
+    res.render('tasks', { tasks: allTasks });
   });
 });
 

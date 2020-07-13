@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
     console.log(allCollabs);
     
-    res.render('collaborators', {collab: allCollabs})
+    res.render('collaborators', { collabs: allCollabs })
   });
 });
 
@@ -27,14 +27,14 @@ router.get('/:id', (req, res) => {
       if (err) return console.log(err);
       console.log(foundCollab);
 
-      res.send('test');
+        res.send(foundCollab);
     });
     // .populate({ path: 'Task' })
     // .exec((err, foundCollab) => {
     //   if (err) return console.log(err);
     //   console.log(foundCollab);
 
-    //   res.render('collaborators/show', { collab: foundCollab });
+    //   res.render('collaborators/show', {collabs: foundCollab });
     // });
 });
 
@@ -46,8 +46,9 @@ router.post('/', (req, res) => {
     (err, newCollab) => {
       if (err) return console.log(err);
       console.log(newCollab);
-      res.send(newCollab);
-      // res.redirect('/tasks')
+      
+      // res.send(newCollab);
+      res.redirect('/collaborators');
     }
   )
 });
@@ -60,7 +61,8 @@ router.get('/:id/edit', (req, res) => {
       if (err) return console.log(err);
       console.log(collabToEdit);
 
-      res.render('collaborators/edit', { collab: collabToEdit });
+      // res.send(collabToEdit);
+      res.render('collaborators/edit', {collab: collabToEdit });
     });
 });
 
@@ -68,27 +70,28 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   db.Collaborator.findByIdAndUpdate(
     req.params.id,
-    req.body,
-    // {name: 'Jimmy'},
+    {name: 'Jimmy'},
+    // req.body,
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);
       console.log(collabToUpdate, req.body, req);
       
-      res.send(collabToUpdate);
-      // res.redirect('/tasks');
+      // res.send(collabToUpdate);
+      res.redirect('/collaborators');
   });
 });
 
 // 7)collab destroy route
 router.delete('/:id', (req, res) => {
   db.Collaborator.findByIdAndDelete(
-    red.params.id,
+    req.params.id,
     (err, deletedCollab) => {
       if (err) return console.log(err);
       console.log(deletedCollab);
 
-      res.redirect('/tasks')
+      // res.send(deletedCollab);
+      res.redirect('/collaborators');
   });
 });
 
