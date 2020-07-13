@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
+let promptString = null;
+
 // 1)collab index route
 router.get('/', (req, res) => {
   db.Collaborator.find({}, (err, allCollabs) => {
     if (err) return console.log(err);
     console.log(allCollabs);
     
-    res.render('collaborators', {collabs: allCollabs})
+    res.render('collaborators', { collabs: allCollabs, promptString });
+    promptString = null;
   });
 });
 
@@ -20,20 +23,22 @@ router.get('/new', (req, res) => {
 // 4)collab show route
 router.get('/:id', (req, res) => {
   db.Collaborator.findById(
-    req.params.id,
-      (err, foundCollab) => {
+    req.params.id)
+      // (err, foundCollab) => {
+      // if (err) return console.log(err);
+      // console.log(foundCollab);
+
+        // res.send(foundCollab);
+        // res.render('collaborators/show', { collab: foundCollab });
+    // });
+    .populate({ path: 'tasks' })
+    .exec((err, foundCollab) => {
+      // console.log(req.params.id);
       if (err) return console.log(err);
       console.log(foundCollab);
 
-      res.send('test');
+      res.render('collaborators/show', { collab: foundCollab });
     });
-    // .populate({ path: 'Task' })
-    // .exec((err, foundCollab) => {
-    //   if (err) return console.log(err);
-    //   console.log(foundCollab);
-
-    //   res.render('collaborators/show', { collab: foundCollab });
-    // });
 });
 
 // 3)collab create route
@@ -44,8 +49,9 @@ router.post('/', (req, res) => {
     (err, newCollab) => {
       if (err) return console.log(err);
       console.log(newCollab);
-      res.send(newCollab);
-      // res.redirect('/tasks')
+      
+      // res.send(newCollab);
+      res.redirect('/collaborators');
     }
   )
 });
@@ -58,7 +64,11 @@ router.get('/:id/edit', (req, res) => {
       if (err) return console.log(err);
       console.log(collabToEdit);
 
-      res.render('collaborators/edit', { collab: collabToEdit });
+      // res.send(collabToEdit);
+      res.render('collaborators/edit',
+      { collab: collabToEdit, selectedCollab, promptString }
+      );
+      promptString = null;
     });
 });
 
@@ -66,29 +76,59 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   db.Collaborator.findByIdAndUpdate(
     req.params.id,
-    req.body,
-    // {name: 'Jimmy'},
+    {name: 'Jimmy'},
+    // req.body,
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);
       console.log(collabToUpdate, req.body);
       
-      res.send(collabToUpdate);
-      // res.redirect('/tasks');
+      // res.send(collabToUpdate);
+      res.redirect('/collaborators');
   });
 });
 
 // 7)collab destroy route
 router.delete('/:id', (req, res) => {
-  db.Collaborator.findByIdAndDelete(
-    req.params.id,
-    (err, deletedCollab) => {
-      if (err) return console.log(err);
-      console.log(deletedCollab);
+  if (req.params.id !== '5f0cd8b9fed32e492a3170c1') { // hard coded id for collab 'Not Assigned'
+    db.Collaborator.findByIdAndDelete(
+      req.params.id,
+      (err, deletedCollab) => {
+        if (err) return console.log(err);
+        console.log(deletedCollab);
 
-      res.redirect('/tasks')
+        // res.send(deletedCollab);
+        // res.redirect('/collaborators');
+      });
+  } else {
+    promptString = `${req.params.name} cannot be deleted`;
+  };
+
+  res.redirect('/collaborators');
+});
+
+// *DEBUG*/show-collabs route
+router.get('/debug/show-collabs', (req, res) => {
+  db.Collaborator.find({}, (err, allCollabs) => {
+    if (err) return console.log(err);
+    console.log(allCollabs);
+
+    res.send(allCollabs);
+    // res.send(JSON.stringify(allCollabs));
+    // res.send(JSON.stringify(allCollabs, undefined, 4))
   });
 });
+
+// *DEBUG*/clear route
+router.get('/debug/clear', (req, res) => {
+  db.Collaborator.deleteMany({}, (err, deletedCollabs) => {
+    if (err) return console.log(err);
+    console.log(`deleted tasks... ${deletedCollabs}`);
+
+      res.redirect('/collaborators');
+    });
+  });
+
 
 
 module.exports = router;
