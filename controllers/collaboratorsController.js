@@ -95,5 +95,28 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+// *DEBUG*/show-collabs route
+router.get('/debug/show-collabs', (req, res) => {
+  db.Collaborator.find({}, (err, allCollabs) => {
+    if (err) return console.log(err);
+    console.log(allCollabs);
+
+    res.send(allCollabs);
+    // res.send(JSON.stringify(allCollabs));
+    // res.send(JSON.stringify(allCollabs, undefined, 4))
+  });
+});
+
+// *DEBUG*/clear route
+router.get('/debug/clear', (req, res) => {
+  db.Collaborator.deleteMany({}, (err, deletedCollabs) => {
+    if (err) return console.log(err);
+    console.log(`deleted tasks... ${deletedCollabs}`);
+
+      res.redirect('/collaborators');
+    });
+  });
+
+
 
 module.exports = router;

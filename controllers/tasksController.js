@@ -145,7 +145,7 @@ router.get('/:id/move-left/:stage', (req, res) => {
     });
 });
 
-// debug/show-tasks route
+// *DEBUG*/show-tasks route
 router.get('/debug/show-tasks', (req, res) => {
   db.Task.find({}, (err, allTasks) => {
     if (err) return console.log(err);
@@ -157,7 +157,7 @@ router.get('/debug/show-tasks', (req, res) => {
   });
 });
 
-// debug/add-task route part1
+// *DEBUG*/add-task route part1
 router.get('/debug/add-tasks', (req, res) => {
     res.send(
       `<form action="/tasks/debug/add-tasks" method="POST">
@@ -166,7 +166,7 @@ router.get('/debug/add-tasks', (req, res) => {
       </form>`
     );
 });
-// debug/add-task route part2
+// *DEBUG*/add-task route part2
 router.post('/debug/add-tasks', (req, res) => {
   const jsonObj = JSON.parse(req.body.jsonString);
   console.log(jsonObj);
@@ -181,7 +181,7 @@ router.post('/debug/add-tasks', (req, res) => {
     });
 });
 
-// debug/reset route
+// *DEBUG*/reset route
 // router.get('/debug/reset', (req, res) => {
 //     db.Task.deleteMany({}, (err, deletedTasks) => {
 //       if (err) return console.log(err);
@@ -198,7 +198,7 @@ router.post('/debug/add-tasks', (req, res) => {
 //   });
 // });
 
-// debug/clear route
+// *DEBUG*/clear route
 // router.get('/debug/clear', (req, res) => {
 //   db.Task.deleteMany({}, (err, deletedTasks) => {
 //     if (err) return console.log(err);
