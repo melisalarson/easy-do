@@ -5,7 +5,7 @@ const collabSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  picture: String,
+  pic_url: String,
   tasks: String, //[{
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Task',

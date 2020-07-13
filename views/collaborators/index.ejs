@@ -13,28 +13,35 @@
           <!-- Cancel Button -->
           <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
           
+          <p class="collab-list-label">Current Collaborators</p>
           <div class="collab-list">
             <% collabs.forEach(collab => { %>
                 <div class="collab-card">
-                    <span><%= collab.name %></span>
+                    <a href="/collaborators/<%= collab._id %>/edit"><span><%= collab.name %></span></a>
                     <form style="display: inline;" action="/collaborators/<%= collab._id %>?_method=DELETE" method="POST">
-                        <button class="delete-btn" type="submit"><i class="fa fa-trash"></i></button>
+                        <button class="edit-btn menu-btn" type="submit"><i class="fa fa-pencil"></i></button>
+                        <button class="delete-btn menu-btn" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
                 </div>
               <% }); %>
           </div>
 
 
-
-
-          <form action="/collaborators" method="POST">
+          <form class="add-collab" action="/collaborators" method="POST">
             <div class="form-group">
               <label for="name">Name</label>
               <input class="form-control" type="text" id="name" name="name" required/>
             </div>
-            <button class="btn btn-primary submit-btn" type="submit">Add Collaborator</button>
+            <div class="form-group">
+              <label for="pic_url">Profile Picture (Url)</label>
+              <input class="form-control" type="text" id="pic_url" name="pic_url"/>
+              <button class="btn btn-success add-collab-btn" type="submit">Add Collaborator</button>
+            </div>
           </form>
   
+          <!-- <button class="btn btn-primary submit-btn">Finished</button> -->
+          <a href="/tasks/" class="btn btn-primary submit-btn">Finished</a>
+
   
       </div>
   </div>
