@@ -15,20 +15,38 @@ router.get('/', (req, res) => {
 
 // 2)task new route
 router.get('/new', (req, res) => {
-  
-  res.render('tasks/new');
+  db.Collaborator.find(
+    {},
+    (err, allCollabs) => {
+      if (err) return console.log(err);
+      console.log(allCollabs);
+
+      res.render('tasks/new', {collabs: allCollabs});
+    });
 });
 
-// // 4)task show route
-router.get('/:id', (req, res) => {
-  db.Task.findById(
-    req.params.id,
-    (err, foundTask) => {
-    if (err) return console.log(err);
-    console.log(foundTask);
+// // 4)task show route ***ATTEMPT1***
+// router.get('/:id', (req, res) => {
+//   db.Task.findById(
+//     req.params.id,
+//     (err, foundTask) => {
+//     if (err) return console.log(err);
+//     console.log(foundTask);
     
-    res.send(foundTask);
-  });
+//     res.send(foundTask);
+//   });
+// });
+// 4)task show route ***ATTEMPT2***
+router.get('/:id', (req, res) => {
+  db.Collaborator.findOne({'tasks': req.params.id})
+    .populate({ path: 'collaborators', match: {_id:req.params.id} })
+    .exec((err, foundCollab) => {
+      if (err) return console.log(err);
+      console.log(foundCollab);
+
+      res.render('collaborators/show',
+      { tasks: foundCollab.tasks[0], collab: foundCollab });
+    });
 });
 
 // 3)task create route
@@ -39,7 +57,21 @@ router.post('/', (req, res) => {
       if (err) return console.log(err);
       console.log(newTask);
       
-      res.redirect('/tasks');
+      db.Collaborator.findById(
+        req.body.CollabId, //or CollaboratorId,
+        (err, foundCollab) => {
+          if (err) return console.log(err);
+          // console.log(foundCollab);
+
+          foundCollab.tasks.push(newTask);  //cannot read prop tasks of null... doesnt find newTask... new Task is null
+          foundCollab.save(
+            (err,savedCollab) => {
+              if (err) return console.log(err);
+              console.log(savedCollab);
+              
+              res.redirect('/tasks');
+          });          
+        });
   });
 });
 

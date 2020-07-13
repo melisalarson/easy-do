@@ -20,20 +20,22 @@ router.get('/new', (req, res) => {
 // 4)collab show route
 router.get('/:id', (req, res) => {
   db.Collaborator.findById(
-    req.params.id,
-      (err, foundCollab) => {
+    req.params.id)
+      // (err, foundCollab) => {
+      // if (err) return console.log(err);
+      // console.log(foundCollab);
+
+        // res.send(foundCollab);
+        // res.render('collaborators/show', { collab: foundCollab });
+    // });
+    .populate({ path: 'tasks' })
+    .exec((err, foundCollab) => {
+      // console.log(req.params.id);
       if (err) return console.log(err);
       console.log(foundCollab);
 
-        res.send(foundCollab);
+      res.render('collaborators/show', { collab: foundCollab });
     });
-    // .populate({ path: 'Task' })
-    // .exec((err, foundCollab) => {
-    //   if (err) return console.log(err);
-    //   console.log(foundCollab);
-
-    //   res.render('collaborators/show', {collabs: foundCollab });
-    // });
 });
 
 // 3)collab create route
