@@ -151,38 +151,62 @@ router.get('/debug/show-tasks', (req, res) => {
     if (err) return console.log(err);
     console.log(allTasks);
 
-    res.send({task: allTasks});
+    res.send(allTasks);
     // res.send(JSON.stringify(allTasks));
     // res.send(JSON.stringify(allTasks, undefined, 4))
   });
 });
 
-// debug/reset route
-router.get('/debug/reset', (req, res) => {
-    db.Task.deleteMany({}, (err, deletedTasks) => {
+// debug/add-task route part1
+router.get('/debug/add-tasks', (req, res) => {
+    res.send(
+      `<form action="/tasks/debug/add-tasks" method="POST">
+        <textarea id="jsonString" name="jsonString"></textarea>
+        <button type="submit">Add Tasks</button>
+      </form>`
+    );
+});
+// debug/add-task route part2
+router.post('/debug/add-tasks', (req, res) => {
+  const jsonObj = JSON.parse(req.body.jsonString);
+  console.log(jsonObj);
+  
+  db.Task.insertMany(
+    jsonObj,
+    (err, jsonObject) => {    
       if (err) return console.log(err);
-      console.log(`deleted tasks... ${deletedTasks}`);
+      console.log(jsonObject);
 
-      const sampleData = require('../models/sampleData');
-
-      db.Task.insertMany(sampleData, (err, sampleData) => {
-        if (err) return console.log(err);
-        console.log(`sample data... ${sampleData}`);
-        
-        res.redirect('/tasks');
-      });
-  });
+      res.redirect('/');
+    });
 });
 
-// debug/clear route
-router.get('/debug/clear', (req, res) => {
-  db.Task.deleteMany({}, (err, deletedTasks) => {
-    if (err) return console.log(err);
-    console.log(`deleted tasks... ${deletedTasks}`);
+// debug/reset route
+// router.get('/debug/reset', (req, res) => {
+//     db.Task.deleteMany({}, (err, deletedTasks) => {
+//       if (err) return console.log(err);
+//       console.log(`deleted tasks... ${deletedTasks}`);
 
-      res.redirect('/tasks');
-    });
-  });
+//       const sampleData = require('../models/sampleData');
+
+//       db.Task.insertMany(sampleData, (err, sampleData) => {
+//         if (err) return console.log(err);
+//         console.log(`sample data... ${sampleData}`);
+        
+//         res.redirect('/tasks');
+//       });
+//   });
+// });
+
+// debug/clear route
+// router.get('/debug/clear', (req, res) => {
+//   db.Task.deleteMany({}, (err, deletedTasks) => {
+//     if (err) return console.log(err);
+//     console.log(`deleted tasks... ${deletedTasks}`);
+
+//       res.redirect('/tasks');
+//     });
+//   });
 
 
 module.exports = router;

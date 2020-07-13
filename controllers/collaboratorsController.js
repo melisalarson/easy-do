@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
       if (err) return console.log(err);
       console.log(foundCollab);
 
-      res.send(foundCollab);
+      res.send('test');
     });
     // .populate({ path: 'Task' })
     // .exec((err, foundCollab) => {
@@ -41,12 +41,13 @@ router.get('/:id', (req, res) => {
 // 3)collab create route
 router.post('/', (req, res) => {
   db.Collaborator.create(
+    // {name:'melisa'},
     req.body,
     (err, newCollab) => {
       if (err) return console.log(err);
       console.log(newCollab);
-
-      res.redirect('/tasks')
+      res.send(newCollab);
+      // res.redirect('/tasks')
     }
   )
 });
@@ -68,12 +69,14 @@ router.put('/:id', (req, res) => {
   db.Collaborator.findByIdAndUpdate(
     req.params.id,
     req.body,
+    // {name: 'Jimmy'},
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);
-      console.log(collabToUpdate);
-
-      res.redirect('/tasks');
+      console.log(collabToUpdate, req.body, req);
+      
+      res.send(collabToUpdate);
+      // res.redirect('/tasks');
   });
 });
 
