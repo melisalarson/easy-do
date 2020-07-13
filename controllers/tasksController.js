@@ -9,37 +9,85 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
     console.log(allTasks);
     
-    res.render('tasks', {tasks: allTasks});
+    res.render('tasks', { tasks: allTasks });
   });
 });
 
 // 2)task new route
 router.get('/new', (req, res) => {
-  
-  res.render('tasks/new');
+  db.Collaborator.find(
+    {},
+    (err, allCollabs) => {
+      if (err) return console.log(err);
+      console.log(allCollabs);
+
+      res.render('tasks/new', {collabs: allCollabs});
+    });
 });
 
-// // 4)task show route
-router.get('/:id', (req, res) => {
-  db.Task.findById(
-    req.params.id,
-    (err, foundTask) => {
-    if (err) return console.log(err);
-    console.log(foundTask);
+// // 4)task show route ***ATTEMPT1***
+// router.get('/:id', (req, res) => {
+//   db.Task.findById(
+//     req.params.id,
+//     (err, foundTask) => {
+//     if (err) return console.log(err);
+//     console.log(foundTask);
     
-    res.send(foundTask);
-  });
+//     res.send(foundTask);
+//   });
+// });
+// 4)task show route ***ATTEMPT2***
+router.get('/:id', (req, res) => {
+  db.Collaborator.findOne({'tasks': req.params.id})
+    .populate({ path: 'tasks', match: {_id:req.params.id} })
+    .exec((err, foundCollab) => {
+      if (err) return console.log(err);
+      console.log(foundCollab);
+
+      res.render('collaborators/show',
+      { tasks: foundCollab.tasks[0], collab: foundCollab });
+    });
 });
 
 // 3)task create route
 router.post('/', (req, res) => {
+  // console.log(req.body);
   db.Task.create(
     req.body,
     (err, newTask) => {
       if (err) return console.log(err);
       console.log(newTask);
       
-      res.redirect('/tasks');
+      console.log(req.body);
+      db.Collaborator.findById(
+        req.body.collaborators._id,
+        (err, foundCollab) => {
+          // console.log(foundCollab);
+          if (err) return console.log(err);
+          foundCollab.tasks.push(newTask);
+          foundCollab.save(
+            (err, savedCollab) => {
+              if (err) return console.log(err);
+              console.log(savedCollab);
+
+              res.redirect('/tasks');
+            });
+        });
+
+      // db.Collaborator.findOne(
+      //   {'name': req.body.collaborators.toLowerCase()},
+      //   (err, foundCollab) => {
+      //     // console.log(foundCollab);
+      //     if (err) return console.log(err);
+      //     foundCollab.tasks.push(newTask);
+      //     foundCollab.save(
+      //       (err,savedCollab) => {
+      //         if (err) return console.log(err);
+      //         console.log(savedCollab);
+              
+      //         res.redirect('/tasks');
+      //     });          
+      //   });
   });
 });
 
@@ -51,7 +99,14 @@ router.get('/:id/edit', (req, res) => {
       if (err) return console.log(err);
       console.log(taskToEdit);
 
-      res.render('tasks/edit', { task: taskToEdit });
+      db.Collaborator.find(
+        {},
+        (err, allCollabs) => {
+          if (err) return console.log(err);
+          console.log(allCollabs);
+
+          res.render('tasks/edit', { task: taskToEdit, collabs: allCollabs });
+      });
   });
 });
 
@@ -145,7 +200,7 @@ router.get('/:id/move-left/:stage', (req, res) => {
     });
 });
 
-// debug/show-tasks route
+// *DEBUG*/show-tasks route
 router.get('/debug/show-tasks', (req, res) => {
   db.Task.find({}, (err, allTasks) => {
     if (err) return console.log(err);
@@ -157,7 +212,7 @@ router.get('/debug/show-tasks', (req, res) => {
   });
 });
 
-// debug/add-task route part1
+// *DEBUG*/add-task route part1
 router.get('/debug/add-tasks', (req, res) => {
     res.send(
       `<form action="/tasks/debug/add-tasks" method="POST">
@@ -166,7 +221,7 @@ router.get('/debug/add-tasks', (req, res) => {
       </form>`
     );
 });
-// debug/add-task route part2
+// *DEBUG*/add-task route part2
 router.post('/debug/add-tasks', (req, res) => {
   const jsonObj = JSON.parse(req.body.jsonString);
   console.log(jsonObj);
@@ -181,7 +236,7 @@ router.post('/debug/add-tasks', (req, res) => {
     });
 });
 
-// debug/reset route
+// *DEBUG*/reset route
 // router.get('/debug/reset', (req, res) => {
 //     db.Task.deleteMany({}, (err, deletedTasks) => {
 //       if (err) return console.log(err);
@@ -198,7 +253,7 @@ router.post('/debug/add-tasks', (req, res) => {
 //   });
 // });
 
-// debug/clear route
+// *DEBUG*/clear route
 // router.get('/debug/clear', (req, res) => {
 //   db.Task.deleteMany({}, (err, deletedTasks) => {
 //     if (err) return console.log(err);

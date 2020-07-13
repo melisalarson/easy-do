@@ -19,7 +19,7 @@
                 <div class="collab-card">
                     <a href="/collaborators/<%= collab._id %>/edit"><span><%= collab.name %></span></a>
                     <form style="display: inline;" action="/collaborators/<%= collab._id %>?_method=DELETE" method="POST">
-                        <button class="edit-btn menu-btn" type="submit"><i class="fa fa-pencil"></i></button>
+                        <a href="/collaborators/<%= collab._id %>/edit" class="edit-btn menu-btn"><i class="fa fa-pencil"></i></a>
                         <button class="delete-btn menu-btn" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
                 </div>

@@ -7,7 +7,10 @@ const taskSchema = new mongoose.Schema({
   },
   collaborators: String,
   completionTime: String,
-  stage: String,
+  stage: String, //[{
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: 'Collaborator',
+  // }]
 }, {timestamps: true});
 
 const taskModel = mongoose.model('Task', taskSchema);
