@@ -9,7 +9,7 @@ const sampleData = [
   { name: 'VIEWS FOLDER -> tasks folder -> index file', collaborators: 'Jimmy', completionTime: '6 hour', stage: 'in-progress' },
   { name: 'VIEWS FOLDER -> tasks folder -> new file', collaborators: 'Jimmy', completionTime: '7 hour', stage: 'completed' },
   { name: 'VIEWS FOLDER -> tasks folder -> edit file', collaborators: 'Jimmy', completionTime: '8 hour', stage: 'completed' },
-  { name: 'VIEWS FOLDER -> tasks folder -> edit file', collaborators: 'Jimmy', completionTime: '9 hour', stage: 'completed' },
+  { name: 'VIEWS FOLDER -> tasks folder -> show file', collaborators: 'Jimmy', completionTime: '9 hour', stage: 'completed' },
 ];
 
 module.exports = sampleData;
