@@ -77,7 +77,7 @@ router.put('/:id', (req, res) => {
 
 // 7)task destroy route
 router.delete('/:id', (req, res) => {
-  db.Task.findByIdDelete(
+  db.Task.findByIdAndDelete(
     req.params.id,
     (err, deletedTask) => {
       if (err) return console.log(err);

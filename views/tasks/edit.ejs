@@ -13,6 +13,11 @@
         <!-- Cancel Button -->
         <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
 
+        <!-- Delete Button -->
+        <form style="display: inline;" action="/tasks/<%= task._id %>?_method=DELETE" method="POST">
+            <button class="delete-btn" type="submit"><i class="fa fa-trash"></i></button>
+        </form>
+
         <form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
           <div class="form-group">
             <label for="name">Name</label>

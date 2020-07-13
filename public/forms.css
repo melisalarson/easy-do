@@ -74,3 +74,12 @@ input:focus {
   top: 20px;
   font-size: 30px;
 }
+
+.delete-btn {
+  text-decoration: none;
+  color: initial;
+  position: absolute;
+  right: 25px;
+  top: 100px;
+  font-size: 30px;
+}
