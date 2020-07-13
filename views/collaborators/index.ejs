@@ -1,0 +1,40 @@
+<head>
+    <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/forms.css">
+  </head>
+  
+  <div class="mask">
+      <div class="popup-container">
+  
+          <h1 class="form-title">Project Collaborators</h1>
+          <hr>
+          <!-- Cancel Button -->
+          <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+          
+          <div class="collab-list">
+            <% collabs.forEach(collab => { %>
+                <div class="collab-card">
+                    <span><%= collab.name %></span>
+                    <form style="display: inline;" action="/collaborators/<%= collab._id %>?_method=DELETE" method="POST">
+                        <button class="delete-btn" type="submit"><i class="fa fa-trash"></i></button>
+                    </form>
+                </div>
+              <% }); %>
+          </div>
+
+
+
+
+          <form action="/collaborators" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input class="form-control" type="text" id="name" name="name" required/>
+            </div>
+            <button class="btn btn-primary submit-btn" type="submit">Add Collaborator</button>
+          </form>
+  
+  
+      </div>
+  </div>
