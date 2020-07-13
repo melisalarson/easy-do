@@ -39,7 +39,7 @@ router.get('/new', (req, res) => {
 // 4)task show route ***ATTEMPT2***
 router.get('/:id', (req, res) => {
   db.Collaborator.findOne({'tasks': req.params.id})
-    .populate({ path: 'collaborators', match: {_id:req.params.id} })
+    .populate({ path: 'tasks', match: {_id:req.params.id} })
     .exec((err, foundCollab) => {
       if (err) return console.log(err);
       console.log(foundCollab);
@@ -51,19 +51,34 @@ router.get('/:id', (req, res) => {
 
 // 3)task create route
 router.post('/', (req, res) => {
+  // console.log(req.body);
   db.Task.create(
     req.body,
     (err, newTask) => {
       if (err) return console.log(err);
       console.log(newTask);
       
-      db.Collaborator.findById(
-        req.body.CollabId, //or CollaboratorId,
-        (err, foundCollab) => {
-          if (err) return console.log(err);
-          // console.log(foundCollab);
+      // db.Collaborator.findById(
+      //   { 'name': req.body.collaborators.toLowerCase() },
+      //   (err, foundCollab) => {
+      //     // console.log(foundCollab);
+      //     if (err) return console.log(err);
+      //     foundCollab.tasks.push(newTask);
+      //     foundCollab.save(
+      //       (err, savedCollab) => {
+      //         if (err) return console.log(err);
+      //         console.log(savedCollab);
 
-          foundCollab.tasks.push(newTask);  //cannot read prop tasks of null... doesnt find newTask... new Task is null
+      //         res.redirect('/tasks');
+      //       });
+      //   });
+
+      db.Collaborator.findOne(
+        {'name': req.body.collaborators.toLowerCase()}, //or CollaboratorId,
+        (err, foundCollab) => {
+          // console.log(foundCollab);
+          if (err) return console.log(err);
+          foundCollab.tasks.push(newTask);
           foundCollab.save(
             (err,savedCollab) => {
               if (err) return console.log(err);
@@ -83,7 +98,14 @@ router.get('/:id/edit', (req, res) => {
       if (err) return console.log(err);
       console.log(taskToEdit);
 
-      res.render('tasks/edit', { task: taskToEdit });
+      db.Collaborator.find(
+        {},
+        (err, allCollabs) => {
+          if (err) return console.log(err);
+          console.log(allCollabs);
+
+          res.render('tasks/edit', { task: taskToEdit, collabs: allCollabs });
+      });
   });
 });
 
