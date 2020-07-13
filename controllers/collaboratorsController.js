@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const db = require('../models');
 
 // 1)collab index route
@@ -15,7 +14,6 @@ router.get('/', (req, res) => {
 
 // 2)collab new route
 router.get('/new', (req, res) => {
-
   res.render('collaborators/new');
 });
 
@@ -75,7 +73,7 @@ router.put('/:id', (req, res) => {
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);
-      console.log(collabToUpdate, req.body, req);
+      console.log(collabToUpdate, req.body);
       
       // res.send(collabToUpdate);
       res.redirect('/collaborators');
