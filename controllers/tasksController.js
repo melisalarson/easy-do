@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
 
 // 3)task create route
 router.post('/', (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   db.Task.create(
     req.body,
     (err, newTask) => {
@@ -59,35 +59,36 @@ router.post('/', (req, res) => {
       console.log(newTask);
       
       console.log(req.body);
-      db.Collaborator.findById(
-        req.body.collaborators._id,
+      // db.Collaborator.findById(
+      //   // {_id:'5f0cadf1681cbd3f065c71e1'},
+      //   req.body._id,
+      //   (err, foundCollab) => {
+      //     console.log(foundCollab);
+      //     if (err) return console.log(err);
+      //     foundCollab.tasks.push(newTask);
+      //     foundCollab.save(
+      //       (err, savedCollab) => {
+      //         if (err) return console.log(err);
+      //         console.log(savedCollab);
+
+      //         res.redirect('/tasks');
+      //       });
+      //   });
+
+      db.Collaborator.findOne(
+        {'name': req.body.collaborators},
         (err, foundCollab) => {
           // console.log(foundCollab);
           if (err) return console.log(err);
           foundCollab.tasks.push(newTask);
           foundCollab.save(
-            (err, savedCollab) => {
+            (err,savedCollab) => {
               if (err) return console.log(err);
               console.log(savedCollab);
-
-              res.redirect('/tasks');
-            });
-        });
-
-      // db.Collaborator.findOne(
-      //   {'name': req.body.collaborators.toLowerCase()},
-      //   (err, foundCollab) => {
-      //     // console.log(foundCollab);
-      //     if (err) return console.log(err);
-      //     foundCollab.tasks.push(newTask);
-      //     foundCollab.save(
-      //       (err,savedCollab) => {
-      //         if (err) return console.log(err);
-      //         console.log(savedCollab);
               
-      //         res.redirect('/tasks');
-      //     });          
-      //   });
+              res.redirect('/tasks');
+          });          
+        });
   });
 });
 
