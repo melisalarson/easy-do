@@ -64,27 +64,35 @@ User will see 4 sections on displayed
 
 <tr>
 <td>Name STRING</td>
+<td>Name STRING</td>
+<td>Name STRING</td>
+</tr>
+
+<tr>
 <td>Collaborator (O-M) REF</td>
-<td>Completion Time STRING</td>
-<td>Stage STRING</td>
-<td>V2 project (O-M) REF</td>
-</tr>
-
-<tr>
-<td>Name STRING</td>
 <td>Static Picture STRING</td>
-<td>Tasks (M-O) REF</td>
-<td>V2 Projects (M-M) REF</td>
-<td>V2 username/pass REF</td>
+<td>Collaborators (M-M) REF</td>
 </tr>
 
 <tr>
-<td>Name STRING</td>
-<td>Collaborators (M-M) REF</td>
+<td>Completion Time STRING</td>
 <td>Tasks (M-O) REF</td>
+<td>Tasks (M-O) REF</td>
+</tr>
+
+<tr>
+<td>Stage STRING</td>
+<td>V2 Projects (M-M) REF</td>
 <td>Start Date DATE</td>
+</tr>
+
+<tr>
+<td>V2 project (O-M) REF</td>
+<td>V2 username/pass REF</td>
 <td>End Date DATE</td>
 </tr>
+
+
 
 
 ### SCHEDULE
