@@ -49,12 +49,76 @@ User will see 4 sections on displayed
 	* Add = user clicks to add new collaborator
 
 
+
+### SCHEDULE
+
+Friday
+  * finish all M+J (MVC and core files)
+Saturday
+  * Model (Melisa)
+  * Controllers - tasks (Melisa)
+  * Pull collaborators data into tasks controllers (Melisa)
+  * Views - Tasks (Jimmy)
+Sunday
+  * Controllers - tasks (Melisa)
+  * Controllers - Collaborators (Melisa)
+  * Views - Collaborators/Forms (Jimmy)
+Monday
+  * Finalize both controllers (Melisa)
+  * Views - Tasks Animation (jimmy)
+Tuesday
+  * v1 (mvp) review and confirm. Push to master as v1
+  * v1.5 welcome screen(Melisa and Jimmy)
+  * v1.5 animation (Melisa and Jimmy)
+  * v1.5 
+    * Melisa - Projects/Users - Controller
+    * Jimmy - Projects/Users - Views
+  * v1.5 review and confirm. Push to master as v1.5
+Wednesday
+  * v2 Choose features to work on in Next Versions -> V2
+  * More V2
+Thursday
+  * v2 Finish up
+  * v2 Review and Confirm. Push to master as v2
+  * Turn in by 4pm (preferably 3pm
+
+
+
+
+
+### NEXT VERSIONS
+
+V1.5
+User is welcomed by an banner and 
+Button to create a project
+See a list of current projects
+
+When clicking on ‘create project’ the use is prompted to fill out information about the project 
+	Name, collaborators, start date, end date
+	Then user clicks add new project
+Hover - in progress
+V2
+Users
+Sign in/out
+Filter by user
+Sorting tasks
+	Filter by user
+Drag and drop tasks
+Priority
+Animation upon task completion
+DB - collection of projects (maybe v1)
+Hide completed tasks
+
+
+### WIRE FRAME
+
+
+<!-- erd start -->
 ### ERD
 
 <table>
 <thead>
 <tr>
-<td></td>
 <th>Tasks</th>
 <th>Collaborators</th>
 <th>V2 Projects</th>
@@ -91,45 +155,27 @@ User will see 4 sections on displayed
 <td>V2 username/pass REF</td>
 <td>End Date DATE</td>
 </tr>
+</tbody>
 
-
-
-
-### SCHEDULE
-
-Friday (today)
-  * finish all M+J (MVC and core files)
-Saturday
-  * Model (Melisa)
-  * Controllers - tasks (Melisa)
-  * Pull collaborators data into tasks controllers (Melisa)
-  * Views - Tasks (Jimmy)
-Sunday
-  * Controllers - tasks (Melisa)
-  * Controllers - Collaborators (Melisa)
-  * Views - Collaborators/Forms (Jimmy)
-Monday
-  * Finalize both controllers (Melisa)
-  * Views - Tasks Animation (jimmy)
-Tuesday
-  * v1 (mvp) review and confirm. Push to master as v1
-  * v1.5 welcome screen(Melisa and Jimmy)
-  * v1.5 animation (Melisa and Jimmy)
-  * v1.5 
-    * Melisa - Projects/Users - Controller
-    * Jimmy - Projects/Users - Views
-  * v1.5 review and confirm. Push to master as v1.5
-Wednesday
-  * v2 Choose features to work on in Next Versions -> V2
-  * More V2
-Thursday
-  * v2 Finish up
-  * v2 Review and Confirm. Push to master as v2
-  * Turn in by 4pm (preferably 3pm
+<!-- erd end -->
 
 
 ### TASK DISTRIBUTION
+<table>
+<thead>
+<tr>
+<th>Tasks</th>
+<th>Collaborators</th>
+<th>V2 Projects</th>
+</tr>
+</thead>
+<tbody>
 
+<tr>
+<td>Name STRING</td>
+<td>Name STRING</td>
+<td>Name STRING</td>
+</tr>
 Work Distribution - Option 1 (by models)|Work Distribution - Option 2 (J front M back)
 --- 
 * Controllers | * Controllers
@@ -157,30 +203,3 @@ images  -  Jimmy |   images  -  Jimmy
 app.js  -  Melisa |   app.js  -  Melisa
 styles.css  -  Jimmy |   styles.css  -  Jimmy
  |   *tasksController will populate collaborators
-
-
-### NEXT VERSIONS
-
-V1.5
-User is welcomed by an banner and 
-Button to create a project
-See a list of current projects
-
-When clicking on ‘create project’ the use is prompted to fill out information about the project 
-	Name, collaborators, start date, end date
-	Then user clicks add new project
-Hover - in progress
-V2
-Users
-Sign in/out
-Filter by user
-Sorting tasks
-	Filter by user
-Drag and drop tasks
-Priority
-Animation upon task completion
-DB - collection of projects (maybe v1)
-Hide completed tasks
-
-
-### WIRE FRAME
