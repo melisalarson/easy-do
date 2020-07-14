@@ -3,24 +3,24 @@
 ### USER STORY
 User will see 4 sections on displayed
 1. Toolbar
-		* + add new task  = takes user to the add a new task page
- 		* + add new collaborator  = takes user to the add a new collaborator page 
-		* V2? + add new user  = takes user to the add a new user page
+	* + add new task  = takes user to the add a new task page
+  * + add new collaborator  = takes user to the add a new collaborator page 
+	* V2? + add new user  = takes user to the add a new user page
 V2? Sorting and Filtering
 2. To do
-		+ symbol  = takes user to the add a new task page 
-		X symbol = to remove task
-		Task name  = displays name of task (comes from new task page)
-Edit = takes use to the edit task page
-Time = displays time to complete task (comes from new task page)
-Owner = displays name of team member responsible for the task
+	* + symbol  = takes user to the add a new task page 
+	* X symbol = to remove task
+	* Task name  = displays name of task (comes from new task page)
+  * Edit = takes use to the edit task page
+  * Time = displays time to complete task (comes from new task page)
+  * Owner = displays name of team member responsible for the task
 3. In progress 
-Task name  = displays name of task (comes from new task page)
-		X symbol = to remove task
-Edit = takes use to the edit task page
-Time = displays time to complete task (comes from new task page)
-Owner = displays name of team member responsible for the task
-	4. Completed 
+  * Task name  = displays name of task (comes from new task page)
+	* X symbol = to remove task
+  * Edit = takes use to the edit task page
+  * Time = displays time to complete task (comes from new task page)
+  * Owner = displays name of team member responsible for the task
+4. Completed 
 Check mark = indicates task was completed
 Task name  = displays name of task (comes from new task page)
 Time = displays time to complete task (comes from new task page) 
