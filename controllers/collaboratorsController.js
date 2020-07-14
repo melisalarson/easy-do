@@ -100,6 +100,7 @@ router.put('/:id', (req, res) => {
 });
 
 // 7)collab destroy route
+// ******************find specific collab by id.. grab all articles. reassign all articles to owner not assigned. also delete that collab
 router.delete('/:id', (req, res) => {
   if (req.params.id !== '5f0cd8b9fed32e492a3170c1') { // hard coded id for collab 'Not Assigned'
     db.Collaborator.findByIdAndDelete(
