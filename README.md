@@ -11,16 +11,16 @@ User will see 4 sections on displayed
   * V2? Sorting and Filtering
 
 2. To do
-	* plus symbol  = takes user to the add a new task page 
-	* X symbol = to remove task
-	* Task name  = displays name of task (comes from new task page)
+  * plus symbol  = takes user to the add a new task page 
+  * X symbol = to remove task
+  * Task name  = displays name of task (comes from new task page)
   * Edit = takes use to the edit task page
   * Time = displays time to complete task (comes from new task page)
   * Owner = displays name of team member responsible for the task
 
 3. In progress 
   * Task name  = displays name of task (comes from new task page)
-	* X symbol = to remove task
+  * X symbol = to remove task
   * Edit = takes use to the edit task page
   * Time = displays time to complete task (comes from new task page)
   * Owner = displays name of team member responsible for the task
@@ -31,16 +31,18 @@ User will see 4 sections on displayed
   * Time = displays time to complete task (comes from new task page) 
   * Owner = displays name of team member responsible for the task
 
-* plus symbol / +add new task  = takes user to the add a new task page
-	+ Task = user enters name of task
-	+ Owner = user assigns team member to the task (if no owners, click +)
-	+ Time = user enters estimate on time to complete task
-  + Stage = user can move the task from section to section (to do, in progress, completed)
-  + Add = user clicks and a new task is populated in the to do section
+##### Reference 'add newtask' 'Edit' and 'add new collaborator' above
+* plus symbol / add new task  = takes user to the add a new task page
+	* Task = user enters name of task
+	* Owner = user assigns team member to the task (if no owners, click *)
+	* Time = user enters estimate on time to complete task
+  * Stage = user can move the task from section to section (to do, in progress, completed)
+  * Add = user clicks and a new task is populated in the to do section
 
 * Edit = takes use to the edit task page
-	* Same as +add task for (task, owner, time, stage)
+	* Same as add task for (task, owner, time, stage)
 	* Update button = user clicks and a current task is updated and potentially moved
+  
 * plus symbol / add new collaborator  = takes user to the add a new collaborator page
 	* Current collaborators = list of names
 	* New collaborator = enter new name
