@@ -5,9 +5,9 @@
 User will see 4 sections on displayed
 
 1. Toolbar
-	* plus symbol / add new task  = takes user to the add a new task page
+  * plus symbol / add new task  = takes user to the add a new task page
   * plus symol / add new collaborator  = takes user to the add a new collaborator page 
-	* V2? plus symbol / add new user  = takes user to the add a new user page
+  * V2? plus symbol / add new user  = takes user to the add a new user page
   * V2? Sorting and Filtering
 
 2. To do
@@ -36,76 +36,60 @@ User will see 4 sections on displayed
 	+ Owner = user assigns team member to the task (if no owners, click +)
 	+ Time = user enters estimate on time to complete task
   + Stage = user can move the task from section to section (to do, in progress, completed)
-	+ Add = user clicks and a new task is populated in the to do section
+  + Add = user clicks and a new task is populated in the to do section
 
 * Edit = takes use to the edit task page
-	+ Same as +add task for (task, owner, time, stage)
-	+ Update button = user clicks and a current task is updated and potentially moved
+	* Same as +add task for (task, owner, time, stage)
+	* Update button = user clicks and a current task is updated and potentially moved
 * plus symbol / add new collaborator  = takes user to the add a new collaborator page
-	+ Current collaborators = list of names
-	+ New collaborator = enter new name
-	+ Add = user clicks to add new collaborator
+	* Current collaborators = list of names
+	* New collaborator = enter new name
+	* Add = user clicks to add new collaborator
 
 
 ### ERD
 
-Tasks
-Collaborators
-V2 Projects
-Name STRING
-Collaborator (O-M) REF
-Completion Time STRING
-Stage STRING
-V2 project (O-M) REF
-Name STRING
-Static Picture STRING
-Tasks (M-O) REF
-V2 Projects (M-M) REF
-V2 username/pass REF
-Name STRING
-Collaborators (M-M) REF
-Tasks (M-O) REF
-Start Date DATE
-End Date DATE
-
-
-
+Tasks | Collaborators | V2 Projects
+---
+Name STRING | Name STRING | Name STRING
+Collaborator (O-M) REF | Static Picture STRING | Collaborators (M-M) REF
+Completion Time STRING | Tasks (M-O) REF | Tasks (M-O) REF
+Stage STRING | V2 Projects (M-M) REF | Start Date DATE
+V2 project (O-M) REF | V2 username/pass REF | End Date DATE
 
 
 ### SCHEDULE
 
-
 Friday (today)
-finish all M+J (MVC and core files)
+  * finish all M+J (MVC and core files)
 Saturday
-Model (Melisa)
-Controllers - tasks (Melisa)
-	Pull collaborators data into tasks controllers (Melisa)
-Views - Tasks (Jimmy)
+  * Model (Melisa)
+  * Controllers - tasks (Melisa)
+  * Pull collaborators data into tasks controllers (Melisa)
+  * Views - Tasks (Jimmy)
 Sunday
-Controllers - tasks (Melisa)
-Controllers - Collaborators (Melisa)
-Views - Collaborators/Forms (Jimmy)
+  * Controllers - tasks (Melisa)
+  * Controllers - Collaborators (Melisa)
+  * Views - Collaborators/Forms (Jimmy)
 Monday
-Finalize both controllers (Melisa)
-Views - Tasks Animation (jimmy)
+  * Finalize both controllers (Melisa)
+  * Views - Tasks Animation (jimmy)
 Tuesday
-v1 (mvp) review and confirm. Push to master as v1
-v1.5 welcome screen(Melisa and Jimmy)
-v1.5 animation (Melisa and Jimmy)
-
-
-v1.5 Melisa - Projects/Users - Controller
-        Jimmy - Projects/Users - Views
-v1.5 review and confirm. Push to master as v1.5
+  * v1 (mvp) review and confirm. Push to master as v1
+  * v1.5 welcome screen(Melisa and Jimmy)
+  * v1.5 animation (Melisa and Jimmy)
+  * v1.5 
+    * Melisa - Projects/Users - Controller
+    * Jimmy - Projects/Users - Views
+  * v1.5 review and confirm. Push to master as v1.5
 Wednesday
-v2 Choose features to work on in Next Versions -> V2
-More V2
+  * v2 Choose features to work on in Next Versions -> V2
+  * More V2
 Thursday
-v2 Finish up
-v2 Review and Confirm. Push to master as v2
+  * v2 Finish up
+  * v2 Review and Confirm. Push to master as v2
+  * Turn in by 4pm (preferably 3pm
 
-Turn in by 4pm (preferably 3pm
 
 ### TASK DISTRIBUTION
 
@@ -138,28 +122,7 @@ styles.css  -  Jimmy |   styles.css  -  Jimmy
  |   *tasksController will populate collaborators
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- NEXT VERSIONS
-
+### NEXT VERSIONS
 
 V1.5
 User is welcomed by an banner and 
@@ -183,32 +146,4 @@ DB - collection of projects (maybe v1)
 Hide completed tasks
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- WIRE FRAME
-
-
-
-
-
-
+### WIRE FRAME
