@@ -176,56 +176,56 @@ Hide completed tasks
 <tbody>
 <tr>
 <td>
-* Controllers
-  * tasksController*  -  Jimmy
-  * collaboratorsController  -  Melisa
-* Models
-  * Task  -  Jimmy
-  * Collaborator  -  Melisa
-  * index  -  M+J
-* Views
-  * Tasks
-    * index   -  Jimmy
-    * show  -  Jimmy
-    * new  -  Jimmy
-    * edit  -  Jimmy
-  * Collaborators
-    * index   -  Melisa
-    * show  -  Melisa
-    * new  -  Melisa
-    * edit  -  Melisa
-  * index  -  M+J
-* Server.js  -  M+J
-* Public
-  * images  -  Jimmy
-  * app.js  -  Melisa
-  * styles.css  -  Jimmy
+ Controllers
+   tasksController  -  Jimmy
+   collaboratorsController  -  Melisa
+ Models
+   Task  -  Jimmy
+   Collaborator  -  Melisa
+   index  -  M+J
+ Views
+   Tasks
+     index   -  Jimmy
+     show  -  Jimmy
+     new  -  Jimmy
+     edit  -  Jimmy
+   Collaborators
+     index   -  Melisa
+     show  -  Melisa
+     new  -  Melisa
+     edit  -  Melisa
+   index  -  M+J
+ Server.js  -  M+J
+ Public
+   images  -  Jimmy
+   app.js  -  Melisa
+   styles.css  -  Jimmy
 </td>
 <td>
-* Controllers
-  * tasksController*  -  Melisa (V2 M+J)
-  * collaboratorsController  -  Melisa
-* Models
-  * Task  -  Melisa
-  * Collaborator  -  Melisa
-  * index  -  M+J
-* Views
-  * Tasks
-    * index   -  Jimmy
-    * show  -  Jimmy
-    * new  -  Jimmy
-    * edit  -  Jimmy
-  * Collaborators
-    * index   -  Jimmy
-    * show  -  Jimmy
-    * new  -  Jimmy
-    * edit  -  Jimmy
-  * index  -  M+J
-* Server.js  -  M+J
-* Public
-  * images  -  Jimmy
-  * app.js  -  Melisa
-  * styles.css  -  Jimmy
+ Controllers
+   tasksController  -  Melisa (V2 M+J)
+   collaboratorsController  -  Melisa
+ Models
+   Task  -  Melisa
+   Collaborator  -  Melisa
+   index  -  M+J
+ Views
+   Tasks
+     index   -  Jimmy
+     show  -  Jimmy
+     new  -  Jimmy
+     edit  -  Jimmy
+   Collaborators
+     index   -  Jimmy
+     show  -  Jimmy
+     new  -  Jimmy
+     edit  -  Jimmy
+   index  -  M+J
+ Server.js  -  M+J
+ Public
+   images  -  Jimmy
+   app.js  -  Melisa
+   styles.css  -  Jimmy
 
 *tasksController will populate collaborators
 </td>
