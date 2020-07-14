@@ -42,7 +42,7 @@ User will see 4 sections on displayed
 * Edit = takes use to the edit task page
 	* Same as add task for (task, owner, time, stage)
 	* Update button = user clicks and a current task is updated and potentially moved
-  
+
 * plus symbol / add new collaborator  = takes user to the add a new collaborator page
 	* Current collaborators = list of names
 	* New collaborator = enter new name
@@ -51,13 +51,40 @@ User will see 4 sections on displayed
 
 ### ERD
 
-Tasks | Collaborators | V2 Projects
----
-Name STRING | Name STRING | Name STRING
-Collaborator (O-M) REF | Static Picture STRING | Collaborators (M-M) REF
-Completion Time STRING | Tasks (M-O) REF | Tasks (M-O) REF
-Stage STRING | V2 Projects (M-M) REF | Start Date DATE
-V2 project (O-M) REF | V2 username/pass REF | End Date DATE
+<table>
+<thead>
+<tr>
+<td></td>
+<th>Tasks</th>
+<th>Collaborators</th>
+<th>V2 Projects</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>Name STRING</td>
+<td>Collaborator (O-M) REF</td>
+<td>Completion Time STRING</td>
+<td>Stage STRING</td>
+<td>V2 project (O-M) REF</td>
+</tr>
+
+<tr>
+<td>Name STRING</td>
+<td>Static Picture STRING</td>
+<td>Tasks (M-O) REF</td>
+<td>V2 Projects (M-M) REF</td>
+<td>V2 username/pass REF</td>
+</tr>
+
+<tr>
+<td>Name STRING</td>
+<td>Collaborators (M-M) REF</td>
+<td>Tasks (M-O) REF</td>
+<td>Start Date DATE</td>
+<td>End Date DATE</td>
+</tr>
 
 
 ### SCHEDULE
