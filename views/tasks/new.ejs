@@ -19,10 +19,11 @@
             <input class="form-control" type="text" id="name" name="name" required/>
           </div>
           <div class="form-group">
-            <label for="collaborator">Collaborator</label>
-            <select class="form-control" name="collaborators" id="collaborator">
-              <option value="Melisa">Melisa</option>
-              <option value="Jimmy">Jimmy</option>
+            <label for="collaborators">Collaborator</label>
+            <select class="form-control" name="collaborators" id="collaborators">
+              <% collabs.forEach(collab => { %>
+                  <option value="<%= collab._id %>"><%= collab.name %></option>
+              <% }); %>
             </select>
           </div>
           <div class="form-group">
