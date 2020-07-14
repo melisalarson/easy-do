@@ -113,10 +113,11 @@ Hide completed tasks
 ### WIRE FRAME
 
 
-<!-- erd start -->
+<!-- erd table start -->
 ### ERD
 
 <table>
+
 <thead>
 <tr>
 <th>Tasks</th>
@@ -124,8 +125,8 @@ Hide completed tasks
 <th>V2 Projects</th>
 </tr>
 </thead>
-<tbody>
 
+<tbody>
 <tr>
 <td>Name STRING</td>
 <td>Name STRING</td>
@@ -157,49 +158,80 @@ Hide completed tasks
 </tr>
 </tbody>
 
-<!-- erd end -->
+</table>
+<!-- erd table end -->
 
 
+<!-- task distribution table start -->
 ### TASK DISTRIBUTION
 <table>
+
 <thead>
 <tr>
-<th>Tasks</th>
-<th>Collaborators</th>
-<th>V2 Projects</th>
+<th>Work Distribution - Option 1 (by models)</th>
+<th>Work Distribution - Option 2 (J front M back)</th>
 </tr>
 </thead>
-<tbody>
 
+<tbody>
 <tr>
-<td>Name STRING</td>
-<td>Name STRING</td>
-<td>Name STRING</td>
+<td>
+* Controllers
+  * tasksController*  -  Jimmy
+  * collaboratorsController  -  Melisa
+* Models
+  * Task  -  Jimmy
+  * Collaborator  -  Melisa
+  * index  -  M+J
+* Views
+  * Tasks
+    * index   -  Jimmy
+    * show  -  Jimmy
+    * new  -  Jimmy
+    * edit  -  Jimmy
+  * Collaborators
+    * index   -  Melisa
+    * show  -  Melisa
+    * new  -  Melisa
+    * edit  -  Melisa
+  * index  -  M+J
+* Server.js  -  M+J
+* Public
+  * images  -  Jimmy
+  * app.js  -  Melisa
+  * styles.css  -  Jimmy
+</td>
+<td>
+* Controllers
+  * tasksController*  -  Melisa (V2 M+J)
+  * collaboratorsController  -  Melisa
+* Models
+  * Task  -  Melisa
+  * Collaborator  -  Melisa
+  * index  -  M+J
+* Views
+  * Tasks
+    * index   -  Jimmy
+    * show  -  Jimmy
+    * new  -  Jimmy
+    * edit  -  Jimmy
+  * Collaborators
+    * index   -  Jimmy
+    * show  -  Jimmy
+    * new  -  Jimmy
+    * edit  -  Jimmy
+  * index  -  M+J
+* Server.js  -  M+J
+* Public
+  * images  -  Jimmy
+  * app.js  -  Melisa
+  * styles.css  -  Jimmy
+
+*tasksController will populate collaborators
+</td>
 </tr>
-Work Distribution - Option 1 (by models)|Work Distribution - Option 2 (J front M back)
---- 
-* Controllers | * Controllers
-  * tasksController  -  Jimmy |   *tasksController  -  Melisa (V2 M+J)
-collaboratorsController  -  Melisa | collaboratorsController  -  Melisa
-Models | Models
-Task  -  Jimmy |   Task  -  Melisa
-Collaborator  -  Melisa |   Collaborator  -  Melisa
-index  -  M+J |   index  -  M+J
-Views | Views
-Tasks |   Tasks
-index   -  Jimmy |   index   -  Jimmy
-show  -  Jimmy |   show  -  Jimmy
-new  -  Jimmy |   new  -  Jimmy
-edit  -  Jimmy |   edit  -  Jimmy
-Collaborators | Collaborators
-index   -  Melisa |   index   -  Jimmy
-show  -  Melisa |   show  -  Jimmy
-new  -  Melisa |   new  -  Jimmy
-edit  -  Melisa |   edit  -  Jimmy
-index  -  M+J |   index  -  M+J
-Server.js  -  M+J | Server.js  -  M+J
-Public | Public
-images  -  Jimmy |   images  -  Jimmy
-app.js  -  Melisa |   app.js  -  Melisa
-styles.css  -  Jimmy |   styles.css  -  Jimmy
- |   *tasksController will populate collaborators
+</body>
+
+</table>
+
+<!-- task distribution table end -->
