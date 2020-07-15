@@ -51,39 +51,81 @@ User will see 4 sections on displayed
 
 
 ### SCHEDULE
+<table>
 
-Friday
-  * finish all M+J (MVC and core files)
-Saturday
-  * Model (Melisa)
-  * Controllers - tasks (Melisa)
-  * Pull collaborators data into tasks controllers (Melisa)
-  * Views - Tasks (Jimmy)
-Sunday
-  * Controllers - tasks (Melisa)
-  * Controllers - Collaborators (Melisa)
-  * Views - Collaborators/Forms (Jimmy)
-Monday
-  * Finalize both controllers (Melisa)
-  * Views - Tasks Animation (jimmy)
-Tuesday
-  * v1 (mvp) review and confirm. Push to master as v1
-  * v1.5 welcome screen(Melisa and Jimmy)
-  * v1.5 animation (Melisa and Jimmy)
-  * v1.5 
-    * Melisa - Projects/Users - Controller
-    * Jimmy - Projects/Users - Views
-  * v1.5 review and confirm. Push to master as v1.5
-Wednesday
-  * v2 Choose features to work on in Next Versions -> V2
-  * More V2
-Thursday
-  * v2 Finish up
-  * v2 Review and Confirm. Push to master as v2
-  * Turn in by 4pm (preferably 3pm
+<thead>
+<tr>
+<th>DAY</th>
+<th>TASKS</th>
+</tr>
+</thead>
 
+<tbody>
+<tr>
+<td>Friday</td>
+<td>finish all M+J (MVC and core files)</td>
+</tr>
 
+<tr>
+<td>Saturday</td>
+<td>
+  Model (Melisa)<br>
+  Controllers - tasks (Melisa)<br>
+  Pull collaborators data into tasks controllers (Melisa)<br>
+  Views - Tasks (Jimmy)<br>
+  Collaborators (M-M) REF<br>
+</tr>
 
+<tr>
+<td>Sunday</td>
+<td>
+  Controllers - tasks (Melisa)<br>
+  Controllers - Collaborators (Melisa)<br>
+  Views - Collaborators/Forms (Jimmy)<br>
+</td>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>
+  Finalize both controllers (Melisa)<br>
+  Views - Tasks Animation (jimmy)<br>
+</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>
+  v1 (mvp) review and confirm. Push to master as v1<br>
+  v1.5 welcome screen(Melisa and Jimmy)<br>
+  v1.5 animation (Melisa and Jimmy)<br>
+  v1.5 <br>
+    Melisa - Projects/Users - Controller<br>
+    Jimmy - Projects/Users - Views<br>
+  v1.5 review and confirm. Push to master as v1.5<br>
+</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>
+  v2 Choose features to work on in Next Versions -> V2<br>
+  More V2<br>
+</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>
+  v2 Finish up<br>
+  v2 Review and Confirm. Push to master as v2<br>
+  Turn in by 4pm (preferably 3pm<br>
+</td>
+</tr>
+
+</tbody>
+
+</table>
 
 
 ### NEXT VERSIONS
