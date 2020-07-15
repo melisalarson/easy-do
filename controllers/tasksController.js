@@ -5,10 +5,11 @@ const db = require('../models');
 
 // 1)task index route
 router.get('/', (req, res) => {
-  db.Task.find({}, (err, allTasks) => {
+  db.Task.find({})
+  .populate({path: 'collaborators'})
+  .exec((err, allTasks) => {
     if (err) return console.log(err);
     console.log(allTasks);
-    
     res.render('tasks', { tasks: allTasks });
   });
 });
@@ -60,7 +61,7 @@ router.post('/', (req, res) => {
       
       console.log(req.body);
       db.Collaborator.findById(
-        req.body.collaborators._id,
+        req.body.collaborators,
         (err, foundCollab) => {
           // console.log(foundCollab);
           if (err) return console.log(err);
@@ -73,31 +74,16 @@ router.post('/', (req, res) => {
               res.redirect('/tasks');
             });
         });
-
-      // db.Collaborator.findOne(
-      //   {'name': req.body.collaborators.toLowerCase()},
-      //   (err, foundCollab) => {
-      //     // console.log(foundCollab);
-      //     if (err) return console.log(err);
-      //     foundCollab.tasks.push(newTask);
-      //     foundCollab.save(
-      //       (err,savedCollab) => {
-      //         if (err) return console.log(err);
-      //         console.log(savedCollab);
-              
-      //         res.redirect('/tasks');
-      //     });          
-      //   });
   });
 });
 
 // 5)task edit route
 router.get('/:id/edit', (req, res) => {
-  db.Task.findById(
-    req.params.id,
-    (err, taskToEdit) => {
+  db.Task.findById(req.params.id)
+  .populate({path: 'collaborators'})
+  .exec((err, taskToEdit) => {
       if (err) return console.log(err);
-      console.log(taskToEdit);
+      // console.log(taskToEdit.collaborators[0].name);
 
       db.Collaborator.find(
         {},
@@ -254,14 +240,14 @@ router.post('/debug/add-tasks', (req, res) => {
 // });
 
 // *DEBUG*/clear route
-// router.get('/debug/clear', (req, res) => {
-//   db.Task.deleteMany({}, (err, deletedTasks) => {
-//     if (err) return console.log(err);
-//     console.log(`deleted tasks... ${deletedTasks}`);
+router.get('/debug/clear', (req, res) => {
+  db.Task.deleteMany({}, (err, deletedTasks) => {
+    if (err) return console.log(err);
+    console.log(`deleted tasks... ${deletedTasks}`);
 
-//       res.redirect('/tasks');
-//     });
-//   });
+      res.redirect('/tasks');
+    });
+  });
 
 
 module.exports = router;
