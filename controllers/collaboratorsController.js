@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   db.Collaborator.find({}, (err, allCollabs) => {
     if (err) return console.log(err);
     console.log(allCollabs);
+    // console.log(allCollabs[0]);  //console logs jimmy
     
     res.render('collaborators', { collabs: allCollabs, promptString });
     promptString = null;
@@ -57,25 +58,30 @@ router.post('/', (req, res) => {
 });
 
 // 5)collab edit route
-router.get('/:id/edit', (req, res) => {
-  db.Collaborator.find(
-    {},
-    (err, allCollabs) => {
+router.get("/:id/edit", (req, res) => {
+  db.Collaborator.find({}, (err, allCollabs) => {
+    if (err) return console.log(err);
+    console.log(allCollabs);
+
+    // if (req.params.id !== '5f0cd8b9fed32e492a3170c1') {
+    db.Collaborator.findById(req.params.id, (err, collabToEdit) => {
       if (err) return console.log(err);
-      console.log(allCollabs)
-      db.Collaborator.findById(
-        req.params.id,
-        (err, collabToEdit) => {
-          if (err) return console.log(err);
-          console.log(collabToEdit);
-          // res.send(collabToEdit);
-          res.render('collaborators/edit',
-            { collabs: allCollabs, selectedCollab: collabToEdit, promptString }
-          );
-          promptString = null;
-        });
+      console.log(collabToEdit);
+      // });
+      // } else {
+      // promptString = `${req.params.id} cannot be edited`;
+      // };
+      // res.send(collabToEdit);
+      res.render("collaborators/edit", {
+        collabs: allCollabs,
+        selectedCollab: collabToEdit,
+        promptString,
+      });
+      promptString = null;
     });
+  });
 });
+
 
 // 6)collab update route
 router.put('/:id', (req, res) => {
@@ -93,6 +99,7 @@ router.put('/:id', (req, res) => {
 });
 
 // 7)collab destroy route
+// ******************find specific collab by id.. grab all articles. reassign all articles to owner not assigned. also delete that collab
 router.delete('/:id', (req, res) => {
   if (req.params.id !== '5f0cd8b9fed32e492a3170c1') { // hard coded id for collab 'Not Assigned'
     db.Collaborator.findByIdAndDelete(
