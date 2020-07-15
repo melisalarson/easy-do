@@ -49,8 +49,8 @@ User will see 4 sections on displayed
 	* Add = user clicks to add new collaborator
 
 
-
 ### SCHEDULE
+<!-- schedule table start -->
 <table>
 
 <thead>
@@ -126,7 +126,7 @@ User will see 4 sections on displayed
 </tbody>
 
 </table>
-
+<!-- schedule table end -->
 
 ### NEXT VERSIONS
 
@@ -155,8 +155,8 @@ Hide completed tasks
 ### WIRE FRAME
 
 
-<!-- erd table start -->
 ### ERD
+<!-- erd table start -->
 
 <table>
 
@@ -215,65 +215,60 @@ Hide completed tasks
 </tr>
 </thead>
 
-<tbody>
+<body>
 <tr>
 <td>
- Controllers<br>
-   tasksController  -  Jimmy<br>
-   collaboratorsController  -  Melisa<br>
+Controllers
+  tasksController  -  Jimmy
+  collaboratorsController  -  Melisa
+Models
+  Task  -  Jimmy
+  Collaborator  -  Melisa
+  index  -  M+J
+Views
+  Tasks
+    index   -  Jimmy
+    show  -  Jimmy
+    new  -  Jimmy
+    edit  -  Jimmy
+  Collaborators
+    index   -  Melisa
+    show  -  Melisa
+    new  -  Melisa
+    edit  -  Melisa
+  index  -  M+J
+Server.js  -  M+J
+Public
+  images  -  Jimmy
+  app.js  -  Melisa
+  styles.css  -  Jimmy
 </td>
+
 <td>
- Models<br>
-   Task  -  Jimmy<br>
-   Collaborator  -  Melisa<br>
-   index  -  M+J<br>
-</td>
-<td>
- Views<br>
-   Tasks<br>
-     index   -  Jimmy<br>
-     show  -  Jimmy<br>
-     new  -  Jimmy<br>
-     edit  -  Jimmy<br>
-   Collaborators<br>
-     index   -  Melisa<br>
-     show  -  Melisa<br>
-     new  -  Melisa<br>
-     edit  -  Melisa<br>
-   index  -  M+J<br>
- Server.js  -  M+J<br>
-</td>
-<td>
- Public<br>
-   images  -  Jimmy<br>
-   app.js  -  Melisa<br>
-   styles.css  -  Jimmy<br>
-</td>
-<td>
- Controllers
-   tasksController  -  Melisa (V2 M+J)
-   collaboratorsController  -  Melisa
- Models
-   Task  -  Melisa
-   Collaborator  -  Melisa
-   index  -  M+J
- Views
-   Tasks
-     index   -  Jimmy
-     show  -  Jimmy
-     new  -  Jimmy
-     edit  -  Jimmy
-   Collaborators
-     index   -  Jimmy
-     show  -  Jimmy
-     new  -  Jimmy
-     edit  -  Jimmy
-   index  -  M+J
- Server.js  -  M+J
- Public
-   images  -  Jimmy
-   app.js  -  Melisa
-   styles.css  -  Jimmy
+Controllers
+  tasksController*  -  Melisa (V2 M+J)
+  collaboratorsController  -  Melisa
+Models
+  Task  -  Melisa
+  Collaborator  -  Melisa
+  index  -  M+J
+Views
+  Tasks
+    index   -  Jimmy
+    show  -  Jimmy
+    new  -  Jimmy
+    edit  -  Jimmy
+  Collaborators
+    index   -  Jimmy
+    show  -  Jimmy
+    new  -  Jimmy
+    edit  -  Jimmy
+  index  -  M+J
+Server.js  -  M+J
+Public
+  images  -  Jimmy
+  app.js  -  Melisa
+  styles.css  -  Jimmy
 
 *tasksController will populate collaborators
 </td>
@@ -281,5 +276,4 @@ Hide completed tasks
 </body>
 
 </table>
-
 <!-- task distribution table end -->
