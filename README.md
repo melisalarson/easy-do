@@ -48,6 +48,155 @@ User will see 4 sections on displayed
 	* New collaborator = enter new name
 	* Add = user clicks to add new collaborator
 
+### ERD
+<!-- erd table start -->
+
+<table>
+
+<thead>
+<tr>
+<th>Tasks</th>
+<th>Collaborators</th>
+<th>V2 Projects</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name STRING</td>
+<td>Name STRING</td>
+<td>Name STRING</td>
+</tr>
+
+<tr>
+<td>Collaborator (O-M) REF</td>
+<td>Static Picture STRING</td>
+<td>Collaborators (M-M) REF</td>
+</tr>
+
+<tr>
+<td>Completion Time STRING</td>
+<td>Tasks (M-O) REF</td>
+<td>Tasks (M-O) REF</td>
+</tr>
+
+<tr>
+<td>Stage STRING</td>
+<td>V2 Projects (M-M) REF</td>
+<td>Start Date DATE</td>
+</tr>
+
+<tr>
+<td>V2 project (O-M) REF</td>
+<td>V2 username/pass REF</td>
+<td>End Date DATE</td>
+</tr>
+</tbody>
+
+</table>
+<!-- erd table end -->
+
+### WIRE FRAME
+
+
+### NEXT VERSIONS
+User will see 4 sections on displayed
+* V1.5
+* User is welcomed by an banner and 
+    * Button to create a project
+    * See a list of current projects
+
+  * When clicking on ‘create project’ the use is prompted to fill out information about the project 
+	  * Name, collaborators, start date, end date
+	  * Then user clicks add new project
+  * Hover - in progress
+
+* V2
+  * Users
+	  * Sign in/out
+	  * Filter by user
+  * Sorting tasks
+	  * Filter by user
+  * Drag and drop tasks
+  * Priority
+  * Animation upon task completion
+  * DB - collection of projects (maybe v1)
+  * Hide completed tasks
+
+<!-- task distribution table start -->
+
+### TASK DISTRIBUTION
+<table>
+
+<thead>
+<tr>
+<th>Work Distribution - Option 1 (by models)</th>
+<th>Work Distribution - Option 2 (J front M back)</th>
+</tr>
+</thead>
+
+<body>
+<tr>
+<td>
+Controllers<br>
+  tasksController  -  Jimmy<br>
+  collaboratorsController  -  Melisa<br>
+Models<br>
+  Task  -  Jimmy<br>
+  Collaborator  -  Melisa<br>
+  index  -  M+J<br>
+Views<br>
+  Tasks<br>
+    index   -  Jimmy<br>
+    show  -  Jimmy<br>
+    new  -  Jimmy<br>
+    edit  -  Jimmy<br>
+  Collaborators<br>
+    index   -  Melisa<br>
+    show  -  Melisa<br>
+    new  -  Melisa<br>
+    edit  -  Melisa<br>
+  index  -  M+J<br>
+Server.js  -  M+J<br>
+Public<br>
+  images  -  Jimmy<br>
+  app.js  -  Melisa<br>
+  styles.css  -  Jimmy<br>
+</td>
+
+<td>
+Controllers<br>
+  tasksController*  -  Melisa (V2 M+J)<br>
+  collaboratorsController  -  Melisa<br>
+Models<br>
+  Task  -  Melisa<br>
+  Collaborator  -  Melisa<br>
+  index  -  M+J<br>
+Views<br>
+  Tasks<br>
+    index   -  Jimmy<br>
+    show  -  Jimmy<br>
+    new  -  Jimmy<br>
+    edit  -  Jimmy<br>
+  Collaborators<br>
+    index   -  Jimmy<br>
+    show  -  Jimmy<br>
+    new  -  Jimmy<br>
+    edit  -  Jimmy<br>
+  index  -  M+J<br>
+Server.js  -  M+J<br>
+Public<br>
+  images  -  Jimmy<br>
+  app.js  -  Melisa<br>
+  styles.css  -  Jimmy<br>
+<br>
+*tasksController will populate collaborators<br>
+</td>
+</tr>
+</body>
+
+</table>
+<!-- task distribution table end -->
 
 ### SCHEDULE
 <!-- schedule table start -->
@@ -127,153 +276,3 @@ User will see 4 sections on displayed
 
 </table>
 <!-- schedule table end -->
-
-### NEXT VERSIONS
-
-V1.5
-User is welcomed by an banner and 
-Button to create a project
-See a list of current projects
-
-When clicking on ‘create project’ the use is prompted to fill out information about the project 
-	Name, collaborators, start date, end date
-	Then user clicks add new project
-Hover - in progress
-V2
-Users
-Sign in/out
-Filter by user
-Sorting tasks
-	Filter by user
-Drag and drop tasks
-Priority
-Animation upon task completion
-DB - collection of projects (maybe v1)
-Hide completed tasks
-
-
-### WIRE FRAME
-
-
-### ERD
-<!-- erd table start -->
-
-<table>
-
-<thead>
-<tr>
-<th>Tasks</th>
-<th>Collaborators</th>
-<th>V2 Projects</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Name STRING</td>
-<td>Name STRING</td>
-<td>Name STRING</td>
-</tr>
-
-<tr>
-<td>Collaborator (O-M) REF</td>
-<td>Static Picture STRING</td>
-<td>Collaborators (M-M) REF</td>
-</tr>
-
-<tr>
-<td>Completion Time STRING</td>
-<td>Tasks (M-O) REF</td>
-<td>Tasks (M-O) REF</td>
-</tr>
-
-<tr>
-<td>Stage STRING</td>
-<td>V2 Projects (M-M) REF</td>
-<td>Start Date DATE</td>
-</tr>
-
-<tr>
-<td>V2 project (O-M) REF</td>
-<td>V2 username/pass REF</td>
-<td>End Date DATE</td>
-</tr>
-</tbody>
-
-</table>
-<!-- erd table end -->
-
-
-<!-- task distribution table start -->
-### TASK DISTRIBUTION
-<table>
-
-<thead>
-<tr>
-<th>Work Distribution - Option 1 (by models)</th>
-<th>Work Distribution - Option 2 (J front M back)</th>
-</tr>
-</thead>
-
-<body>
-<tr>
-<td>
-Controllers<br>
-  tasksController  -  Jimmy<br>
-  collaboratorsController  -  Melisa<br>
-Models<br>
-  Task  -  Jimmy<br>
-  Collaborator  -  Melisa<br>
-  index  -  M+J<br>
-Views<br>
-  Tasks<br>
-    index   -  Jimmy<br>
-    show  -  Jimmy<br>
-    new  -  Jimmy<br>
-    edit  -  Jimmy<br>
-  Collaborators<br>
-    index   -  Melisa<br>
-    show  -  Melisa<br>
-    new  -  Melisa<br>
-    edit  -  Melisa<br>
-  index  -  M+J<br>
-Server.js  -  M+J<br>
-Public<br>
-  images  -  Jimmy<br>
-  app.js  -  Melisa<br>
-  styles.css  -  Jimmy<br>
-</td>
-
-<td>
-Controllers<br>
-  tasksController*  -  Melisa (V2 M+J)<br>
-  collaboratorsController  -  Melisa<br>
-Models<br>
-  Task  -  Melisa<br>
-  Collaborator  -  Melisa<br>
-  index  -  M+J<br>
-Views<br>
-  Tasks<br>
-    index   -  Jimmy<br>
-    show  -  Jimmy<br>
-    new  -  Jimmy<br>
-    edit  -  Jimmy<br>
-  Collaborators<br>
-    index   -  Jimmy<br>
-    show  -  Jimmy<br>
-    new  -  Jimmy<br>
-    edit  -  Jimmy<br>
-  index  -  M+J<br>
-Server.js  -  M+J<br>
-Public<br>
-  images  -  Jimmy<br>
-  app.js  -  Melisa<br>
-  styles.css  -  Jimmy<br>
-<br>
-*tasksController will populate collaborators<br>
-</td>
-</tr>
-</body>
-
-</table>
-<!-- task distribution table end -->
