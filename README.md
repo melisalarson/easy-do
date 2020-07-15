@@ -100,28 +100,27 @@ User will see 4 sections on displayed
 
 
 ### NEXT VERSIONS
-User will see 4 sections on displayed
-* V1.5
-* User is welcomed by an banner and 
-    * Button to create a project
-    * See a list of current projects
+- V1.5
+- User is welcomed by an banner and 
+    - Button to create a project
+    - See a list of current projects
 
-  * When clicking on ‘create project’ the use is prompted to fill out information about the project 
-	  * Name, collaborators, start date, end date
-	  * Then user clicks add new project
-  * Hover - in progress
+  - When clicking on ‘create project’ the use is prompted to fill out information about the project 
+	  - Name, collaborators, start date, end date
+	  - Then user clicks add new project
+  - Hover - in progress
 
-* V2
-  * Users
-	  * Sign in/out
-	  * Filter by user
-  * Sorting tasks
-	  * Filter by user
-  * Drag and drop tasks
-  * Priority
-  * Animation upon task completion
-  * DB - collection of projects (maybe v1)
-  * Hide completed tasks
+- V2
+  - Users
+	  - Sign in/out
+	  - Filter by user
+  - Sorting tasks
+	  - Filter by user
+  - Drag and drop tasks
+  - Priority
+  - Animation upon task completion
+  - DB - collection of projects (maybe v1)
+  - Hide completed tasks
 
 <!-- task distribution table start -->
 
