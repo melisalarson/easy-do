@@ -97,9 +97,9 @@ User will see 4 sections on displayed
 <!-- erd table end -->
 
 ### WIRE FRAME
-![wireframe1](easyDo-wireframe1.png)
-![wireframe2](easyDo-wireframe2.png)
-![wireframe3](easyDo-wireframe3.png)
+![wireframe1](wireframe-images/easyDo-wireframe1.png)
+![wireframe2](wireframe-images/easyDo-wireframe2.png)
+![wireframe3](wireframe-images/easyDo-wireframe3.png)
 
 ### NEXT VERSIONS
 - V1.5
