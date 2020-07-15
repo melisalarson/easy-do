@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   db.Collaborator.find({}, (err, allCollabs) => {
     if (err) return console.log(err);
     console.log(allCollabs);
+    // console.log(allCollabs[0]);  //console logs jimmy
     
     res.render('collaborators', { collabs: allCollabs, promptString });
     promptString = null;
