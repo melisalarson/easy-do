@@ -58,17 +58,22 @@ router.post('/', (req, res) => {
 
 // 5)collab edit route
 router.get('/:id/edit', (req, res) => {
-  db.Collaborator.findById(
-    req.params.id,
-    (err, collabToEdit) => {
+  db.Collaborator.find(
+    {},
+    (err, allCollabs) => {
       if (err) return console.log(err);
-      console.log(collabToEdit);
-
-      // res.send(collabToEdit);
-      res.render('collaborators/edit',
-      { collab: collabToEdit, selectedCollab, promptString }
-      );
-      promptString = null;
+      console.log(allCollabs)
+      db.Collaborator.findById(
+        req.params.id,
+        (err, collabToEdit) => {
+          if (err) return console.log(err);
+          console.log(collabToEdit);
+          // res.send(collabToEdit);
+          res.render('collaborators/edit',
+            { collabs: allCollabs, selectedCollab: collabToEdit, promptString }
+          );
+          promptString = null;
+        });
     });
 });
 
@@ -76,8 +81,7 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   db.Collaborator.findByIdAndUpdate(
     req.params.id,
-    {name: 'Jimmy'},
-    // req.body,
+    req.body,
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);

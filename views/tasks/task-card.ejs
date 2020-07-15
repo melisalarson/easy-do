@@ -1,8 +1,13 @@
 <div class="task-card">
     <span class="task-name"><%= task.name %></span>
     <div class="task-stats">
-      <img src="/images/default-profile.png" alt="profile">
-      <span><%= task.collaborators %></span>
+      <% if(typeof task.collaborators[0].pic_url !== 'string' ) { %>
+        <img src="/images/default-profile.png" alt="profile">
+      <% } else { %>
+        <img src="<%= task.collaborators[0].pic_url %>" alt="profile">
+      <% } %>
+
+      <span><%= task.collaborators[0].name %></span>
       <span><%= task.completionTime %></span>
     </div>
     <div class="options">
