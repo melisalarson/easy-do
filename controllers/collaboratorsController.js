@@ -16,10 +16,25 @@ router.get('/', (req, res) => {
   });
 });
 
-// 2)collab new route
-router.get('/new', (req, res) => {
-  res.render('collaborators/new');
+// // 2)collab new route
+// router.get('/new', (req, res) => {
+//   res.render('collaborators/new');
+// });
+// 2)collab new route WITH SESSION
+router.get("/new", (req, res) => {
+  console.log(req.session);
+
+  if (!req.session.currentUser) return res.redirect("/login");
+  // if (!req.session.currentUser) {
+  //   res.redirect('/login');
+  // } else {
+  //   res.render('/authors/new');
+  // }
+
+  res.render("/author/new");
 });
+
+
 
 // 4)collab show route
 router.get('/:id', (req, res) => {
