@@ -16,11 +16,10 @@ const db = require('../models');
 // 1)task index route - jimmy
 router.get('/', (req, res) => {
   db.Task.find({})
-    .populate({ path: 'collaborators'})
-    .exec((err, allTasks) => {
+  .populate({path: 'collaborators'})
+  .exec((err, allTasks) => {
     if (err) return console.log(err);
     console.log(allTasks);
-
     res.render('tasks', { tasks: allTasks });
   });
 });
@@ -66,20 +65,22 @@ router.get('/:id', (req, res) => {
 // find all collabs
 // getting string need object ....need the object for jimmy or melisa to be able to do .nname .profile image
 router.post('/', (req, res) => {
-      db.Task.create(req.body, (err, newTask) => {
-        if (err) return console.log(err);
-        console.log(newTask);
-
-        db.Collaborator.findById(
-          // {_id:'5f0cadf1681cbd3f065c71e1'},
-          req.body.collaborators,
-          (err, foundCollab) => {
-            console.log(foundCollab);
-            // req.body.collaborators = foundCollab;
-
-            if (err) return console.log(err);
-            foundCollab.tasks.push(newTask);
-            foundCollab.save((err, savedCollab) => {
+  // console.log(req.body);
+  db.Task.create(
+    req.body,
+    (err, newTask) => {
+      if (err) return console.log(err);
+      console.log(newTask);
+      
+      console.log(req.body);
+      db.Collaborator.findById(
+        req.body.collaborators,
+        (err, foundCollab) => {
+          // console.log(foundCollab);
+          if (err) return console.log(err);
+          foundCollab.tasks.push(newTask);
+          foundCollab.save(
+            (err, savedCollab) => {
               if (err) return console.log(err);
               console.log(savedCollab);
 
@@ -107,11 +108,11 @@ router.post('/', (req, res) => {
 
 // 5)task edit route
 router.get('/:id/edit', (req, res) => {
-  db.Task.findById(
-    req.params.id,
-    (err, taskToEdit) => {
+  db.Task.findById(req.params.id)
+  .populate({path: 'collaborators'})
+  .exec((err, taskToEdit) => {
       if (err) return console.log(err);
-      console.log(taskToEdit);
+      // console.log(taskToEdit.collaborators[0].name);
 
       db.Collaborator.find(
         {},
@@ -268,14 +269,14 @@ router.post('/debug/add-tasks', (req, res) => {
 // });
 
 // *DEBUG*/clear route
-// router.get('/debug/clear', (req, res) => {
-//   db.Task.deleteMany({}, (err, deletedTasks) => {
-//     if (err) return console.log(err);
-//     console.log(`deleted tasks... ${deletedTasks}`);
+router.get('/debug/clear', (req, res) => {
+  db.Task.deleteMany({}, (err, deletedTasks) => {
+    if (err) return console.log(err);
+    console.log(`deleted tasks... ${deletedTasks}`);
 
-//       res.redirect('/tasks');
-//     });
-//   });
+      res.redirect('/tasks');
+    });
+  });
 
 
 module.exports = router;
