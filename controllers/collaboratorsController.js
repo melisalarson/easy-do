@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const mongoose = require('mongoose');
+const notAssignedCollabId = '5f0cd8b9fed32e492a3170c1';
 
 let promptString = null;
 
@@ -78,7 +80,7 @@ router.get("/:id/edit", (req, res) => {
     if (err) return console.log(err);
     console.log(allCollabs);
 
-    // if (req.params.id !== '5f0cd8b9fed32e492a3170c1') {
+    // if (req.params.id !== notAssignedCollabId) {
     db.Collaborator.findById(req.params.id, (err, collabToEdit) => {
       if (err) return console.log(err);
       console.log(collabToEdit);
@@ -114,9 +116,17 @@ router.put('/:id', (req, res) => {
 });
 
 // 7)collab destroy route
+// what happens to his/her tasks when a collaborator is deleted: find all tasks by id and change collab to Not Assigned. ass global unassignedCollab = 'ID' and add it to delete route
 // ******************find specific collab by id.. grab all articles. reassign all articles to owner not assigned. also delete that collab
 router.delete('/:id', (req, res) => {
-  if (req.params.id !== '5f0cd8b9fed32e492a3170c1') { // hard coded id for collab 'Not Assigned'
+  if (req.params.id !== notAssignedCollabId) { // hard coded id for collab 'Not Assigned'
+  db.Task.updateMany(
+    {collaborators: [mongoose.Types.ObjectId(req.params.id)]},
+    {collaborators : [mongoose.Types.ObjectId(notAssignedCollabId)]},
+    (err, updatedCollab) => {
+      if (err) return console.log(err);
+      console.log(updatedCollab);
+
     db.Collaborator.findByIdAndDelete(
       req.params.id,
       (err, deletedCollab) => {
@@ -126,11 +136,12 @@ router.delete('/:id', (req, res) => {
         // res.send(deletedCollab);
         // res.redirect('/collaborators');
       });
+    res.redirect('/collaborators');
+    });
   } else {
     promptString = `${req.params.name} cannot be deleted`;
+    res.redirect('/collaborators');
   };
-
-  res.redirect('/collaborators');
 });
 
 // *DEBUG*/show-collabs route
