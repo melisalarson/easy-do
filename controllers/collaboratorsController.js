@@ -6,23 +6,18 @@ const notAssignedCollabId = '5f0cd8b9fed32e492a3170c1';
 
 let promptString = null;
 
-// 1)collab index route
+// 1)collab INDEX route
 router.get('/', (req, res) => {
   db.Collaborator.find({}, (err, allCollabs) => {
     if (err) return console.log(err);
     console.log(allCollabs);
-    // console.log(allCollabs[0]);  //console logs jimmy
     
     res.render('collaborators', { collabs: allCollabs, promptString });
     promptString = null;
   });
 });
 
-// // 2)collab new route
-// router.get('/new', (req, res) => {
-//   res.render('collaborators/new');
-// });
-// 2)collab new route WITH SESSION
+// 2)collab NEW route WITH SESSION
 router.get("/new", (req, res) => {
   console.log(req.session);
 
@@ -36,22 +31,12 @@ router.get("/new", (req, res) => {
   res.render("/author/new");
 });
 
-
-
-// 4)collab show route
+// 4)collab SHOW route
 router.get('/:id', (req, res) => {
   db.Collaborator.findById(
     req.params.id)
-      // (err, foundCollab) => {
-      // if (err) return console.log(err);
-      // console.log(foundCollab);
-
-        // res.send(foundCollab);
-        // res.render('collaborators/show', { collab: foundCollab });
-    // });
     .populate({ path: 'tasks' })
     .exec((err, foundCollab) => {
-      // console.log(req.params.id);
       if (err) return console.log(err);
       console.log(foundCollab);
 
@@ -59,48 +44,49 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// 3)collab create route
+// 3)collab CREATE route
 router.post('/', (req, res) => {
   db.Collaborator.create(
-    // {name:'melisa'},
     req.body,
     (err, newCollab) => {
       if (err) return console.log(err);
       console.log(newCollab);
       
-      // res.send(newCollab);
       res.redirect('/collaborators');
     }
   )
 });
 
-// 5)collab edit route
+// 5)collab EDIT route
 router.get("/:id/edit", (req, res) => {
   db.Collaborator.find({}, (err, allCollabs) => {
     if (err) return console.log(err);
-    console.log(allCollabs);
-
-    // if (req.params.id !== notAssignedCollabId) {
-    db.Collaborator.findById(req.params.id, (err, collabToEdit) => {
+    
+    if (req.params.id !== notAssignedCollabId) {
+    db.Collaborator.findById(
+      req.params.id,
+      (err, collabToEdit) => {
       if (err) return console.log(err);
-      console.log(collabToEdit);
-      // });
-      // } else {
-      // promptString = `${req.params.id} cannot be edited`;
-      // };
-      // res.send(collabToEdit);
+
       res.render("collaborators/edit", {
         collabs: allCollabs,
         selectedCollab: collabToEdit,
         promptString,
       });
       promptString = null;
+      });
+      } else {
+      promptString = `${req.params.id} cannot be edited`;
+      res.render("collaborators/edit", {
+        collabs: allCollabs,
+        selectedCollab: collabToEdit,
+        promptString,
+      });
+      };
     });
   });
-});
 
-
-// 6)collab update route
+// 6)collab UPDATE route
 router.put('/:id', (req, res) => {
   db.Collaborator.findByIdAndUpdate(
     req.params.id,
@@ -108,14 +94,12 @@ router.put('/:id', (req, res) => {
     {new: true},
     (err, collabToUpdate) => {
       if (err) return console.log(err);
-      console.log(collabToUpdate, req.body);
       
-      // res.send(collabToUpdate);
       res.redirect('/collaborators');
   });
 });
 
-// 7)collab destroy route
+// 7)collab DESTROY route
 router.delete('/:id', (req, res) => {
   if (req.params.id !== notAssignedCollabId) { // hard coded id for collab 'Not Assigned'
   db.Task.updateMany(
@@ -123,7 +107,6 @@ router.delete('/:id', (req, res) => {
     {collaborators : [mongoose.Types.ObjectId(notAssignedCollabId)]},
     (err, updatedCollab) => {
       if (err) return console.log(err);
-      console.log(updatedCollab);
 
     db.Collaborator.findByIdAndDelete(
       req.params.id,
@@ -163,7 +146,6 @@ router.get('/debug/clear', (req, res) => {
       res.redirect('/collaborators');
     });
   });
-
 
 
 module.exports = router;
