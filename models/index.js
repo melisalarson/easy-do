@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // const MONGODB_URI = ('mongodb://localhost:27017/easy-do-db');
-// MONGODB_URI = 'mongodb://app:UPrIJaqCeZz5v71v@cluster0-shard-00-00.judrx.mongodb.net:27017,cluster0-shard-00-01.judrx.mongodb.net:27017,cluster0-shard-00-02.judrx.mongod b.net:27017/easy-do?ssl=true&replicaSet=atlas-ljx4vy-shard-0&authSource=admin&retryWrites=true&w=majority'
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -16,4 +15,5 @@ mongoose.connect(process.env.MONGODB_URI, {
 module.exports = {
   Collaborator: require('./Collaborator'),
   Task: require('./Task'),
+  User: require('./User'),
 };
