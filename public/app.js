@@ -51,3 +51,19 @@ if(findElement('#not-assigned') !== null) {
         findElement('.alert-mask').classList.add('show');   
     })
 }
+
+
+
+// Add/Remove Doc Mask
+if(findElement('#doc-btn') !== null) {
+    findElement('#doc-btn').addEventListener('click', () =>{
+        findElement('.mask').classList.add('show');   
+    })
+}
+
+if(findElement('.doc-mask') !== null) {
+    findElement('.doc-mask').addEventListener('click', (e) => {
+        if (e.target !== findElement('.doc-mask')) return;
+        findElement('.doc-mask').classList.remove('show');   
+    })
+}
