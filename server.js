@@ -28,7 +28,6 @@ app.use(session({
 app.get('/', (req, res) => { res.redirect('/tasks') });
 app.use('/', authCtrl);  //auth route
 app.use('/profile', usersCtrl);  //users route
-
 app.use('/collaborators', collaboratorsCtrl);  // '/collaborators' = this is the url path the user is going to 
 app.use('/tasks', tasksCtrl);  // '/tasks' = this is the url path the user is going to
 app.get('*', (req, res) => {
