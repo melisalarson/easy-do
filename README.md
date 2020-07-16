@@ -33,21 +33,21 @@ User will see 4 sections on displayed
   - Owner = displays name of team member responsible for the task
 
 ###### Reference 'add new task' 'Edit' and 'add new collaborator' above
-- plus symbol / add new task  = takes user to the add a new task page
-	- Task = user enters name of task
-	- Owner = user assigns team member to the task (if no owners, click +)
-	- Time = user enters estimate on time to complete task
-  - Stage = user can move the task from section to section (to do, in progress, completed)
-  - Add = user clicks and a new task is populated in the to do section
-<br>
-* Edit = takes use to the edit task page
-	* Same as add task for (task, owner, time, stage)
-	* Update button = user clicks and a current task is updated and potentially moved
-<br>
-* plus symbol / add new collaborator  = takes user to the add a new collaborator page
-	* Current collaborators = list of names
-	* New collaborator = enter new name
-	* Add = user clicks to add new collaborator
+###### - plus symbol / add new task  = takes user to the add a new task page
+###### - Task = user enters name of task
+###### - Owner = user assigns team member to the task (if no owners, click +)
+###### - Time = user enters estimate on time to complete task
+###### - Stage = user can move the task from section to section (to do, in progress, completed)
+###### - Add = user clicks and a new task is populated in the to do section
+
+###### - Edit = takes use to the edit task page
+###### - Same as add task for (task, owner, time, stage)
+###### - Update button = user clicks and a current task is updated and potentially moved
+
+###### - plus symbol / add new collaborator  = takes user to the add a new collaborator page
+###### - Current collaborators = list of names
+###### - New collaborator = enter new name
+###### - Add = user clicks to add new collaborator
 
 
 ### __ERD__
@@ -198,61 +198,61 @@ User will see 4 sections on displayed
 <body>
 <tr>
 <td>
-Controllers<br>
-  - tasksController  -  Jimmy<br>
-  - collaboratorsController  -  Melisa<br>
-Models<br>
-  - Task  -  Jimmy<br>
-  - Collaborator  -  Melisa<br>
-  - index  -  M+J<br>
-Views<br>
-  -Tasks<br>
-    -index   -  Jimmy<br>
-    -show  -  Jimmy<br>
-    -new  -  Jimmy<br>
-    -edit  -  Jimmy<br>
-  -Collaborators<br>
-    -index   -  Melisa<br>
-    -show  -  Melisa<br>
-    -new  -  Melisa<br>
-    -edit  -  Melisa<br>
-  -index  -  M+J<br>
-Server.js  -  M+J<br>
-Public<br>
-  -images  -  Jimmy<br>
-  -app.js  -  Melisa<br>
-  -styles.css  -  Jimmy<br>
-  <br>
-  <br>
+Controllers
+  - tasksController  -  Jimmy
+  - collaboratorsController  -  Melisa
+Models
+  - Task  -  Jimmy
+  - Collaborator  -  Melisa
+  - index  -  M+J
+Views
+  -Tasks
+    -index   -  Jimmy
+    -show  -  Jimmy
+    -new  -  Jimmy
+    -edit  -  Jimmy
+  -Collaborators
+    -index   -  Melisa
+    -show  -  Melisa
+    -new  -  Melisa
+    -edit  -  Melisa
+  -index  -  M+J
+Server.js  -  M+J
+Public
+  -images  -  Jimmy
+  -app.js  -  Melisa
+  -styles.css  -  Jimmy
+  
+  
 </td>
 
 <td>
-Controllers<br>
-- tasksController*  -  Melisa (V2 M+J)<br>
-- collaboratorsController  -  Melisa<br>
-Models<br>
-- Task  -  Melisa<br>
-- Collaborator  -  Melisa<br>
-- index  -  M+J<br>
-Views<br>
-- Tasks<br>
-  - index   -  Jimmy<br>
-  - show  -  Jimmy<br>
-  - new  -  Jimmy<br>
-  - edit  -  Jimmy<br>
-- Collaborators<br>
-  - index   -  Jimmy<br>
-  - show  -  Jimmy<br>
-  - new  -  Jimmy<br>
-  - edit  -  Jimmy<br>
--index  -  M+J<br>
-Server.js  -  M+J<br>
-Public<br>
-- images  -  Jimmy<br>
-- app.js  -  Melisa<br>
-- styles.css  -  Jimmy<br>
-<br>
-*tasksController will populate collaborators<br>
+Controllers
+- tasksController*  -  Melisa (V2 M+J)
+- collaboratorsController  -  Melisa
+Models
+- Task  -  Melisa
+- Collaborator  -  Melisa
+- index  -  M+J
+Views
+- Tasks
+  - index   -  Jimmy
+  - show  -  Jimmy
+  - new  -  Jimmy
+  - edit  -  Jimmy
+- Collaborators
+  - index   -  Jimmy
+  - show  -  Jimmy
+  - new  -  Jimmy
+  - edit  -  Jimmy
+-index  -  M+J
+Server.js  -  M+J
+Public
+- images  -  Jimmy
+- app.js  -  Melisa
+- styles.css  -  Jimmy
+
+*tasksController will populate collaborators
 </td>
 </tr>
 </body>
