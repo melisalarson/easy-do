@@ -24,6 +24,10 @@ router.get('/', (req, res) => {
   });
 });
 
+// task doc route
+router.get('/doc', (req, res) => {
+    res.render('/tasks/gdoc');
+  });
 
 // 2)task new route
 router.get('/new', (req, res) => {
