@@ -1,9 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const unassignedCollab = "ID";
 
+// // 1)task index route - melisa
+// router.get('/', (req, res) => {
+//   db.Task.find({}, (err, allTasks) => {
+//     if (err) return console.log(err);
+//     // console.log(allTasks);
+    
+//     res.render('tasks', { tasks: allTasks });
+//   });
+// });
 
-// 1)task index route
+// 1)task index route - jimmy
 router.get('/', (req, res) => {
   db.Task.find({})
   .populate({path: 'collaborators'})
@@ -13,6 +23,7 @@ router.get('/', (req, res) => {
     res.render('tasks', { tasks: allTasks });
   });
 });
+
 
 // 2)task new route
 router.get('/new', (req, res) => {
@@ -51,6 +62,8 @@ router.get('/:id', (req, res) => {
 });
 
 // 3)task create route
+// find all collabs
+// getting string need object ....need the object for jimmy or melisa to be able to do .nname .profile image
 router.post('/', (req, res) => {
   // console.log(req.body);
   db.Task.create(
@@ -71,10 +84,26 @@ router.post('/', (req, res) => {
               if (err) return console.log(err);
               console.log(savedCollab);
 
-              res.redirect('/tasks');
+              res.redirect("/tasks");
             });
-        });
-  });
+          }
+        );
+
+        // db.Collaborator.findOne(
+        //   {'name': req.body.collaborators},
+        //   (err, foundCollab) => {
+        //     // console.log(foundCollab);
+        //     if (err) return console.log(err);
+        //     foundCollab.tasks.push(newTask);
+        //     foundCollab.save(
+        //       (err,savedCollab) => {
+        //         if (err) return console.log(err);
+        //         console.log(savedCollab);
+
+        //         res.redirect('/tasks');
+        //     });
+        //   });
+      });
 });
 
 // 5)task edit route

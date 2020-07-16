@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-// const MONGODB_URI = ('mongodb://localhost:27017/easy-do-db-test');
-MONGODB_URI = 'mongodb://app:UPrIJaqCeZz5v71v@cluster0-shard-00-00.judrx.mongodb.net:27017,cluster0-shard-00-01.judrx.mongodb.net:27017,cluster0-shard-00-02.judrx.mongod b.net:27017/easy-do?ssl=true&replicaSet=atlas-ljx4vy-shard-0&authSource=admin&retryWrites=true&w=majority'
+require('dotenv').config();
 
-mongoose.connect(MONGODB_URI, {
+// const MONGODB_URI = ('mongodb://localhost:27017/easy-do-db');
+
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

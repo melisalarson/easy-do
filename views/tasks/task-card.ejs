@@ -1,7 +1,7 @@
 <div class="task-card">
     <span class="task-name"><%= task.name %></span>
     <div class="task-stats">
-      <% if(typeof task.collaborators[0].pic_url !== 'string' || task.collaborators[0].pic_url === "") { %>
+      <% if(typeof task.collaborators[0].pic_url !== 'string' || task.collaborators[0].pic_url === '') { %>
         <img src="/images/default-profile.png" alt="profile">
       <% } else { %>
         <img src="<%= task.collaborators[0].pic_url %>" alt="profile">
@@ -17,7 +17,8 @@
       <% if(task.stage === "completed") {%>
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       <% } else { %>
-        <a href="/tasks/<%=task._id%>/move-right/<%=task.stage%>">
+        <a  class="middle-option"
+            href="/tasks/<%=task._id%>/move-right/<%=task.stage%>">
           <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </a>
       <% } %>
