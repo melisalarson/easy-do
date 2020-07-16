@@ -15,4 +15,5 @@ mongoose.connect(process.env.MONGODB_URI, {
 module.exports = {
   Collaborator: require('./Collaborator'),
   Task: require('./Task'),
+  User: require('./User'),
 };
