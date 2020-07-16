@@ -32,22 +32,22 @@ User will see 4 sections on displayed
   - Time = displays time to complete task (comes from new task page) 
   - Owner = displays name of team member responsible for the task
 
-###### Reference 'add new task' 'Edit' and 'add new collaborator' above
-###### - plus symbol / add new task  = takes user to the add a new task page
-###### - Task = user enters name of task
-###### - Owner = user assigns team member to the task (if no owners, click +)
-###### - Time = user enters estimate on time to complete task
-###### - Stage = user can move the task from section to section (to do, in progress, completed)
+###### __Reference 'add new task' 'Edit' and 'add new collaborator' above__
+###### plus symbol / add new task  = takes user to the add a new task page
+######  - Task = user enters name of task
+######  - Owner = user assigns team member to the task (if no owners, click +)
+######  - Time = user enters estimate on time to complete task
+######  - Stage = user can move the task from section to section (to do, in progress, completed)
 ###### - Add = user clicks and a new task is populated in the to do section
 
-###### - Edit = takes use to the edit task page
+###### Edit = takes use to the edit task page
 ###### - Same as add task for (task, owner, time, stage)
 ###### - Update button = user clicks and a current task is updated and potentially moved
 
-###### - plus symbol / add new collaborator  = takes user to the add a new collaborator page
-###### - Current collaborators = list of names
-###### - New collaborator = enter new name
-###### - Add = user clicks to add new collaborator
+###### plus symbol / add new collaborator  = takes user to the add a new collaborator page
+######  - Current collaborators = list of names
+######  - New collaborator = enter new name
+######  - Add = user clicks to add new collaborator
 
 
 ### __ERD__
@@ -198,14 +198,14 @@ User will see 4 sections on displayed
 <body>
 <tr>
 <td>
-__Controllers__ <br>
+CONTROLLERS <br>
   - tasksController  -  Jimmy<br>
   - collaboratorsController  -  Melisa<br>
-__Models__ <br>
+MODELS <br>
   - Task  -  Jimmy<br>
   - Collaborator  -  Melisa<br>
   - index  -  M+J<br>
-__Views__<br>
+VIEWS<br>
   -Tasks<br>
     -index   -  Jimmy<br>
     -show  -  Jimmy<br>
@@ -217,8 +217,8 @@ __Views__<br>
     -new  -  Melisa<br>
     -edit  -  Melisa<br>
   -index  -  M+J<br>
-__Server.js__  -  M+J<br>
-__Public__<br>
+Server.js  -  M+J<br>
+PUBLIC<br>
   -images  -  Jimmy<br>
   -app.js  -  Melisa<br>
   -styles.css  -  Jimmy<br>
@@ -227,14 +227,14 @@ __Public__<br>
 </td>
 
 <td>
-__Controllers__<br>
+CONTROLLERS<br>
 - tasksController*  -  Melisa (V2 M+J)<br>
 - collaboratorsController  -  Melisa<br>
-__Models__<br>
+MODELS<br>
 - Task  -  Melisa<br>
 - Collaborator  -  Melisa<br>
 - index  -  M+J<br>
-__Views__<br>
+VIEWS<br>
 - Tasks<br>
   - index   -  Jimmy<br>
   - show  -  Jimmy<br>
@@ -246,8 +246,8 @@ __Views__<br>
   - new  -  Jimmy<br>
   - edit  -  Jimmy<br>
 -index  -  M+J<br>
-__Server.js__  -  M+J<br>
-__Public__<br>
+Server.js  -  M+J<br>
+PUBLIC<br>
 - images  -  Jimmy<br>
 - app.js  -  Melisa<br>
 - styles.css  -  Jimmy<br>
