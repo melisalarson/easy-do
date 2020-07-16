@@ -1,0 +1,265 @@
+.mask {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0, 0.26);
+}
+.popup-container {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.form-title {
+  margin: 10px;
+}
+
+form {
+  margin-left: 20px;
+  margin-top: -5px;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+form.add-collab {
+  display: block;
+  margin-top: 20px;
+}
+    
+label {
+line-height: 100%;
+margin-bottom: 5px;
+font-size: 14px;
+font-weight: bold;
+}
+
+input {
+background-color: transparent;
+width: 80%;
+height: 30px;
+/* margin-bottom: 20px; */
+padding: 0 8px;
+border: 1px solid rgba(99, 99, 99, 0.3);
+border-radius: 5px;
+}
+input:hover,
+input:focus {
+  border-color: rgb(0, 0, 0);
+}
+
+.form-control {
+  padding: 0px;
+  width: 200px;
+  height: 25px;
+}
+
+.submit-btn {
+  width: 150px;
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 165px;
+}
+
+
+
+
+.close-btn {
+  text-decoration: none;
+  color: initial;
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 30px;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: initial;
+  position: absolute;
+  right: 25px;
+  top: 100px;
+  font-size: 30px;
+}
+.delete-btn:hover {
+  color: red;
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.collab-list-label {
+  font-weight: bold;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+.collab-list {
+  border: 1px solid black;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 10px;
+  padding: 5px 0 5px 0;
+  height: 125px;
+}
+.collab-card {
+  padding-left: 10px;
+  /* display: flex;
+  align-items: center; */
+}
+.collab-card span {
+  display: inline-block;
+  width: 100px;  
+}
+.collab-card span {
+  color: initial;
+  text-decoration: none;
+}
+.collab-card span:hover {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+.collab-card .menu-btn {
+  border: none;
+  background: none;
+  display: none;
+  position: initial;
+  font-size: 15px;
+}
+
+.collab-card:hover .menu-btn {
+  display: inline;
+}
+.edit-btn:hover {
+  color: blue;
+  border: none;
+  background: none;
+}
+
+.add-collab label {
+  display: block;
+}
+
+.add-collab .form-control {
+  display: inline;
+}
+
+.add-collab-btn {
+  display: inline;
+  margin-top: -63px;
+  margin-left: 30px;
+  height: 75px;
+  width: 100px;
+}
+
+.delete-collab-btn {
+  text-decoration: none;
+  color: initial;
+  position: absolute;
+  right: 17px;
+  top: 317px;
+
+  height: 37px;
+  width: 62px;
+  font-size: .7em;
+}
+
+.close-edit-btn {
+  text-decoration: none;
+  color: initial;
+  position: absolute;
+  right: 25px;
+  top: 275px;
+  font-size: 30px;
+}
+
+.prompt-mask {
+  display: none;
+  cursor: pointer;
+}
+.prompt-mask.show {
+  display: flex;
+}
+
+.alert-mask {
+  display: none;
+  cursor: pointer;
+}
+.alert-mask.show {
+  display: flex;
+}
+
+.prompt {
+  position: relative;
+  cursor: default;
+  background-color: rgb(241, 241, 241);
+  border-radius: 20px;
+  text-align: center;
+  width: 500px;
+  height: 140px;
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.26);
+}
+.prompt h4 {
+  margin: 5px;
+}
+.prompt-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.prompt-cancel-btn {
+  margin-top: -5px;
+  margin-left: 10px;
+}
+.index-cancel-btn {
+  margin-top: 15px;
+  height: 20%;
+  width: 20%;
+  font-size: 1.25em;
+}
+
+/* https://www.w3schools.com/howto/howto_css_shake_image.asp */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+
+.doc-mask {
+  position: absolute;
+  top: 0;
+  display: none;
+  cursor: pointer;
+}
+.doc-mask.show {
+  display: flex;
+  align-items: top;
+}
+.doc-container {
+  min-width: 760px;
+  margin-top: 55px;
+}
+
+iframe {
+  width:100%;
+  height: 90vh;
+  overflow-y: hidden;
+  overflow-x: auto;
+}

@@ -1,0 +1,46 @@
+<head>
+  <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/forms.css">
+</head>
+
+<div class="mask">
+    <div class="popup-container">
+
+        <h1 class="form-title">New Task</h1>
+        <hr>
+        <!-- Cancel Button -->
+        <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+        
+        <form action="/tasks" method="POST">
+          <div class="form-group">
+            <label for="name">Task</label>
+            <input class="form-control" type="text" id="name" name="name" required/>
+          </div>
+          <div class="form-group">
+            <label for="collaborators">Collaborator</label>
+            <select class="form-control" name="collaborators" id="collaborators">
+              <% collabs.forEach(collab => { %>
+                  <option value="<%= collab._id %>"><%= collab.name %></option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="completionTime">Completion Time</label>
+            <input class="form-control" type="text" id="completionTime" name="completionTime" />
+          </div>
+          <div>
+            <label for="stage">Stage</label>
+            <select class="form-control" name="stage" id="stage">
+              <option value="to-do">To Do</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <button class="btn btn-primary submit-btn" type="submit">Add Task</button>
+        </form>
+
+
+    </div>
+</div>

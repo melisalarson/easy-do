@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-const connectionString = ('mongodb://localhost:27017/easy-do-db');
-mongoose.connect(connectionString, {
+require('dotenv').config();
+
+// const MONGODB_URI = ('mongodb://localhost:27017/easy-do-db');
+
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -12,4 +15,5 @@ mongoose.connect(connectionString, {
 module.exports = {
   Collaborator: require('./Collaborator'),
   Task: require('./Task'),
+  User: require('./User'),
 };

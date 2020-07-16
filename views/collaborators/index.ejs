@@ -1,0 +1,56 @@
+<head>
+    <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+    <script defer src="/app.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/forms.css">
+  </head>
+  
+  <div class="mask">
+      <div class="popup-container">
+  
+          <h1 class="form-title">Project Collaborators</h1>
+          <hr>
+          <!-- Cancel Button -->
+          <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+          
+          <p class="collab-list-label">Current Collaborators</p>
+          <div class="collab-list">
+            <% collabs.forEach(collab => { %>
+                <div class="collab-card">
+                    <% if(collab._id.toString() !== "5f0cd8b9fed32e492a3170c1") { %>
+                      <a href="/collaborators/<%= collab._id %>/edit"><span><%= collab.name %></span></a>
+                    <% } else { %>
+                      <span id="not-assigned"><%= collab.name %></span>
+                    <% } %>
+                </div>
+              <% }); %>
+          </div>
+
+
+          <form class="add-collab" action="/collaborators" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input class="form-control" type="text" id="name" name="name" required/>
+            </div>
+            <div class="form-group">
+              <label for="pic_url">Profile Picture (Url)</label>
+              <input class="form-control" type="text" id="pic_url" name="pic_url"/>
+              <button class="btn btn-success add-collab-btn" type="submit">Add Collaborator</button>
+            </div>
+          </form>
+  
+          <!-- <button class="btn btn-primary submit-btn">Finished</button> -->
+          <a href="/tasks/" class="btn btn-primary submit-btn">Finished</a>
+
+      </div>
+  </div>
+
+  <div class="mask alert-mask">
+    <div class="prompt">
+      <h2>Cannot edit Not Assigned</h2>
+      <div class="prompt-buttons">
+        <button class="btn btn-primary index-cancel-btn">Okay</button>
+      </div>
+    </div>
+  </div>

@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+  <script defer src="/app.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/forms.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>EasyDo</title>
 </head>
 <body>
-  hello test
+  <header>
+    <a href="/"><img src="/images/logo.png" alt=""></a>
+    <span>
+      <a class="button btn btn-primary" href="/tasks/new">Add Task</a>
+      <a class="button btn btn-primary" href="/collaborators/">Add Collaborator</a>
+      <a id="doc-btn"class="button btn btn-primary">View Doc</a>
+    </span>
+  </header>
+
+  <!-- <div class="toolbar">
+
+  </div> -->
+  <div class="task-group">
+
+    <!-- To Do -->
+    <div class="task-col to-do">
+      <div class="col-header">
+        <span class="col-name">To Do</span>
+      </div>
+
+      <div class="col-body">
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'to-do') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
+      </div>
+
+      <div class="col-footer">
+        <a class="add-task" href="/tasks/new">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <span>Add Task</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- In Progress -->
+    <div class="task-col in-progress">
+      <div class="col-header">
+        <span class="col-name">In Progress</span>
+      </div>
+
+      <div class="col-body">
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'in-progress') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
+      </div>
+    </div>
+
+    <!-- Completed -->
+    <div class="task-col completed">
+      <div class="col-header">
+        <span class="col-name">Completed</span>
+      </div>
+      <div class="col-body">
+        <% tasks.forEach(task => { %>
+          <% if(task.stage === 'completed') { %>
+            <%- include('task-card', {task: task}); %>
+          <% } %>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('doc'); %>
+
 </body>
 </html>

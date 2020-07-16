@@ -1,0 +1,36 @@
+<div class="task-card">
+    <span class="task-name"><%= task.name %></span>
+    <div class="task-stats">
+      <% if(typeof task.collaborators[0].pic_url !== 'string' || task.collaborators[0].pic_url === '') { %>
+        <img src="/images/default-profile.png" alt="profile">
+      <% } else { %>
+        <img src="<%= task.collaborators[0].pic_url %>" alt="profile">
+      <% } %>
+
+      <span><%= task.collaborators[0].name %></span>
+      <span><%= task.completionTime %></span>
+    </div>
+    <div class="options">
+      <a href="/tasks/<%=task._id%>/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+      
+      <!-- Move to Stage Right -->
+      <% if(task.stage === "completed") {%>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      <% } else { %>
+        <a  class="middle-option"
+            href="/tasks/<%=task._id%>/move-right/<%=task.stage%>">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </a>
+      <% } %>
+
+      <!-- Move to Stage Left -->
+      <% if(task.stage === "to-do") {%>
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <% } else { %>
+        <a href="/tasks/<%=task._id%>/move-left/<%=task.stage%>">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </a>
+      <% } %>
+        
+    </div>
+  </div>
