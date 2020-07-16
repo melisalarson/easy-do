@@ -1,35 +1,21 @@
 const express = require('express');
-const router = express.Router();
 const db = require('../models');
+const router = express.Router();
 const unassignedCollab = "ID";
 
-// // 1)task index route - melisa
-// router.get('/', (req, res) => {
-//   db.Task.find({}, (err, allTasks) => {
-//     if (err) return console.log(err);
-//     // console.log(allTasks);
-    
-//     res.render('tasks', { tasks: allTasks });
-//   });
-// });
-
-// 1)task index route - jimmy
-router.get('/', (req, res) => {
+// 1)task INDEX route
+  router.get('/', (req, res) => {
   db.Task.find({})
   .populate({path: 'collaborators'})
   .exec((err, allTasks) => {
     if (err) return console.log(err);
     console.log(allTasks);
+
     res.render('tasks', { tasks: allTasks });
   });
 });
 
-// task doc route
-router.get('/doc', (req, res) => {
-    res.render('/tasks/gdoc');
-  });
-
-// 2)task new route
+// 2)task NEW route
 router.get('/new', (req, res) => {
   db.Collaborator.find(
     {},
@@ -41,18 +27,7 @@ router.get('/new', (req, res) => {
     });
 });
 
-// // 4)task show route ***ATTEMPT1***
-// router.get('/:id', (req, res) => {
-//   db.Task.findById(
-//     req.params.id,
-//     (err, foundTask) => {
-//     if (err) return console.log(err);
-//     console.log(foundTask);
-    
-//     res.send(foundTask);
-//   });
-// });
-// 4)task show route ***ATTEMPT2***
+// 4)task SHOW route
 router.get('/:id', (req, res) => {
   db.Collaborator.findOne({'tasks': req.params.id})
     .populate({ path: 'tasks', match: {_id:req.params.id} })
@@ -65,23 +40,18 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// 3)task create route
-// find all collabs
-// getting string need object ....need the object for jimmy or melisa to be able to do .nname .profile image
+// 3)task CREATE route
 router.post('/', (req, res) => {
-  // console.log(req.body);
   db.Task.create(
     req.body,
     (err, newTask) => {
       if (err) return console.log(err);
-      console.log(newTask);
       
-      console.log(req.body);
       db.Collaborator.findById(
         req.body.collaborators,
         (err, foundCollab) => {
-          // console.log(foundCollab);
           if (err) return console.log(err);
+          
           foundCollab.tasks.push(newTask);
           foundCollab.save(
             (err, savedCollab) => {
@@ -90,33 +60,16 @@ router.post('/', (req, res) => {
 
               res.redirect("/tasks");
             });
-          }
-        );
-
-        // db.Collaborator.findOne(
-        //   {'name': req.body.collaborators},
-        //   (err, foundCollab) => {
-        //     // console.log(foundCollab);
-        //     if (err) return console.log(err);
-        //     foundCollab.tasks.push(newTask);
-        //     foundCollab.save(
-        //       (err,savedCollab) => {
-        //         if (err) return console.log(err);
-        //         console.log(savedCollab);
-
-        //         res.redirect('/tasks');
-        //     });
-        //   });
+          });
       });
 });
 
-// 5)task edit route
+// 5)task EDIT route
 router.get('/:id/edit', (req, res) => {
   db.Task.findById(req.params.id)
   .populate({path: 'collaborators'})
   .exec((err, taskToEdit) => {
       if (err) return console.log(err);
-      // console.log(taskToEdit.collaborators[0].name);
 
       db.Collaborator.find(
         {},
@@ -129,7 +82,7 @@ router.get('/:id/edit', (req, res) => {
   });
 });
 
-// 6)task update route
+// 6)task UPDATE route
 router.put('/:id', (req, res) => {
   db.Task.findByIdAndUpdate(
     req.params.id, 
@@ -143,7 +96,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// 7)task destroy route
+// 7)task DESTROY route
 router.delete('/:id', (req, res) => {
   db.Task.findByIdAndDelete(
     req.params.id,
@@ -155,7 +108,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// move right route
+// task MOVE RIGHT route
 router.get('/:id/move-right/:stage', (req, res) => {  
   let change = {};
   if (req.params.stage === 'to-do') {
@@ -176,29 +129,7 @@ router.get('/:id/move-right/:stage', (req, res) => {
     });
 });
 
-// OG move left route
-// router.get('/:id/move-left', (req, res) => {
-
-//   db.Task.findByIdAndUpdate(
-//     req.params.id,
-//     // {stage: 'to-do'},
-//     () => {
-//       if (req.params.id.stage === 'completed') {
-//         return {stage: 'in-progress'}
-//       } else if (req.params.id.stage === 'in-progress') {
-//         return {stage: 'to-do'}
-//       }
-//     },
-//     { new: true },
-//     (err, taskToMoveLeft) => {
-//       if (err) return console.log(err);
-//       console.log(taskToMoveLeft)
-
-//       res.redirect('/tasks')
-//     });
-// });
-
-// 2nd move left route
+// task MOVE LEFT route
 router.get('/:id/move-left/:stage', (req, res) => {
   let change = {};
   if (req.params.stage === 'completed') {
