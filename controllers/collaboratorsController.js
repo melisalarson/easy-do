@@ -116,8 +116,6 @@ router.put('/:id', (req, res) => {
 });
 
 // 7)collab destroy route
-// what happens to his/her tasks when a collaborator is deleted: find all tasks by id and change collab to Not Assigned. ass global unassignedCollab = 'ID' and add it to delete route
-// ******************find specific collab by id.. grab all articles. reassign all articles to owner not assigned. also delete that collab
 router.delete('/:id', (req, res) => {
   if (req.params.id !== notAssignedCollabId) { // hard coded id for collab 'Not Assigned'
   db.Task.updateMany(
