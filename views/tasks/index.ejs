@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+  <script defer src="/app.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/forms.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EasyDo</title>
@@ -14,7 +16,7 @@
     <span>
       <a class="button btn btn-primary" href="/tasks/new">Add Task</a>
       <a class="button btn btn-primary" href="/collaborators/">Add Collaborator</a>
-      <a class="button btn btn-primary" href="/collaborators/">View Doc</a>
+      <a id="doc-btn"class="button btn btn-primary">View Doc</a>
     </span>
   </header>
 
@@ -76,6 +78,7 @@
     </div>
   </div>
 
-  <!-- <iframe src="https://docs.google.com/document/d/e/2PACX-1vSKKn_XiT48kaXK3Njpu4YEbA2XBxeZ2stGyliVWmdmj-CsjjZ2kcZqrhHYJnqtepfZ5hP3GC79JzbO/pub?embedded=true"></iframe> -->
+  <%- include('doc'); %>
+
 </body>
 </html>

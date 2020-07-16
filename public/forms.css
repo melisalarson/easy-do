@@ -239,3 +239,27 @@ input:focus {
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+
+
+.doc-mask {
+  position: absolute;
+  top: 0;
+  display: none;
+  cursor: pointer;
+}
+.doc-mask.show {
+  display: flex;
+  align-items: top;
+}
+.doc-container {
+  min-width: 760px;
+  margin-top: 55px;
+}
+
+iframe {
+  width:100%;
+  height: 90vh;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
