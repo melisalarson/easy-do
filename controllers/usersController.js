@@ -5,6 +5,7 @@ const db = require('../models');
 //current path = '/profile'
 
 router.get('/', (req, res) => {
+  console.log('**********************',currentUser)
   db.User.findById(
     req.sessions.currentUser._id,
     (err, foundUser) => {

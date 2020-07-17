@@ -9,7 +9,6 @@ const unassignedCollab = "ID";
   .populate({path: 'collaborators'})
   .exec((err, allTasks) => {
     if (err) return console.log(err);
-    console.log(allTasks);
 
     res.render('tasks', { tasks: allTasks });
   });
