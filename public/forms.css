@@ -263,3 +263,12 @@ iframe {
   overflow-y: hidden;
   overflow-x: auto;
 }
+
+/* melisa additions */
+.register-btn .login-bt {
+  width: 150px;
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 165px;
+}

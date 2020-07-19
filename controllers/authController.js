@@ -6,12 +6,12 @@ const db = require('../models')
 
 //login form route
 router.get('/login', (req, res) => {
-  res.send('login route');
+  res.render("../views/auth/login");
 });
 
 //register form route
 router.get('/register', (req, res) => {
-  res.send('register route');
+  res.render('../views/auth/register');
 });
 
 // //user/register create route - MELISA
@@ -49,8 +49,7 @@ router.post("/register", (req, res) => {
 
         const { name, email, password } = req.body;
         const newUser = {
-          firstName,
-          lastName,
+          name,
           email,
           password: hash, //***** IMP!!! never save plain text passwords
         };
@@ -58,7 +57,7 @@ router.post("/register", (req, res) => {
         db.User.create(newUser, (err, createdUser) => {
           if (err) return console.log(err);
 
-          res.redirect("/login");
+          res.redirect("/profile");
         });
       });
     });
@@ -69,7 +68,7 @@ router.post("/register", (req, res) => {
 router.post('/login', (req, res) => {
   console.log(req.body);
 
-  res.send('request received');
+  res.redirect('/users/profile');
 });
 
 //login create route - KENNY

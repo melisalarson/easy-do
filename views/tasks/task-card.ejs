@@ -1,15 +1,6 @@
 <div class="task-card">
     <span class="task-name"><%= task.name %></span>
-    <div class="task-stats">
-      <% if(typeof task.collaborators[0].pic_url !== 'string' || task.collaborators[0].pic_url === '') { %>
-        <img src="/images/default-profile.png" alt="profile">
-      <% } else { %>
-        <img src="<%= task.collaborators[0].pic_url %>" alt="profile">
-      <% } %>
 
-      <span><%= task.collaborators[0].name %></span>
-      <span><%= task.completionTime %></span>
-    </div>
     <div class="options">
       <a href="/tasks/<%=task._id%>/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
       

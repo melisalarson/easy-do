@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-// const MONGODB_URI = ('mongodb://localhost:27017/easy-do-db');
+const MONGODB_URI = ('mongodb://localhost:27017/easy-do-db');
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(/*process.env.*/MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

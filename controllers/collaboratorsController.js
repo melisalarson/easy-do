@@ -22,11 +22,11 @@ router.get("/new", (req, res) => {
   console.log(req.session);
 
   if (!req.session.currentUser) return res.redirect("/login");
-  // if (!req.session.currentUser) {
-  //   res.redirect('/login');
-  // } else {
-  //   res.render('/authors/new');
-  // }
+  if (!req.session.currentUser) {
+    res.redirect('/login');
+  } else {
+    res.render('/authors/new');
+  }
 
   res.render("/author/new");
 });
@@ -101,7 +101,7 @@ router.put('/:id', (req, res) => {
 
 // 7)collab DESTROY route
 router.delete('/:id', (req, res) => {
-  if (req.params.id !== notAssignedCollabId) { // hard coded id for collab 'Not Assigned'
+  if (req.params.id !== notAssignedCollabId) { 
   db.Task.updateMany(
     {collaborators: [mongoose.Types.ObjectId(req.params.id)]},
     {collaborators : [mongoose.Types.ObjectId(notAssignedCollabId)]},
