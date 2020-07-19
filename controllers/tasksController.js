@@ -4,8 +4,8 @@ const router = express.Router();
 const unassignedCollab = "ID";
 
 // 1)task INDEX route
-  router.get('/', (req, res) => {
-  db.Task.find({})
+  router.get('/:p_id', (req, res) => {
+  db.Task.find({collaborators: req.session.currentUser._id})
   .populate({path: 'collaborators'})
   .exec((err, allTasks) => {
     if (err) return console.log(err);
@@ -27,7 +27,7 @@ router.get('/new', (req, res) => {
 });
 
 // 4)task SHOW route
-router.get('/:id', (req, res) => {
+router.get('/:p_id/:t_id', (req, res) => {
   db.Collaborator.findOne({'tasks': req.params.id})
     .populate({ path: 'tasks', match: {_id:req.params.id} })
     .exec((err, foundCollab) => {

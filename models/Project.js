@@ -14,11 +14,19 @@ const projectSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    owner: Boolean,
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Collaborator",
+      // required: true,
+    },
   },
   { timestamps: true }
 );
 
 const projectModel = mongoose.model("Project", projectSchema);
+// {name: 'my first project',
+// collaborators: 'melisa',
+// owner: true,}
+// );
 
 module.exports = projectModel;
