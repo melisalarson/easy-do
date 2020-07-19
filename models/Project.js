@@ -20,5 +20,9 @@ const projectSchema = new mongoose.Schema(
 );
 
 const projectModel = mongoose.model("Project", projectSchema);
+// {name: 'my first project',
+// collaborators: 'melisa',
+// owner: true,}
+// );
 
 module.exports = projectModel;

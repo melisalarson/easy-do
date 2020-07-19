@@ -34,10 +34,10 @@ router.post("/register", (req, res) => {
   // Query DB For Existing User By Email
   // If foundUser, Respond with 400
   // If No foundUser, Generate Salt and Hash User Password
-  // Replace newUser Plain Text Password with Hased Password
+  // Replae newUser Plain Text Password with Hased Password
   // Create newUser and Respond with 200
   // Check For Existing User Account
-  db.User.findOne({ email: req.body.email }, (err, foundUser) => {
+  db.Collaborator.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) return console.log(err);
     if (foundUser) return console.log("user already exsists");
 
@@ -54,10 +54,10 @@ router.post("/register", (req, res) => {
           password: hash, //***** IMP!!! never save plain text passwords
         };
 
-        db.User.create(newUser, (err, createdUser) => {
+        db.Collaborator.create(newUser, (err, createdUser) => {
           if (err) return console.log(err);
 
-          res.redirect("/profile");
+          res.render("/projects/new");
         });
       });
     });
@@ -82,7 +82,7 @@ router.post("/login", (req, res) => {
   // If Passwords Match, Create Session and Respond with 200
   // If Passwords Do Not Match, Respond with 400
   // Find User By Email Address
-  db.User.findOne({ email: req.body.email }, (err, foundUser) => {
+  db.Collaborator.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) return console.log(err);
     
     if (!foundUser) {
