@@ -64,12 +64,12 @@ router.post("/register", (req, res) => {
   });
 });
 
-//login create route - MELISA
-router.post('/login', (req, res) => {
-  console.log(req.body);
+// //login create route - MELISA
+// router.post('/login', (req, res) => {
+//   console.log(req.body);
 
-  res.redirect('/users/profile');
-});
+//   res.redirect('/users/profile');
+// });
 
 //login create route - KENNY
 router.post("/login", (req, res) => {
@@ -122,7 +122,7 @@ router.get('/logout', (req, res) => {
   req.session.destroy((err)=> { //session only available on the req side only
     if (err) return console.log(err);
   
-    res.rediredt('/login');
+    res.redirect('/login');
   });
 });
 

@@ -8,7 +8,9 @@ const PORT = process.env.PORT || 4001;
 const collaboratorsCtrl = require('./controllers/collaboratorsController');
 const tasksCtrl = require('./controllers/tasksController');
 const authCtrl = require('./controllers/authController');
-const usersCtrl = require('./controllers/usersController');
+// const usersCtrl = require('./controllers/usersController');
+const projectsCtrl = require("./controllers/projectsController");
+
 
 //view
 app.set('view engine', 'ejs');
@@ -17,21 +19,22 @@ app.set('view engine', 'ejs');
 app.use(express.static(`${__dirname}/public`));
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:false}));
-// app.use(session({
-//   secret: process.env.SESSION_SECRET,
-//   resave: false,  //resave every request
-//   saveUninitialized: false, // track unauthenticated users
-//   cookie: {macAge: 1000*60*60*24*7*2}  //expires in 2 weeks
-// }));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,  //resave every request
+  saveUninitialized: false, // track unauthenticated users
+  cookie: {macAge: 1000*60*60*24*7*2}  //expires in 2 weeks
+}));
 
 //routes
-app.get('/', (req, res) => { res.redirect('/tasks') });
+app.get('/', (req, res) => { res.redirect("/login"); });
 
 app.use('/', authCtrl);  //auth route
-app.use('/profile', usersCtrl);  //users route
+// app.use('/profile', usersCtrl);  //users route
 
 app.use('/collaborators', collaboratorsCtrl);
 app.use('/tasks', tasksCtrl);
+app.use('/projects', projectsCtrl);
 
 app.get('*', (req, res) => {
   res.send(`<h1>404 ERROR <br> PAGE NOT FOUND</h1>`)

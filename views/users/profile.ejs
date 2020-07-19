@@ -22,73 +22,16 @@
       <a id="doc-btn" class="button btn btn-primary">View Doc</a>
     </span>
     <span>
-      <a class="button btn btn-primary" href="../views/auth/login">Login</a>
+      <a class="button btn btn-primary" href="./login">Login</a>
       <a href="../views/auth/login">Login</a>
-      <a class="button btn btn-primary" href="../views/auth/login">Logout</a>
+      <a class="button btn btn-primary" href="./logout">Logout</a>
       <a href="../views/auth/login">Logout</a>
 
     </span>
   </header>
-
-  <!-- <div class="toolbar">
-
-  </div> -->
-  <div class="task-group">
-
-    <!-- To Do -->
-    <div class="task-col to-do">
-      <div class="col-header">
-        <span class="col-name">To Do</span>
-      </div>
-
-      <div class="col-body">
-        <% tasks.forEach(task => { %>
-        <% if(task.stage === 'to-do') { %>
-        <%- include('task-card', {task: task}); %>
-        <% } %>
-        <% }); %>
-      </div>
-
-      <div class="col-footer">
-        <a class="add-task" href="/tasks/new">
-          <i class="fa fa-plus" aria-hidden="true"></i>
-          <span>Add Task</span>
-        </a>
-      </div>
-
-    </div>
-
-    <!-- In Progress -->
-    <div class="task-col in-progress">
-      <div class="col-header">
-        <span class="col-name">In Progress</span>
-      </div>
-
-      <div class="col-body">
-        <% tasks.forEach(task => { %>
-        <% if(task.stage === 'in-progress') { %>
-        <%- include('task-card', {task: task}); %>
-        <% } %>
-        <% }); %>
-      </div>
-    </div>
-
-    <!-- Completed -->
-    <div class="task-col completed">
-      <div class="col-header">
-        <span class="col-name">Completed</span>
-      </div>
-      <div class="col-body">
-        <% tasks.forEach(task => { %>
-        <% if(task.stage === 'completed') { %>
-        <%- include('task-card', {task: task}); %>
-        <% } %>
-        <% }); %>
-      </div>
-    </div>
-  </div>
-
-  <%- include('doc'); %>
+<h3>jimmy will edit this views page
+</h3>
+<%= user.name %>
 
 </body>
 
