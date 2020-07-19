@@ -8,7 +8,9 @@ const PORT = process.env.PORT || 4001;
 const collaboratorsCtrl = require('./controllers/collaboratorsController');
 const tasksCtrl = require('./controllers/tasksController');
 const authCtrl = require('./controllers/authController');
-const usersCtrl = require('./controllers/usersController');
+// const usersCtrl = require('./controllers/usersController');
+const projectsCtrl = require("./controllers/projectsController");
+
 
 //view
 app.set('view engine', 'ejs');
@@ -25,13 +27,14 @@ app.use(session({
 }));
 
 //routes
-app.get('/', (req, res) => { res.redirect('/tasks') });
+app.get('/', (req, res) => { res.redirect("/login"); });
 
 app.use('/', authCtrl);  //auth route
-app.use('/profile', usersCtrl);  //users route
+// app.use('/profile', usersCtrl);  //users route
 
 app.use('/collaborators', collaboratorsCtrl);
 app.use('/tasks', tasksCtrl);
+app.use('/projects', projectsCtrl);
 
 app.get('*', (req, res) => {
   res.send(`<h1>404 ERROR <br> PAGE NOT FOUND</h1>`)

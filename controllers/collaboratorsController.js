@@ -16,6 +16,18 @@ router.get('/', (req, res) => {
     promptString = null;
   });
 });
+// // ?????????? users ??????????
+// router.get('/', (req, res) => {
+//   db.User.findById(
+//     req.session.currentUser._id,
+//     (err, foundUser) => {
+//       if (err) return console.log(err);
+
+//       res.render('users/profile', {user: foundUser})
+//     });
+// });
+
+
 
 // 2)collab NEW route WITH SESSION
 router.get("/new", (req, res) => {
@@ -25,10 +37,10 @@ router.get("/new", (req, res) => {
   if (!req.session.currentUser) {
     res.redirect('/login');
   } else {
-    res.render('/authors/new');
+    res.render('/collaborators/new');
   }
 
-  res.render("/author/new");
+  res.render("/collaborators/new");
 });
 
 // 4)collab SHOW route
