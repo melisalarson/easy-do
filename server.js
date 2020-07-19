@@ -26,10 +26,13 @@ app.use(express.urlencoded({extended:false}));
 
 //routes
 app.get('/', (req, res) => { res.redirect('/tasks') });
+
 app.use('/', authCtrl);  //auth route
 app.use('/profile', usersCtrl);  //users route
+
 app.use('/collaborators', collaboratorsCtrl);
 app.use('/tasks', tasksCtrl);
+
 app.get('*', (req, res) => {
   res.send(`<h1>404 ERROR <br> PAGE NOT FOUND</h1>`)
 });
