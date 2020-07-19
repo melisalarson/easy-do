@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const app = express();
@@ -18,7 +19,7 @@ app.set('view engine', 'ejs');
 //middleware
 app.use(express.static(`${__dirname}/public`));
 app.use(methodOverride('_method'));
-app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,  //resave every request

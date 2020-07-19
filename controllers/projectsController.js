@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
     (err, newProject) => {
       if (err) return console.log(err);
       
-      db.Collaborator.findById(
+      db.Collaborator.findById(  // should this be find many?
         req.body.collaborators,
         (err, foundCollab) => {
           if (err) return console.log(err);
@@ -43,9 +43,8 @@ router.post('/', (req, res) => {
             (err, savedCollab) => {
               if (err) return console.log(err);
               console.log(savedCollab);
-
-              res.redirect("/projects");
             });
+            res.redirect("/tasks");
           });
       });
 });
