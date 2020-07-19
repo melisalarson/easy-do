@@ -57,7 +57,7 @@ router.post("/register", (req, res) => {
         db.User.create(newUser, (err, createdUser) => {
           if (err) return console.log(err);
 
-          res.redirect("/profile");
+          res.redirect("/login");
         });
       });
     });
@@ -65,11 +65,11 @@ router.post("/register", (req, res) => {
 });
 
 //login create route - MELISA
-router.post('/login', (req, res) => {
-  console.log(req.body);
+// router.post('/login', (req, res) => {
+//   console.log(req.body);
 
-  res.redirect('/users/profile');
-});
+//   res.redirect('/users/profile');
+// });
 
 //login create route - KENNY
 router.post("/login", (req, res) => {
@@ -84,7 +84,7 @@ router.post("/login", (req, res) => {
   // Find User By Email Address
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) return console.log(err);
-    
+    console.log(foundUser, req.body.email)
     if (!foundUser) {
       return res.send("No User Found");
     }
@@ -105,6 +105,7 @@ router.post("/login", (req, res) => {
 
         // Create A New Session and Respond 200
         req.session.currentUser = currentUser; //create a session no need to require because its a property on an object... but need to configure in serverjs
+        console.log("TEST", req.session.currentUser, currentUser)
         res.redirect("/profile");
       } else {
         
@@ -115,14 +116,14 @@ router.post("/login", (req, res) => {
   });
 });
 
-//logout form route
+//logout from route
 router.get('/logout', (req, res) => {
   if (!req.session.currentUser) return res.send('you must be logged in to logout')
   
   req.session.destroy((err)=> { //session only available on the req side only
     if (err) return console.log(err);
   
-    res.rediredt('/login');
+    res.redirect('/login');
   });
 });
 

@@ -5,13 +5,12 @@ const db = require('../models');
 //current path = '/profile'
 
 router.get('/', (req, res) => {
-  console.log('**********************',currentUser)
   db.User.findById(
-    req.sessions.currentUser._id,
+    req.session.currentUser._id,
     (err, foundUser) => {
       if (err) return console.log(err);
-
-      res.render('users/profile'), {user: foundUser};
+      console.log("foundUser:",foundUser)
+      res.render('users/profile', {user: foundUser});
     });
 });
 
