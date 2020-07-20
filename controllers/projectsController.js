@@ -7,7 +7,7 @@ const objId = mongoose.Types.ObjectId;
 
 // 1)project INDEX route (with populate)
   router.get('/', (req, res) => {
-  db.Project.find({})
+  db.Project.find({collaborators: req.session.currentUser._id})
   .populate({path: 'collaborators'})
   .exec((err, allProjects) => {
     if (err) return console.log(err);
