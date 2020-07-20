@@ -57,7 +57,7 @@ router.post("/register", (req, res) => {
         db.Collaborator.create(newUser, (err, createdUser) => {
           if (err) return console.log(err);
 
-          res.render("/projects/new");
+          res.redirect("/login");
         });
       });
     });
@@ -84,7 +84,7 @@ router.post("/login", (req, res) => {
   // Find User By Email Address
   db.Collaborator.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) return console.log(err);
-    
+    console.log(foundUser, req.body.email)
     if (!foundUser) {
       return res.send("No User Found");
     }
@@ -105,7 +105,8 @@ router.post("/login", (req, res) => {
 
         // Create A New Session and Respond 200
         req.session.currentUser = currentUser; //create a session no need to require because its a property on an object... but need to configure in serverjs
-        res.redirect("/profile");
+        console.log("TEST", req.session.currentUser, currentUser)
+        res.redirect("/projects");
       } else {
         
         // Respond with 400 If Passwords Do Not Match
@@ -115,7 +116,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-//logout form route
+//logout from route
 router.get('/logout', (req, res) => {
   if (!req.session.currentUser) return res.send('you must be logged in to logout')
   

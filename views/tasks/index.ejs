@@ -14,9 +14,12 @@
   <header>
     <a href="/"><img src="/images/logo.png" alt=""></a>
     <span>
-      <a class="button btn btn-primary" href="/tasks/new">Add Task</a>
-      <a class="button btn btn-primary" href="/collaborators/">Add Collaborator</a>
-      <a id="doc-btn"class="button btn btn-primary">View Doc</a>
+      <a class="button btn btn-primary" href="/tasks/<%= project_id %>/new">Add Task</a>
+      <a class="button btn btn-primary" href="/collaborators/<%= project_id %>/">Add Collaborator</a>
+      <!-- <a id="doc-btn"class="button btn btn-primary">View Doc</a> -->
+      <a class="button btn btn-primary" href="/projects">Projects</a>
+      <a class="button btn btn-primary" href="/profile">Profile</a>
+      <a class="button btn btn-primary" href="/logout">Logout</a>
     </span>
   </header>
 
@@ -34,13 +37,13 @@
       <div class="col-body">
         <% tasks.forEach(task => { %>
           <% if(task.stage === 'to-do') { %>
-            <%- include('task-card', {task: task}); %>
+            <%- include('task-card', {task: task, project_id}); %>
           <% } %>
         <% }); %>
       </div>
 
       <div class="col-footer">
-        <a class="add-task" href="/tasks/new">
+        <a class="add-task" href="/tasks/<%= project_id %>/new">
           <i class="fa fa-plus" aria-hidden="true"></i>
           <span>Add Task</span>
         </a>
@@ -57,7 +60,7 @@
       <div class="col-body">
         <% tasks.forEach(task => { %>
           <% if(task.stage === 'in-progress') { %>
-            <%- include('task-card', {task: task}); %>
+            <%- include('task-card', {task: task, project_id}); %>
           <% } %>
         <% }); %>
       </div>
@@ -71,7 +74,7 @@
       <div class="col-body">
         <% tasks.forEach(task => { %>
           <% if(task.stage === 'completed') { %>
-            <%- include('task-card', {task: task}); %>
+            <%- include('task-card', {task: task, project_id}); %>
           <% } %>
         <% }); %>
       </div>

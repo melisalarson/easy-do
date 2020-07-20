@@ -1,16 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-
+const mongoose = require('mongoose');
+const notAssignedCollabId = mongoose.Types.ObjectId('5f0cd8b9fed32e492a3170c1');
+const objId = mongoose.Types.ObjectId;
 
 // 1)project INDEX route (with populate)
   router.get('/', (req, res) => {
-  db.Project.find({})
+  db.Project.find({collaborators: req.session.currentUser._id})
   .populate({path: 'collaborators'})
   .exec((err, allProjects) => {
     if (err) return console.log(err);
 
-    res.render('projects', { projects: allProjects });
+    res.render('projects/index', { projects: allProjects });
   });
 });
 
@@ -28,25 +30,18 @@ router.get('/new', (req, res) => {
 
 // 3)project CREATE route
 router.post('/', (req, res) => {
+  newProject = req.body;
+  newProject.collaborators = [];
+  newProject.collaborators.push(objId(req.session.currentUser._id));
+  newProject.collaborators.push(notAssignedCollabId);
+  newProject.owner = objId(req.session.currentUser._id);
+  console.log(newProject);
   db.Project.create(
-    req.body,
-    (err, newProject) => {
+    newProject,
+    (err, createdProject) => {
       if (err) return console.log(err);
-      
-      db.Collaborator.findById(  // should this be find many?
-        req.body.collaborators,
-        (err, foundCollab) => {
-          if (err) return console.log(err);
-          
-          foundCollab.projects.push(newProject);
-          foundCollab.save(
-            (err, savedCollab) => {
-              if (err) return console.log(err);
-              console.log(savedCollab);
-            });
-            res.redirect("/tasks");
-          });
-      });
+      res.redirect("/tasks/"+createdProject._id);
+  });
 });
 
 // 5)project EDIT route

@@ -12,14 +12,14 @@
           <h1 class="form-title">Project Collaborators</h1>
           <hr>
           <!-- Cancel Button -->
-          <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+          <a href="/tasks/<%= project_id %>" class="close-btn"><i class="fa fa-times"></i></a>
           
-          <p class="collab-list-label">Current Collaborators</p>
+          <p class="collab-list-label">Current Project Collaborators</p>
           <div class="collab-list">
             <% collabs.forEach(collab => { %>
                 <div class="collab-card">
                     <% if(collab._id.toString() !== "5f0cd8b9fed32e492a3170c1") { %>
-                      <a href="/collaborators/<%= collab._id %>/edit"><span><%= collab.name %></span></a>
+                      <a href="/collaborators/<%= project_id %>/<%= collab._id %>/edit"><span><%= collab.name %></span></a>
                     <% } else { %>
                       <span id="not-assigned"><%= collab.name %></span>
                     <% } %>
@@ -28,14 +28,14 @@
           </div>
 
 
-          <form class="add-collab" action="/collaborators" method="POST">
+          <form class="add-collab" action="/collaborators/<%= project_id %>" method="POST">
             <div class="form-group">
-              <label for="name">Name</label>
-              <input class="form-control" type="text" id="name" name="name" required/>
-            </div>
-            <div class="form-group">
-              <label for="pic_url">Profile Picture (Url)</label>
-              <input class="form-control" type="text" id="pic_url" name="pic_url"/>
+              <label for="collaborators">All Collaborators</label>
+              <select class="form-control" name="collaborators" id="collaborators">
+                <% allCollabs.forEach(collab => { %>
+                    <option value="<%= collab._id %>"><%= collab.name %></option>
+                    <% }); %>
+              </select>
               <button class="btn btn-success add-collab-btn" type="submit">Add Collaborator</button>
             </div>
           </form>
