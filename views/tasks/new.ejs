@@ -11,9 +11,9 @@
         <h1 class="form-title">New Task</h1>
         <hr>
         <!-- Cancel Button -->
-        <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+        <a href="/tasks/<%= project_id %>" class="close-btn"><i class="fa fa-times"></i></a>
         
-        <form action="/tasks" method="POST">
+        <form action="/tasks/<%= project_id %>" method="POST">
           <div class="form-group">
             <label for="name">Task</label>
             <input class="form-control" type="text" id="name" name="name" required/>
@@ -22,8 +22,10 @@
             <label for="collaborators">Collaborator</label>
             <select class="form-control" name="collaborators" id="collaborators">
               <% collabs.forEach(collab => { %>
-                  <option value="<%= collab._id %>"><%= collab.name %></option>
-              <% }); %>
+                  <option value="<%= collab._id %>" <% if(currentUserName === collab.name){ %> selected <% } %>>
+                    <%= collab.name %>
+                  </option>
+                  <% }); %>
             </select>
           </div>
           <div class="form-group">

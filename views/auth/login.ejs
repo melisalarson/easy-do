@@ -1,0 +1,27 @@
+<head>
+  <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+  <script defer src="/app.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/forms.css">
+</head>
+
+<div class="mask">
+  <div class="popup-container">
+
+    <h1 class="form-title">User Login</h1>
+    <hr>
+    <h3 style="color: darkred">Do not use real passwords! We do not have good security yet!</h3>
+    <form class="add-user" action="/login" method="POST">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" />
+        <button class="btn btn-success login-btn" type="submit">Login</button>
+        <a class="btn btn-primary login-btn" href="/register">Register</a>
+      </div>
+    </form>

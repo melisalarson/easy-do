@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+  <script defer src="/app.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/forms.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyDo</title>
+</head>
+
+<body>
+  <header>
+    <a href="/"><img src="/images/logo.png" alt=""></a>
+    <span>
+      <a class="button btn btn-primary" href="/projects">Projects</a>
+    </span>
+    <span>
+      <!-- <a class="button btn btn-primary" href="/login">Login</a> -->
+      <!-- <a href="../views/auth/login">Login</a> -->
+      <a class="button btn btn-primary" href="/logout">Logout</a>
+      <!-- <a href="../views/auth/login">Logout</a> -->
+
+    </span>
+  </header>
+
+  <form class="add-collab" action="/profile/?_method=PUT" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" id="name" name="name" value="<%= user.name %>" required/>
+    </div>
+    <div class="form-group">
+      <label for="pic_url">Profile Picture (Url)</label>
+      <input class="form-control" type="text" id="pic_url" name="pic_url" value="<%= user.pic_url %>"/>
+      <button class="btn btn-primary add-collab-btn" type="submit">Save Changes</button>
+    </div>
+  </form>
+  <label>Email</label>   <%= user.email    %>
+</body>
+
+</html>

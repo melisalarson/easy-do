@@ -12,6 +12,7 @@ const taskSchema = new mongoose.Schema({
   }],
   completionTime: String,
   stage: String,
+  project: mongoose.Schema.Types.ObjectId
 }, {timestamps: true});
 
 const taskModel = mongoose.model('Task', taskSchema);

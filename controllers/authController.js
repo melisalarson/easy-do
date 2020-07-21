@@ -6,12 +6,12 @@ const db = require('../models')
 
 //login form route
 router.get('/login', (req, res) => {
-  res.send('login route');
+  res.render("../views/auth/login");
 });
 
 //register form route
 router.get('/register', (req, res) => {
-  res.send('register route');
+  res.render('../views/auth/register');
 });
 
 // //user/register create route - MELISA
@@ -34,10 +34,10 @@ router.post("/register", (req, res) => {
   // Query DB For Existing User By Email
   // If foundUser, Respond with 400
   // If No foundUser, Generate Salt and Hash User Password
-  // Replace newUser Plain Text Password with Hased Password
+  // Replae newUser Plain Text Password with Hased Password
   // Create newUser and Respond with 200
   // Check For Existing User Account
-  db.User.findOne({ email: req.body.email }, (err, foundUser) => {
+  db.Collaborator.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) return console.log(err);
     if (foundUser) return console.log("user already exsists");
 
@@ -49,13 +49,12 @@ router.post("/register", (req, res) => {
 
         const { name, email, password } = req.body;
         const newUser = {
-          firstName,
-          lastName,
+          name,
           email,
           password: hash, //***** IMP!!! never save plain text passwords
         };
 
-        db.User.create(newUser, (err, createdUser) => {
+        db.Collaborator.create(newUser, (err, createdUser) => {
           if (err) return console.log(err);
 
           res.redirect("/login");
@@ -65,12 +64,12 @@ router.post("/register", (req, res) => {
   });
 });
 
-//login create route - MELISA
-router.post('/login', (req, res) => {
-  console.log(req.body);
+// //login create route - MELISA
+// router.post('/login', (req, res) => {
+//   console.log(req.body);
 
-  res.send('request received');
-});
+//   res.redirect('/users/profile');
+// });
 
 //login create route - KENNY
 router.post("/login", (req, res) => {
@@ -83,9 +82,9 @@ router.post("/login", (req, res) => {
   // If Passwords Match, Create Session and Respond with 200
   // If Passwords Do Not Match, Respond with 400
   // Find User By Email Address
-  db.User.findOne({ email: req.body.email }, (err, foundUser) => {
+  db.Collaborator.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err) return console.log(err);
-    
+    console.log(foundUser, req.body.email)
     if (!foundUser) {
       return res.send("No User Found");
     }
@@ -106,7 +105,8 @@ router.post("/login", (req, res) => {
 
         // Create A New Session and Respond 200
         req.session.currentUser = currentUser; //create a session no need to require because its a property on an object... but need to configure in serverjs
-        res.redirect("/profile");
+        console.log("TEST", req.session.currentUser, currentUser)
+        res.redirect("/projects");
       } else {
         
         // Respond with 400 If Passwords Do Not Match
@@ -116,14 +116,14 @@ router.post("/login", (req, res) => {
   });
 });
 
-//logout form route
+//logout from route
 router.get('/logout', (req, res) => {
   if (!req.session.currentUser) return res.send('you must be logged in to logout')
   
   req.session.destroy((err)=> { //session only available on the req side only
     if (err) return console.log(err);
   
-    res.rediredt('/login');
+    res.redirect('/login');
   });
 });
 
