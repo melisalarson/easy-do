@@ -15,7 +15,7 @@ router.get('/:p_id', (req, res) => {
     if (err) return console.log(err);
     console.log(project);
     
-    db.Collaborator.find({}, (err, allCollabs) => {
+    db.Collaborator.find({_id: {$nin: project.collaborators}}, (err, allCollabs) => {
       if (err) return console.log(err);
       console.log(allCollabs)
       res.render('collaborators', { collabs: project.collaborators, 
