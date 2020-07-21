@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const MONGODB_MJ = ('mongodb://localhost:27017/easy-do-db');
 
-mongoose.connect(/*process.env.*/MONGODB_MJ, {
+mongoose.connect(process.env.MONGODB_MJ, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

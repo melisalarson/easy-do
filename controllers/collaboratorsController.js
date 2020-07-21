@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const mongoose = require('mongoose');
+const objId = mongoose.Types.ObjectId;
 const notAssignedCollabId = '5f0cd8b9fed32e492a3170c1';
 
 let promptString = null;
@@ -121,24 +122,38 @@ router.put('/:p_id/:id', (req, res) => {
 });
 
 // 7)collab DESTROY route
-router.delete('/:p_id/:id', (req, res) => {
+router.delete('/:p_id/:t_id', (req, res) => {
   if (req.params.id !== notAssignedCollabId) { 
-  db.Task.updateMany(
-    {collaborators: [mongoose.Types.ObjectId(req.params.id)]},
-    {collaborators : [mongoose.Types.ObjectId(notAssignedCollabId)]},
-    (err, updatedCollab) => {
+
+    db.Project.findById(req.params.p_id, (err, project) =>{
       if (err) return console.log(err);
+      const index = project.collaborators.indexOf(objId(req.params.t_id))
+      if (index > -1) {
+        project.collaborators.splice(index, 1);
+      }
 
-    db.Collaborator.findByIdAndDelete(
-      req.params.id,
-      (err, deletedCollab) => {
+      project.save((err, savedProject) => {
         if (err) return console.log(err);
-        console.log(deletedCollab);
-
-        // res.send(deletedCollab);
-        // res.redirect('/collaborators');
+        console.log(savedProject);
+        res.redirect('/collaborators/'+req.params.p_id);
       });
-    res.redirect('/collaborators');
+
+  // db.Task.updateMany(
+  //   {collaborators: [mongoose.Types.ObjectId(req.params.id)]},
+  //   {collaborators : [mongoose.Types.ObjectId(notAssignedCollabId)]},
+  //   (err, updatedCollab) => {
+  //     if (err) return console.log(err);
+
+  //   db.Collaborator.findByIdAndDelete(
+  //     req.params.id,
+  //     (err, deletedCollab) => {
+  //       if (err) return console.log(err);
+  //       console.log(deletedCollab);
+
+  //       // res.send(deletedCollab);
+  //       // res.redirect('/collaborators');
+  //     });
+  //   res.redirect('/collaborators');
     });
   } else {
     promptString = `${req.params.name} cannot be deleted`;
