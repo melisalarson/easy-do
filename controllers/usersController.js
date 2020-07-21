@@ -1,11 +1,11 @@
-// const express = require('express');
-// const router = express.Router();
-// const db = require('../models');
+const express = require('express');
+const router = express.Router();
+const db = require('../models');
 
 // //current path = '/profile'
 
 router.get('/', (req, res) => {
-  db.User.findById(
+  db.Collaborator.findById(
     req.session.currentUser._id,
     (err, foundUser) => {
       if (err) return console.log(err);
@@ -14,5 +14,18 @@ router.get('/', (req, res) => {
     });
 });
 
+router.put('/', (req, res) => {
+  db.Collaborator.findByIdAndUpdate(
+    req.session.currentUser._id,
+    req.body,
+    {new: true},
+    (err, collabToUpdate) => {
+      if (err) return console.log(err);
+      
+      res.redirect('/projects');
+  });
+});
 
-// module.exports = router;
+
+
+module.exports = router;

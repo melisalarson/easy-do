@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4001;
 const collaboratorsCtrl = require('./controllers/collaboratorsController');
 const tasksCtrl = require('./controllers/tasksController');
 const authCtrl = require('./controllers/authController');
-// const usersCtrl = require('./controllers/usersController');
+const usersCtrl = require('./controllers/usersController');
 const projectsCtrl = require("./controllers/projectsController");
 
 
@@ -26,12 +26,19 @@ app.use(session({
   saveUninitialized: false, // track unauthenticated users
   cookie: {macAge: 1000*60*60*24*7*2}  //expires in 2 weeks
 }));
+app.use(function(req, res, next) {
+  if (req.path !== "/login" && req.path !== "/register" && req.session.currentUser == null){
+      res.redirect('/login');
+  }   else{
+      next();
+  }
+});
 
 //routes
 app.get('/', (req, res) => { res.redirect("/login"); });
 
 app.use('/', authCtrl);  //auth route
-// app.use('/profile', usersCtrl);  //users route
+app.use('/profile', usersCtrl);  //users route
 
 app.use('/collaborators', collaboratorsCtrl);
 app.use('/tasks', tasksCtrl);
