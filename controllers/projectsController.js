@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
     newProject,
     (err, createdProject) => {
       if (err) return console.log(err);
-      res.redirect("/tasks/"+createdProject._id);
+      res.redirect("/projects");
   });
 });
 

@@ -13,8 +13,11 @@ const debug = true;
   .populate({path: 'collaborators',})
   .exec((err, allTasks) => {
     if (err) return console.log(err);
-
-    res.render('tasks', { tasks: allTasks, project_id: req.params.p_id});
+    db.Project.findById(req.params.p_id, (err, project) => {
+        if (err) return console.log(err);
+        console.log(project);
+  
+        res.render('tasks', { tasks: allTasks, project_id: req.params.p_id, project_name: project.name})      });;
   });
 });
 

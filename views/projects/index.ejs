@@ -12,7 +12,7 @@
           <h1 class="form-title">Projects</h1>
           <hr>
           <!-- Cancel Button -->
-          <a href="/login" class="close-btn"><i class="fa fa-times"></i></a>
+          <a href="/logout" class="close-btn"><i class="fa fa-times"></i></a>
           
           <p class="collab-list-label">Current Projects</p>
           <div class="collab-list">
@@ -30,14 +30,14 @@
 
           <form class="add-collab" action="/projects" method="POST">
             <div class="form-group">
-              <label for="name">Name</label>
+              <label for="name">Name Your Project</label>
               <input class="form-control" type="text" id="name" name="name" required/>
               <button class="btn btn-success add-collab-btn" type="submit">Add Project</button>
             </div>
           </form>
   
           <!-- <button class="btn btn-primary submit-btn">Finished</button> -->
-          <a href="/tasks/" class="btn btn-primary submit-btn">Finished</a>
+          <a href="/logout" class="btn btn-primary submit-btn">Log out</a>
 
       </div>
   </div>
