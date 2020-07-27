@@ -10,18 +10,19 @@
 <div class="mask">
   <div class="popup-container">
 
-    <h1 class="form-title">User Login</h1>
+    <h1 class="form-title">Welcome to Easy-Do!</h1>
     <hr>
-    <h3 style="color: darkred">Do not use real passwords! We do not have good security yet!</h3>
+    <h3 class="warning">Do not use real passwords! We do not have good security yet!</h3>
     <form class="add-user" action="/login" method="POST">
       <div class="form-group">
-        <label for="email">Email</label>
-        <input class="form-control" type="email" name="email" required />
+        <!-- <label for="email">Email</label> -->
+        <input class="form-control" type="email" placeholder="Enter your email address" name="email" required />
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" type="password" name="password" />
+        <!-- <label for="password">Password</label> -->
+        <input class="form-control" type="password" placeholder="Enter your password" name="password" />
+      </div>
         <button class="btn btn-success login-btn" type="submit">Login</button>
         <a class="btn btn-primary login-btn" href="/register">Register</a>
-      </div>
+      
     </form>
