@@ -10,13 +10,14 @@
 .popup-container {
   width: 500px;
   height: 500px;
-  background-color: white;
+  background-color: #F1F1F1;
   border-radius: 20px;
   position: relative;
 }
 
 .form-title {
-  margin: 10px;
+  text-align: center;
+  margin: 10px 0 0 0;
 }
 
 form {
@@ -27,6 +28,16 @@ form {
   flex-direction: column;
   justify-content: space-evenly;
 }
+
+.add-user {
+    /* margin-left: 20px;
+    margin-top: -5px;
+    height: 60%;
+    flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+  }
+
 form.add-collab {
   display: block;
   margin-top: 20px;
@@ -54,9 +65,20 @@ input:focus {
 }
 
 .form-control {
-  padding: 0px;
+  /* padding: 10px; */
   width: 200px;
   height: 25px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  width: 200px;
+}
+
+.btn-primary {
+  margin: 10px 0 0 0;
+  background-color: #007bff;
+  width: 200px;
 }
 
 .submit-btn {
@@ -66,9 +88,6 @@ input:focus {
   bottom: 30px;
   left: 165px;
 }
-
-
-
 
 .close-btn {
   text-decoration: none;
@@ -113,14 +132,17 @@ input:focus {
   /* display: flex;
   align-items: center; */
 }
+
 .collab-card span {
   display: inline-block;
   width: 100px;  
 }
+
 .collab-card span {
   color: initial;
   text-decoration: none;
 }
+
 .collab-card span:hover {
   text-decoration: underline;
   color: blue;
@@ -137,6 +159,7 @@ input:focus {
 .collab-card:hover .menu-btn {
   display: inline;
 }
+
 .edit-btn:hover {
   color: blue;
   border: none;
@@ -153,10 +176,10 @@ input:focus {
 
 .add-collab-btn {
   display: inline;
-  margin-top: -63px;
+  /* margin-top: -63px; */
   margin-left: 30px;
-  height: 75px;
-  width: 100px;
+  /* height: 75px; */
+  /* width: 100px; */
 }
 
 .delete-collab-btn {
@@ -266,7 +289,7 @@ iframe {
 
 /* melisa additions */
 .register-btn .login-bt {
-  width: 150px;
+  /* width: 150px; */
   display: block;
   position: absolute;
   bottom: 30px;
