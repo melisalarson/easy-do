@@ -108,6 +108,7 @@ input:focus {
   top: 100px;
   font-size: 30px;
 }
+
 .delete-btn:hover {
   color: red;
   animation: shake 0.5s;
@@ -119,14 +120,17 @@ input:focus {
   margin: 0;
   padding: 0 0 0 10px;
 }
+
 .collab-list {
+  background-color: #fffdfd;
   border: 1px solid black;
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 10px;
   padding: 5px 0 5px 0;
-  height: 125px;
+  /* height: 125px; */
 }
+
 .collab-card {
   padding-left: 10px;
   /* display: flex;
@@ -148,6 +152,7 @@ input:focus {
   color: blue;
   cursor: pointer;
 }
+
 .collab-card .menu-btn {
   border: none;
   background: none;
@@ -215,6 +220,7 @@ input:focus {
   display: none;
   cursor: pointer;
 }
+
 .alert-mask.show {
   display: flex;
 }
@@ -229,18 +235,22 @@ input:focus {
   height: 140px;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.26);
 }
+
 .prompt h4 {
   margin: 5px;
 }
+
 .prompt-buttons {
   margin-top: 15px;
   display: flex;
   justify-content: center;
 }
+
 .prompt-cancel-btn {
   margin-top: -5px;
   margin-left: 10px;
 }
+
 .index-cancel-btn {
   margin-top: 15px;
   height: 20%;
@@ -263,18 +273,18 @@ input:focus {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-
-
 .doc-mask {
   position: absolute;
   top: 0;
   display: none;
   cursor: pointer;
 }
+
 .doc-mask.show {
   display: flex;
   align-items: top;
 }
+
 .doc-container {
   min-width: 760px;
   margin-top: 55px;

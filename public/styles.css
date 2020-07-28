@@ -82,6 +82,7 @@ a.button {
 .task-col {
     /* text-align: center; */
     min-width: 300px;
+    width: 25%;
     max-width: 400px;
     height: 500px;
     margin-left: 10px;
@@ -293,3 +294,9 @@ a.button {
     height: 5px;
     background-color: rgba(0,0,0,0);
   }
+
+  @media only screen and (max-width: 641px) {
+	header {
+        display: block;
+	}
+}
