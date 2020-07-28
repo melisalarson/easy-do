@@ -13,22 +13,29 @@
 <body>
   <header>
     <a href="/"><img src="/images/logo.png" alt=""></a>
-    <span>
-      <a class="button btn btn-primary" href="/tasks/<%= project_id %>/new">Add Task</a>
-      <a class="button btn btn-primary" href="/collaborators/<%= project_id %>/">Collaborators</a>
+    <nav>
+      <!-- <a href="#">Add Task</a> -->
+      <a href="/collaborators/<%= project_id %>/">Collaborators</a>
+      <a href="#">Projects</a>
+      <a href="#">Profile</a>
+      <a href="#">Feedback</a>
+      <a href="#">Logout</a>
+    </nav>
+
+      <!-- <a class="button btn btn-primary" href="/tasks/<%= project_id %>/new">Add Task</a>
+      <a class="button btn btn-primary" href="/collaborators/<%= project_id %>/">Collaborators</a> -->
       <!-- <a id="doc-btn"class="button btn btn-primary">View Doc</a> -->
-      <a class="button btn btn-primary" href="/projects">Projects</a>
+      <!-- <a class="button btn btn-primary" href="/projects">Projects</a>
       <a class="button btn btn-primary" href="/profile">Profile</a>
       <a class="button btn btn-primary" href="https://github.com/melisalarson/easy-do/issues" target="_blank">Feedback</a>
-      <a class="button btn btn-primary" href="/logout">Logout</a>
-    </span>
+      <a class="button btn btn-primary" href="/logout">Logout</a> -->
   </header>
 
   <!-- <div class="toolbar">
 
   </div> -->
 
-  <h3 style="margin-top: -30px"><%= project_name %></h3>
+  <!-- <h3 style="margin-top: -30px"><%= project_name %></h3> -->
 
   <div class="task-group">
 
@@ -86,6 +93,10 @@
   </div>
 
   <%- include('doc'); %>
-
+<footer>
+    <a href="#">All Projects</a>
+    <a href="#">Feedback</a>
+    <a href="#">Logout</a>
+</footer>
 </body>
 </html>

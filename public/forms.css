@@ -287,6 +287,10 @@ iframe {
   overflow-x: auto;
 }
 
+.currentProjectLinks {
+  color: black;
+}
+
 /* melisa additions */
 .register-btn .login-bt {
   /* width: 150px; */

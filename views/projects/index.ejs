@@ -19,7 +19,7 @@
             <% projects.forEach(project => { %>
                 <div class="project-card">
                     <% if(project._id.toString() !== "5f0cd8b9fed32e492a3170c1") { %>
-                      <a href="/tasks/<%= project._id %>"><span><%= project.name %></span></a>
+                      <a href="/tasks/<%= project._id %>"><span class="currentProjectLinks"><%= project.name %></span></a>
                     <% } else { %>
                       <span id="not-assigned"><%= project.name %></span>
                     <% } %>

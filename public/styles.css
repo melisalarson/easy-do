@@ -19,8 +19,8 @@ header {
     width: 100%;
     margin-bottom: 30px;
     background-color: rgba(0,255,0,0.1);
-    border-bottom: 2px solid;
     display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -33,6 +33,24 @@ header span {
     margin-left: 40px;
     display: flex;
     justify-content: space-evenly;
+}
+
+nav {
+    justify-content: end;
+
+}
+
+nav a {
+    color: #212527;
+    padding: 10px;
+    /* text-transform: uppercase; */
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #000;
+    background-color: cornsilk;
+    opacity: .5;
 }
 
 .warning {
@@ -223,14 +241,13 @@ a.button {
     text-decoration: none;
     color: initial;
     display: block;
-
-
     margin-left: 5px;
     padding-left: 5px;
     margin-top: 5px;
     width: 80%;
     border-radius: 10px;
 }
+
 .add-task:hover {
     cursor: pointer;
     border: 1px solid blue;
