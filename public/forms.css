@@ -21,7 +21,7 @@
 }
 
 form {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   margin-top: -5px;
   height: 60%;
   display: flex;
@@ -38,10 +38,10 @@ form {
     align-items: center;
   }
 
-form.add-collab {
+/* form.add-collab {
   display: block;
   margin-top: 20px;
-}
+} */
     
 label {
 line-height: 100%;
