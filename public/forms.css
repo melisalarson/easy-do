@@ -21,9 +21,9 @@
 }
 
 form {
-  /* margin-left: 20px; */
+  margin-left: 20px;
   margin-top: -5px;
-  height: 60%;
+  /* height: 60%; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -66,6 +66,7 @@ input:focus {
 
 .form-control {
   /* padding: 10px; */
+  margin-left: 10px;
   width: 200px;
   height: 25px;
 }
@@ -115,20 +116,35 @@ input:focus {
   animation-iteration-count: infinite;
 }
 
-.collab-list-label {
-  font-weight: bold;
-  margin: 0;
-  padding: 0 0 0 10px;
-}
-
 .collab-list {
   background-color: #fffdfd;
   border: 1px solid black;
   overflow-y: auto;
   overflow-x: hidden;
-  margin: 0 10px;
-  padding: 5px 0 5px 0;
-  /* height: 125px; */
+  margin: 10px;
+  padding: 5px;
+  height: 125px;
+}
+
+.collab-list-label {
+  font-weight: bold;
+  /* margin: 0; */
+  padding: 0 0 0 10px;
+}
+
+.project-list {
+  background-color: #fffdfd;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 10px;
+  padding: 5px;
+}
+
+.project-list-label {
+  margin: 5px;
+  padding: 10px;
 }
 
 .collab-card {
@@ -183,7 +199,27 @@ input:focus {
   display: inline;
   /* margin-top: -63px; */
   margin-left: 30px;
-  /* height: 75px; */
+  /* height: 25px; */
+  /* width: 100px; */
+}
+
+.add-project {
+  margin: 0em;
+}
+
+.add-project label {
+  display: block;
+}
+
+.add-project .form-control {
+  display: inline;
+}
+
+.add-project-btn {
+  display: inline;
+  /* margin-top: -63px; */
+  margin-left: 30px;
+  /* height: 25px; */
   /* width: 100px; */
 }
 
@@ -298,7 +334,8 @@ iframe {
 }
 
 .currentProjectLinks {
-  color: black;
+  padding: 5px;
+  /* margin: 5px; */
 }
 
 /* melisa additions */

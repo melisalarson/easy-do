@@ -9,26 +9,26 @@
 <div class="mask">
     <div class="popup-container">
 
-        <h1 class="form-title">Edit Task</h1>
+        <h1 class="form-title">Edit Project</h1>
         <hr>
         <!-- Cancel Button -->
-        <a href="/projects/<%= project_id %>" class="close-btn"><i class="fa fa-times"></i></a>
+        <a href="/projects/" class="close-btn"><i class="fa fa-times"></i></a>
 
         <!-- Delete Button -->
-            <button class="delete-btn">
-              <i class="fa fa-trash"></i></button>
+            <button class="delete-btn"><i class="fa fa-trash"></i></button>
 
-        <form action="/tasks/<%= task %>/<%= task._id %>?_method=PUT" method="POST">
+        <form action="/projects/<%= project._id %>?_method=PUT" method="POST">
           <div class="form-group">
-            <label for="name">Task</label>
-            <input class="form-control" type="text" id="name" name="name" value="<%= task.name %>" required/>
+            <label class="edit-project-label" for="name">Name</label>
+            <input class="form-control" type="text" id="name" 
+                   name="name" value="<%= project.name %>" required/>
           </div>
 
           <div class="form-group">
-            <label for="collaborator">Collaborator</label>
+            <label for="collaborator">Collaborator(s)</label>
             <select class="form-control" name="collaborators" id="collaborator">
               <% collabs.forEach(collab => { %>
-                <option value="<%= collab._id %>" <% if(task.collaborators[0].name === collab.name){ %> selected <% } %>>
+                <option value="<%= collab._id %>" <% if(project.collaborators[0].name === collab.name){ %> selected <% } %>>
                   <%= collab.name %>
                 </option>
             <% }); %>
@@ -38,35 +38,35 @@
           <div class="form-group">
             <label for="completionTime">Completion Time</label>
             <input type="text" id="completionTime" class="form-control"
-                   name="completionTime" value="<%= task.completionTime %>"/>
+                   name="completionTime" value="<%= project.completionTime %>"/>
           </div>
 
           <div class="form-group">
             <label for="stage">Stage</label>
             <select class="form-control" name="stage" id="stage">
-                <option value="to-do" <% if(task.stage === "to-do"){ %> selected <% } %> >
+                <option value="to-do" <% if(project.stage === "to-do"){ %> selected <% } %> >
                     To Do
                 </option>
-                <option value="in-progress" <% if(task.stage === "in-progress"){ %> selected <% } %> >
+                <option value="in-progress" <% if(project.stage === "in-progress"){ %> selected <% } %> >
                     In Progress
                 </option>
-                <option value="completed" <% if(task.stage === "completed"){ %> selected <% } %> >
+                <option value="completed" <% if(project.stage === "completed"){ %> selected <% } %> >
                     Completed
                 </option>
             </select>
           </div>
 
-          <button class="btn btn-primary submit-btn" type="submit">Update Task</button>
+          <button class="btn btn-primary submit-btn" type="submit">Update Project</button>
         </form>
     </div>
 </div>    
 
 <div class="mask prompt-mask">
   <div class="prompt">
-    <h4>Are you sure you want to delete "<%= task.name %>"?</h4>
+    <h4>Are you sure you want to delete "<%= project.name %>"?</h4>
     <div class="prompt-buttons">
       
-      <form style="display: inline;" action="/tasks/<%= project_id %>/<%= task._id %>?_method=DELETE" method="POST">
+      <form style="display: inline;" action="/projects/<%= project._id %>?_method=DELETE" method="POST">
           <button class="btn btn-danger">Yes</button>        </form>
       <button class="btn btn-primary prompt-cancel-btn">Cancel</button>
     </div>

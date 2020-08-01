@@ -44,6 +44,8 @@ app.use('/collaborators', collaboratorsCtrl);
 app.use('/tasks', tasksCtrl);
 app.use('/projects', projectsCtrl);
 
+app.get('/tasks/:index/edit', )
+                
 app.get('*', (req, res) => {
   res.send(`<h1>404 ERROR <br> PAGE NOT FOUND</h1>`)
 });
