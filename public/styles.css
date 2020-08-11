@@ -1,3 +1,4 @@
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,6 +8,7 @@
 
 
 body {
+    font-size: 16px;
     background: #00F260;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */           
@@ -16,21 +18,57 @@ body {
 
 header {
     width: 100%;
-    margin-bottom: 30px;
+    margin: 1em;
     background-color: rgba(0,255,0,0.1);
-    border-bottom: 2px solid;
     display: flex;
+    justify-content: space-around;
     align-items: center;
 }
+
 header h2 {
     display: inline;
 }
+
 header span {
-    width:50%;
+    width: 50%;
     margin-left: 40px;
     display: flex;
     justify-content: space-evenly;
 }
+
+nav {
+    justify-content: end;
+
+}
+
+nav a {
+    color: #212527;
+    padding: 10px;
+    /* text-transform: uppercase; */
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #000;
+    background-color: cornsilk;
+    opacity: .5;
+}
+
+.warning {
+    background-color: darkred; 
+    color: #f1f1f1; 
+    text-align: center;
+}
+
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/* .project-card:hover {
+    background-color: rgb(201, 201, 201);
+} */
 
 a.button {
 
@@ -44,41 +82,49 @@ a.button {
 }
 
 .task-group {
+    margin: 6em auto;
     display: flex;
+    justify-content: center;
     flex-wrap: nowrap;
     overflow-y: hidden;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .task-col {
     /* text-align: center; */
     min-width: 300px;
+    width: 25%;
     max-width: 400px;
     height: 500px;
     margin-left: 10px;
     margin-right: 20px;
     padding-right: 3px;
     border-radius: 10px;
-    background-color: rgba(211, 211, 211,1);
+    background-color: rgba(211, 211, 211);
     box-shadow: inset 0 0 3px #000000;
 }
+
 .col-header {
     width: 100%;
-    border-bottom: 1px solid gray;
-    margin-bottom: 10px;
-    padding: 5px 0 5px 0; 
+    text-align: center;
+    /* border-bottom: 1px solid gray; */
+    /* margin-bottom: 10px; */
+    padding: 5px;
 }
+
 .col-name {
     padding-left: 10px;
-    /* font-size: 1.1em; */
-    font-weight: 500;
+    font-size: 2em;
+    font-weight: 700;
 }
+
 .col-body {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 84%;
+    /* height: 84%; */
 }
+
 .col-footer {
     height: 100px;
 }
@@ -94,9 +140,11 @@ a.button {
     box-shadow: 0 6px 6px -6px black;
     overflow: hidden;
 }
+
 .task-name {
     overflow: auto;
 }
+
 .task-card .options {
     position: absolute;
     right: 0;
@@ -114,16 +162,19 @@ a.button {
     transition: width 0.5s ease;
     /* background-color: red; */
 }
+
 .task-card:hover .options {
     width: 45px;
     /* opacity: 1; */
     /* background-color: green; */
 }
+
 .options a {
     text-decoration: none;
     color: initial;
     width: 100%;
 }
+
 .options i {
     width: 100%;
     text-align: center;
@@ -131,6 +182,7 @@ a.button {
     cursor: pointer;
     transition: font-size 0.1s ease-in-out;
 }
+
 .options i:hover {
     font-size: 1.3em;
 }
@@ -140,6 +192,7 @@ a.button {
     animation: scribble 0.5s;
     animation-iteration-count: infinite;
 }
+
 @keyframes scribble { 
     0% { transform: skewX(9deg); } 
     10% { transform: skewX(-8deg); } 
@@ -158,10 +211,12 @@ a.button {
     text-align: center;
     padding-left: 3px;
 }
+
 .task-stats img {
     width: 25px;
     border-radius: 100px;
 }
+
 .task-stats span {
     font-size: .8em;
     display: block;
@@ -169,9 +224,10 @@ a.button {
     overflow: hidden;
     padding-right: 3px;
 }
-.fa-chevron-left, .fa-chevron-right {
+/* .fa-chevron-left, .fa-chevron-right {
     padding: 5px 0 5px 0;
-}
+} */
+
 .fa-chevron-left:hover {
     animation-name: slide-left;
     animation-duration: 2s;
@@ -179,11 +235,13 @@ a.button {
     animation-iteration-count: infinite;
     /* animation-direction: alternate; */
 }
+
 @keyframes slide-left { 
     0% { transform: translate(0px); } 
     50% { transform: translate(-15px); } 
     100% { transform: translate(0px); } 
  }
+
  .to-do i.fa-chevron-left {
     color: gray;
     cursor: auto;
@@ -198,12 +256,14 @@ a.button {
     animation-iteration-count: infinite;
     /* animation-direction: alternate; */
 }
+
 @keyframes slide-right { 
     0% { transform: translate(0px); } 
     50% { transform: translate(15px); } 
     100% { transform: translate(0px); } 
  }
-.completed i.fa-chevron-right {
+
+ .completed i.fa-chevron-right {
     color: gray;
     cursor: auto;
     animation: none;
@@ -214,14 +274,13 @@ a.button {
     text-decoration: none;
     color: initial;
     display: block;
-
-
     margin-left: 5px;
     padding-left: 5px;
     margin-top: 5px;
     width: 80%;
     border-radius: 10px;
 }
+
 .add-task:hover {
     cursor: pointer;
     border: 1px solid blue;
@@ -234,7 +293,9 @@ a.button {
     opacity: .7;
 }
 
-
+/* .edit-project-label {
+    padding-left: 10px;
+} */
 
 
 /* Custom scrollbar: https://css-tricks.com/the-current-state-of-styling-scrollbars/ */
@@ -266,3 +327,9 @@ a.button {
     height: 5px;
     background-color: rgba(0,0,0,0);
   }
+
+  @media only screen and (max-width: 641px) {
+	header {
+        display: block;
+	}
+}

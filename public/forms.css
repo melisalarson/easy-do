@@ -10,27 +10,39 @@
 .popup-container {
   width: 500px;
   height: 500px;
-  background-color: white;
+  background-color: #F1F1F1;
   border-radius: 20px;
   position: relative;
 }
 
 .form-title {
-  margin: 10px;
+  text-align: center;
+  margin: 10px 0 0 0;
 }
 
 form {
   margin-left: 20px;
   margin-top: -5px;
-  height: 60%;
+  /* height: 60%; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-form.add-collab {
+
+.add-user {
+    /* margin-left: 20px;
+    margin-top: -5px;
+    height: 60%;
+    flex-direction: column; */
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* form.add-collab {
   display: block;
   margin-top: 20px;
-}
+} */
     
 label {
 line-height: 100%;
@@ -54,9 +66,21 @@ input:focus {
 }
 
 .form-control {
-  padding: 0px;
+  /* padding: 10px; */
+  margin-left: 10px;
   width: 200px;
   height: 25px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  width: 200px;
+}
+
+.btn-primary {
+  margin: 10px 0 0 0;
+  background-color: #007bff;
+  width: 200px;
 }
 
 .submit-btn {
@@ -66,9 +90,6 @@ input:focus {
   bottom: 30px;
   left: 165px;
 }
-
-
-
 
 .close-btn {
   text-decoration: none;
@@ -89,43 +110,67 @@ input:focus {
   top: 100px;
   font-size: 30px;
 }
+
 .delete-btn:hover {
   color: red;
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
 
-.collab-list-label {
-  font-weight: bold;
-  margin: 0;
-  padding: 0 0 0 10px;
-}
 .collab-list {
+  background-color: #fffdfd;
   border: 1px solid black;
   overflow-y: auto;
   overflow-x: hidden;
-  margin: 0 10px;
-  padding: 5px 0 5px 0;
+  margin: 10px;
+  padding: 5px;
   height: 125px;
 }
+
+.collab-list-label {
+  font-weight: bold;
+  /* margin: 0; */
+  padding: 0 0 0 10px;
+}
+
+.project-list {
+  background-color: #fffdfd;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 10px;
+  padding: 5px;
+  height: 102px;
+}
+
+.project-list-label {
+  margin: 5px;
+  padding: 10px;
+}
+
 .collab-card {
   padding-left: 10px;
   /* display: flex;
   align-items: center; */
 }
+
 .collab-card span {
   display: inline-block;
   width: 100px;  
 }
+
 .collab-card span {
   color: initial;
   text-decoration: none;
 }
+
 .collab-card span:hover {
   text-decoration: underline;
   color: blue;
   cursor: pointer;
 }
+
 .collab-card .menu-btn {
   border: none;
   background: none;
@@ -137,6 +182,7 @@ input:focus {
 .collab-card:hover .menu-btn {
   display: inline;
 }
+
 .edit-btn:hover {
   color: blue;
   border: none;
@@ -153,10 +199,30 @@ input:focus {
 
 .add-collab-btn {
   display: inline;
-  margin-top: -63px;
+  /* margin-top: -63px; */
   margin-left: 30px;
-  height: 75px;
-  width: 100px;
+  /* height: 25px; */
+  /* width: 100px; */
+}
+
+.add-project {
+  margin: 0em;
+}
+
+.add-project label {
+  display: block;
+}
+
+.add-project .form-control {
+  display: inline;
+}
+
+.add-project-btn {
+  display: inline;
+  /* margin-top: -63px; */
+  margin-left: 30px;
+  /* height: 25px; */
+  /* width: 100px; */
 }
 
 .delete-collab-btn {
@@ -192,6 +258,7 @@ input:focus {
   display: none;
   cursor: pointer;
 }
+
 .alert-mask.show {
   display: flex;
 }
@@ -206,18 +273,22 @@ input:focus {
   height: 140px;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.26);
 }
+
 .prompt h4 {
   margin: 5px;
 }
+
 .prompt-buttons {
   margin-top: 15px;
   display: flex;
   justify-content: center;
 }
+
 .prompt-cancel-btn {
   margin-top: -5px;
   margin-left: 10px;
 }
+
 .index-cancel-btn {
   margin-top: 15px;
   height: 20%;
@@ -240,18 +311,18 @@ input:focus {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-
-
 .doc-mask {
   position: absolute;
   top: 0;
   display: none;
   cursor: pointer;
 }
+
 .doc-mask.show {
   display: flex;
   align-items: top;
 }
+
 .doc-container {
   min-width: 760px;
   margin-top: 55px;
@@ -264,9 +335,14 @@ iframe {
   overflow-x: auto;
 }
 
+.currentProjectLinks {
+  padding: 5px;
+  /* margin: 5px; */
+}
+
 /* melisa additions */
 .register-btn .login-bt {
-  width: 150px;
+  /* width: 150px; */
   display: block;
   position: absolute;
   bottom: 30px;

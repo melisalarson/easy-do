@@ -12,22 +12,24 @@
 
     <h1 class="form-title">Register User</h1>
     <hr>
-    <h3 style="color: darkred">Do not use real passwords! We do not have good security yet!</h3>
+    <h3 class="warning">Do not use real passwords! We do not have good security yet!</h3>
 
 <form class="add-user" action="/register" method="POST">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input class="form-control" type="text" id="name" name="name" required />
-  </div>
+    <a href="/tasks/" class="close-btn"><i class="fa fa-times"></i></a>
+
+    <!-- <label for="name">Name</label> -->
+    <!-- <input class="form-control" type="text" placeholder="Name" id="name" name="name" required /> -->
   <div class="form-group">
     <label for="email">Email</label>
-    <input class="form-control" type="email" name="email" required />
+    <input class="form-control" type="email" placeholder="Email" name="email" required />
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input class="form-control" type="password" name="password" />
-    <button class="btn btn-success register-btn" type="submit">Register</button>
-    <a class="btn btn-primary register-btn" href="/login">Cancel</a>
+    <input class="form-control" type="password" placeholder="Password" name="password" />
   </div>
+    <button class="btn btn-success register-btn" type="submit">Register</button>
+    <a class="btn btn-primary login-btn" href="/login">Cancel</a>
+    <!-- <a class="btn btn-primary register-btn" href="/login">Cancel</a> -->
+  
 </form>
 

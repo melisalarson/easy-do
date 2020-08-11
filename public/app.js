@@ -29,7 +29,7 @@ if(findElement('.delete-collab-btn') !== null) {
 }
 if(findElement('.delete-btn') !== null) {
     console.log("test");
-    findElement('.delete-btn').addEventListener('click', () =>{
+    findElement('.delete-btn').addEventListener('click', () => {
         findElement('.prompt-mask').classList.add('show');   
     })
 }

@@ -21,7 +21,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'meow',
   resave: false,  //resave every request
   saveUninitialized: false, // track unauthenticated users
   cookie: {macAge: 1000*60*60*24*7*2}  //expires in 2 weeks
@@ -44,6 +44,8 @@ app.use('/collaborators', collaboratorsCtrl);
 app.use('/tasks', tasksCtrl);
 app.use('/projects', projectsCtrl);
 
+app.get('/tasks/:index/edit', )
+                
 app.get('*', (req, res) => {
   res.send(`<h1>404 ERROR <br> PAGE NOT FOUND</h1>`)
 });

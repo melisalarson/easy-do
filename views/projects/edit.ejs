@@ -1,0 +1,42 @@
+<head>
+    <script defer src="https://use.fontawesome.com/968ba4c321.js"></script>
+    <script defer src="/app.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/forms.css">
+</head>
+
+<div class="mask">
+    <div class="popup-container">
+
+        <h1 class="form-title">Edit Project</h1>
+        <hr>
+        <!-- Cancel Button -->
+        <a href="/projects/" class="close-btn"><i class="fa fa-times"></i></a>
+
+        <!-- Delete Button -->
+            <button class="delete-btn"><i class="fa fa-trash"></i></button>
+
+        <form action="/projects/<%= project._id %>?_method=PUT" method="POST">
+          <div class="form-group">
+            <label class="edit-project-label" for="name">Name</label>
+            <input class="form-control" type="text" id="name" 
+                   name="name" value="<%= project.name %>" required/>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Update Project</button>
+        </form>
+    </div>
+</div>    
+
+<div class="mask prompt-mask">
+  <div class="prompt">
+    <h4>Are you sure you want to delete "<%= project.name %>"?</h4>
+    <div class="prompt-buttons">
+      
+      <form style="display: inline;" action="/projects/<%= project._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">Yes</button>        </form>
+      <button class="btn btn-primary prompt-cancel-btn">Cancel</button>
+    </div>
+  </div>
+</div>
