@@ -12,13 +12,13 @@
         <h1 class="form-title">Edit Task</h1>
         <hr>
         <!-- Cancel Button -->
-        <a href="/projects/<%= project_id %>" class="close-btn"><i class="fa fa-times"></i></a>
+        <a href="/tasks/<%= project_id %>" class="close-btn"><i class="fa fa-times"></i></a>
 
         <!-- Delete Button -->
             <button class="delete-btn">
               <i class="fa fa-trash"></i></button>
 
-        <form action="/tasks/<%= task %>/<%= task._id %>?_method=PUT" method="POST">
+        <form action="/tasks/<%= project_id %>/<%= task._id %>?_method=PUT" method="POST">
           <div class="form-group">
             <label for="name">Task</label>
             <input class="form-control" type="text" id="name" name="name" value="<%= task.name %>" required/>
@@ -31,7 +31,7 @@
                 <option value="<%= collab._id %>" <% if(task.collaborators[0].name === collab.name){ %> selected <% } %>>
                   <%= collab.name %>
                 </option>
-            <% }); %>
+              <% }); %>
             </select>
           </div>
 

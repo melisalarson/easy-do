@@ -24,38 +24,6 @@
                    name="name" value="<%= project.name %>" required/>
           </div>
 
-          <div class="form-group">
-            <label for="collaborator">Collaborator(s)</label>
-            <select class="form-control" name="collaborators" id="collaborator">
-              <% collabs.forEach(collab => { %>
-                <option value="<%= collab._id %>" <% if(project.collaborators[0].name === collab.name){ %> selected <% } %>>
-                  <%= collab.name %>
-                </option>
-            <% }); %>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="completionTime">Completion Time</label>
-            <input type="text" id="completionTime" class="form-control"
-                   name="completionTime" value="<%= project.completionTime %>"/>
-          </div>
-
-          <div class="form-group">
-            <label for="stage">Stage</label>
-            <select class="form-control" name="stage" id="stage">
-                <option value="to-do" <% if(project.stage === "to-do"){ %> selected <% } %> >
-                    To Do
-                </option>
-                <option value="in-progress" <% if(project.stage === "in-progress"){ %> selected <% } %> >
-                    In Progress
-                </option>
-                <option value="completed" <% if(project.stage === "completed"){ %> selected <% } %> >
-                    Completed
-                </option>
-            </select>
-          </div>
-
           <button class="btn btn-primary submit-btn" type="submit">Update Project</button>
         </form>
     </div>
